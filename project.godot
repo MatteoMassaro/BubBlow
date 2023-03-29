@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="BubBlow"
-run/main_scene="res://src/screens/MainScreen.tscn"
+run/main_scene="res://src/screens/ChoiseScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

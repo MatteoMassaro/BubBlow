@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/confirmation_004.ogg-ef3f431a4dd7650b01f291b470204b04.oggstr"
+
+[deps]
+
+source_file="res://assets/user interface/sounds/kenney_interfacesounds/Audio/confirmation_004.ogg"
+dest_files=[ "res://.import/confirmation_004.ogg-ef3f431a4dd7650b01f291b470204b04.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

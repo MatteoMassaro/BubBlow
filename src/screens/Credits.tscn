@@ -31,4 +31,4 @@ margin_right = 400.0
 margin_bottom = 200.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "INDIETRO"
-next_scene_path = "res://src/screens/MainScreen.tscn"
+next_scene_path = "res://src/screens/MenuScreen.tscn"

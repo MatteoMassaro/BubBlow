@@ -46,7 +46,7 @@ margin_right = 400.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "INDIETRO"
-next_scene_path = "res://src/screens/MainScreen.tscn"
+next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [connection signal="button_up" from="Menu/MusicButton" to="Menu/MusicButton" method="_on_button_up"]
 [connection signal="button_up" from="Menu/EffectsButton" to="Menu/EffectsButton" method="_on_button_up"]
