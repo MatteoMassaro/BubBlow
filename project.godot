@@ -20,6 +20,7 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 AudioManager="*res://src/autoload/AudioManager.tscn"
+Firebase="*res://static/Firebase.gd"
 
 [display]
 
