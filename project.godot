@@ -21,6 +21,7 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 AudioManager="*res://src/autoload/AudioManager.tscn"
 GlobalTimer="*res://src/autoload/Timer.gd"
+Firebase="*res://static/Firebase.gd"
 
 [display]
 
