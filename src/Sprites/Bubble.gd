@@ -5,9 +5,11 @@ onready var sound_player = $FootSound
 
 const FLOOR_NORMAL: = Vector2.UP
 
-export var gravity: = 250.0
+export var gravity: = 200.0
 var _velocity: = Vector2.ZERO	
 
+func _ready():
+	connect("bubble_up", self, "moveBubbleUp")
 
 #func _process(_delta):
 #	if Input.is_action_pressed("move_right"):
@@ -39,6 +41,10 @@ func popBubble():
 	_velocity.y = 0
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	_bubble_sprite.play("pop")
+
+func moveBubbleUp():
+	_velocity.y -= gravity * get_physics_process_delta_time()
+	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 
 #func die():
 #	PlayerData.deaths += 1

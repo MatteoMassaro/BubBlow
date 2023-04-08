@@ -1,15 +1,16 @@
 extends Area2D
 
-onready var _bubble_sprite = get_node("../../Bubble")
+var bubbleScript = load("res://src/Sprites/Bubble.gd")
+var bubbleScriptInstance = bubbleScript.new()
 
-var timer = load("res://src/autoload/Timer.gd").new()
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	self.connect("new_bubble", timer, "_on_body_entered(Timer.bubble)")
+	connect("new_bubble", self, "_on_body_entered")
 
 func _on_body_entered(body):
-	popBubble()
+	var bubble = body
+	bubble.popBubble()
 
 func popBubble():
-	_bubble_sprite.popBubble()
+	bubbleScriptInstance.popBubble()

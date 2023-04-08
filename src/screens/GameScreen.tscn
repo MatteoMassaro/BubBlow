@@ -2,12 +2,13 @@
 
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/screens/GameScreen.gd" type="Script" id=2]
-[ext_resource path="res://src/Sprites/Bubble.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/screens/PopArea.gd" type="Script" id=4]
 [ext_resource path="res://src/autoload/Timer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 540, 63.875 )
+extents = Vector2( 540, 31.875 )
+
+[sub_resource type="AudioStreamGenerator" id=2]
 
 [node name="GameScreen" type="Control"]
 anchor_right = 1.0
@@ -23,9 +24,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 1, 0.964706, 1 )
 
-[node name="Bubble" parent="." instance=ExtResource( 3 )]
-position = Vector2( 540, 125 )
-
 [node name="Control" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,9 +34,24 @@ position = Vector2( 540, -96 )
 script = ExtResource( 4 )
 
 [node name="PopCollision" type="CollisionShape2D" parent="Control/PopArea"]
-position = Vector2( 0, 31.875 )
+position = Vector2( 0, 63.875 )
 shape = SubResource( 1 )
 
 [node name="Timer" parent="." instance=ExtResource( 5 )]
+
+[node name="MicrophoneInput" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 2 )
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -24.0
+margin_right = 20.0
+margin_bottom = 24.0
+text = "CIAOOOO"
 
 [connection signal="body_entered" from="Control/PopArea" to="Control/PopArea" method="_on_body_entered"]
