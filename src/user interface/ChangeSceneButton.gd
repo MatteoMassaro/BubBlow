@@ -12,7 +12,6 @@ func _on_button_down():
 
 func _on_button_up():
 	self.rect_scale = Vector2(1, 1)
-	AudioManager.change_scene_button_pressed = true
 	get_tree().change_scene(next_scene_path)
 
 func _get_configuration_warning():

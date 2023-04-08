@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/screens/GameScreen.gd" type="Script" id=2]
+[ext_resource path="res://src/Sprites/Bubble.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/screens/PopArea.gd" type="Script" id=4]
+[ext_resource path="res://src/autoload/Timer.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 540, 63.875 )
+
+[node name="GameScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -200.0 ]
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 1, 0.964706, 1 )
+
+[node name="Bubble" parent="." instance=ExtResource( 3 )]
+position = Vector2( 540, 125 )
+
+[node name="Control" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PopArea" type="Area2D" parent="Control"]
+position = Vector2( 540, -96 )
+script = ExtResource( 4 )
+
+[node name="PopCollision" type="CollisionShape2D" parent="Control/PopArea"]
+position = Vector2( 0, 31.875 )
+shape = SubResource( 1 )
+
+[node name="Timer" parent="." instance=ExtResource( 5 )]
+
+[connection signal="body_entered" from="Control/PopArea" to="Control/PopArea" method="_on_body_entered"]

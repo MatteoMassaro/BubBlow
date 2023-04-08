@@ -11,5 +11,5 @@ func _on_button_up():
 	elif self.pressed == true:
 			AudioManager.play_music()
 			AudioManager.flagMusic = 0
-			AudioManager.change_scene_button_pressed = true
+			AudioManager.music_button_pressed = true
 

@@ -7,7 +7,7 @@ var is_playing_music
 var is_playing_effects 
 var flagMusic = 0
 var flagEffects = 0
-var change_scene_button_pressed = false
+var music_button_pressed = false
 
 func _ready():
 	pass

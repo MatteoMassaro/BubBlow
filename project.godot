@@ -20,11 +20,13 @@ UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 AudioManager="*res://src/autoload/AudioManager.tscn"
+GlobalTimer="*res://src/autoload/Timer.gd"
 
 [display]
 
 window/size/width=1080
 window/size/height=1920
+window/size/fullscreen=true
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"

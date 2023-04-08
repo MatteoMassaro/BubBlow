@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/user interface/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/screens/Audio.gd" type="Script" id=3]
+[ext_resource path="res://src/screens/ChoiseScreen.gd" type="Script" id=3]
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/user interface/backgrounds/Choice.png" type="Texture" id=5]
 
