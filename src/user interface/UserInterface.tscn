@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/user interface/themes/secondary_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/user interface/backgrounds/Pause.png" type="Texture" id=3]
+[ext_resource path="res://src/user interface/ResumeButton.gd" type="Script" id=4]
+[ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/user interface/EffectsButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/user interface/MusicButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/user interface/EffectsButton.gd" type="Script" id=8]
+[ext_resource path="res://src/user interface/MusicButton.gd" type="Script" id=9]
+[ext_resource path="res://src/user interface/UserInterface.gd" type="Script" id=10]
+[ext_resource path="res://assets/user interface/bubblebuttons/png/Button_96.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[node name="UserInterface" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 10 )
+
+[node name="PauseButton" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.0277778
+anchor_top = 0.0135417
+anchor_right = 0.0277778
+anchor_bottom = 0.0135417
+margin_right = 150.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 75, 75 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Score" type="Label" parent="."]
+anchor_left = 1.01019
+anchor_top = 0.0182292
+anchor_right = 1.01019
+anchor_bottom = 0.0182292
+margin_left = -231.0
+margin_right = -31.0
+margin_bottom = 50.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Health" type="Label" parent="."]
+margin_left = 447.0
+margin_top = 35.0
+margin_right = 647.0
+margin_bottom = 85.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchor_left = 0.838889
+anchor_top = 0.0171875
+anchor_right = 0.838889
+anchor_bottom = 0.0171875
+margin_left = -250.0
+margin_right = -50.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+value = 20.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PauseOverlay" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="MenuContainer" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -371.0
+margin_top = -300.0
+margin_right = 371.0
+margin_bottom = 500.0
+custom_constants/separation = 15
+
+[node name="Menu2" type="HBoxContainer" parent="PauseOverlay/MenuContainer"]
+margin_right = 742.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_constants/separation = 15
+
+[node name="MusicButton" parent="PauseOverlay/MenuContainer/Menu2" instance=ExtResource( 7 )]
+margin_right = 363.0
+margin_bottom = 173.0
+pressed = true
+script = ExtResource( 9 )
+
+[node name="EffectsButton" parent="PauseOverlay/MenuContainer/Menu2" instance=ExtResource( 6 )]
+margin_left = 378.0
+margin_top = 0.0
+margin_right = 742.0
+margin_bottom = 173.0
+pressed = true
+script = ExtResource( 8 )
+
+[node name="Menu1" type="VBoxContainer" parent="PauseOverlay/MenuContainer"]
+margin_left = 175.0
+margin_top = 188.0
+margin_right = 567.0
+margin_bottom = 800.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="ResumeButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
+margin_right = 392.0
+margin_bottom = 194.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "RIPRENDI"
+script = ExtResource( 4 )
+
+[node name="RestartButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
+margin_top = 209.0
+margin_right = 392.0
+margin_bottom = 403.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "RICOMINCIA"
+next_scene_path = "res://src/screens/GameScreen.tscn"
+
+[node name="MenuButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
+margin_top = 418.0
+margin_right = 392.0
+margin_bottom = 612.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "MENU PRINCIPALE"
+next_scene_path = "res://src/screens/MenuScreen.tscn"
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="button_up" from="PauseOverlay/MenuContainer/Menu2/MusicButton" to="PauseOverlay/MenuContainer/Menu2/MusicButton" method="_on_button_up"]
+[connection signal="button_up" from="PauseOverlay/MenuContainer/Menu2/EffectsButton" to="PauseOverlay/MenuContainer/Menu2/EffectsButton" method="_on_button_up"]
+[connection signal="pressed" from="PauseOverlay/MenuContainer/Menu1/ResumeButton" to="." method="_on_ResumeButton_pressed"]

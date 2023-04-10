@@ -14,14 +14,19 @@ config/name="BubBlow"
 run/main_scene="res://src/screens/ChoiseScreen.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+enable_audio_input=true
+
 [autoload]
 
 UserData="*res://addons/github-integration/scripts/user_data.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
-AudioManager="*res://src/autoload/AudioManager.tscn"
-GlobalTimer="*res://src/autoload/Timer.gd"
 Firebase="*res://static/Firebase.gd"
+AudioManager="*res://src/autoload/AudioManager.tscn"
+PlayerData="*res://src/autoload/PlayerData.gd"
+GlobalTimer="*res://src/autoload/Timer.gd"
 
 [display]
 

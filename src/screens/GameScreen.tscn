@@ -1,14 +1,30 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/screens/GameScreen.gd" type="Script" id=2]
+[ext_resource path="res://assets/user interface/themes/secondary_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://src/screens/PopArea.gd" type="Script" id=4]
 [ext_resource path="res://src/autoload/Timer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/user interface/UserInterface.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 540, 31.875 )
 
-[sub_resource type="AudioStreamGenerator" id=2]
+[sub_resource type="AudioStreamMicrophone" id=7]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.867188, 0.155823, 0.155823, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
 [node name="GameScreen" type="Control"]
 anchor_right = 1.0
@@ -19,39 +35,69 @@ __meta__ = {
 "_edit_horizontal_guides_": [ -200.0 ]
 }
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="UserInterface" parent="CanvasLayer" instance=ExtResource( 6 )]
+
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 1, 0.964706, 1 )
 
-[node name="Control" type="Control" parent="."]
+[node name="ControlPopArea" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PopArea" type="Area2D" parent="Control"]
+[node name="PopArea" type="Area2D" parent="ControlPopArea"]
 position = Vector2( 540, -96 )
 script = ExtResource( 4 )
 
-[node name="PopCollision" type="CollisionShape2D" parent="Control/PopArea"]
+[node name="PopCollision" type="CollisionShape2D" parent="ControlPopArea/PopArea"]
 position = Vector2( 0, 63.875 )
 shape = SubResource( 1 )
 
 [node name="Timer" parent="." instance=ExtResource( 5 )]
 
 [node name="MicrophoneInput" type="AudioStreamPlayer" parent="."]
-stream = SubResource( 2 )
+stream = SubResource( 7 )
 autoplay = true
+bus = "Record"
 
-[node name="Label" type="Label" parent="."]
+[node name="volume_bar" type="TextureProgress" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -24.0
+margin_top = -20.0
 margin_right = 20.0
-margin_bottom = 24.0
-text = "CIAOOOO"
+margin_bottom = 408.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.01
+texture_under = SubResource( 4 )
+texture_progress = SubResource( 6 )
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 20
+stretch_margin_top = 20
+stretch_margin_right = 20
+stretch_margin_bottom = 20
 
-[connection signal="body_entered" from="Control/PopArea" to="Control/PopArea" method="_on_body_entered"]
+[node name="volume_value" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.0
+margin_top = 425.0
+margin_right = 87.0
+margin_bottom = 473.0
+custom_fonts/font = ExtResource( 3 )
+text = "0.0db"
+align = 1
+
+[connection signal="body_entered" from="ControlPopArea/PopArea" to="ControlPopArea/PopArea" method="_on_body_entered"]
