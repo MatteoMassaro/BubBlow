@@ -37,7 +37,7 @@ func update_samples_strength() -> void:
 		volume_samples.pop_back()
 	
 	if round(linear2db(sample_avg)) > -5:
-		connect("new_bubble", self, "bubble_up")
+		connect("new_bubble", self, "move_bubble_up")
 		volume_value.text = "funziona"
 	else:
 #		frequency_text.text = "spento"
@@ -47,7 +47,7 @@ func update_samples_strength() -> void:
 #	print("Sample:", sample)
 #	print("linearDb sample_avg:", linear2db(sample_avg))
 
-func bubble_up(bubble):
+func move_bubble_up(bubble):
 	emit_signal("bubble_up", bubble)
 
 func average_array(arr: Array) -> float:

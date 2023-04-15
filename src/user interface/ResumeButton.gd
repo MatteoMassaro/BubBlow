@@ -9,5 +9,4 @@ func _on_button_down():
 
 func _on_button_up():
 	self.rect_scale = Vector2(1, 1)
-	get_tree().paused = false
 	PlayerData.resume_game()

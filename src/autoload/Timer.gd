@@ -1,6 +1,6 @@
 extends Timer
 
-var bubble_sprite = preload("res://src/Sprites/Bubble.tscn")
+var bubble_sprite = preload("res://src/sprites/Bubble.tscn")
 
 signal new_bubble
 
