@@ -8,7 +8,7 @@ const FLOOR_NORMAL: = Vector2.UP
 export var gravity: = 200.0
 var _velocity: = Vector2.ZERO	
 
-func _ready():
+func _process(delta):
 	connect("bubble_up", self, "move_bubble_up")
 
 func _physics_process(delta):
@@ -24,6 +24,7 @@ func pop_bubble():
 		AudioManager.play_effect()
 
 func move_bubble_up():
-	_velocity.y -= gravity * get_physics_process_delta_time()
+	gravity = -1000
+	_velocity.y += gravity * get_physics_process_delta_time()
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
 	

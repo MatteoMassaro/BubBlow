@@ -6,6 +6,9 @@ onready var pause_menu = $CanvasLayer/UserInterface/PauseOverlay
 
 var record_bus_index: int
 var volume_samples: Array = []
+var sample_avg
+var min_db = -10
+var points = 1
 
 signal bubble_up
 
@@ -23,32 +26,23 @@ func check_microphone_permission():
 func _process(delta: float) -> void:
 	var funziona = AudioServer.is_bus_effect_enabled(record_bus_index, 0)
 	print("funziona:", funziona)
+	connect("new_bubble", self, "_on_MoveUpArea_body_entered")
 	update_samples_strength()
 
 func update_samples_strength() -> void:
 	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0))
 	volume_samples.push_front(sample)
 
-	var sample_avg = average_array(volume_samples)
+	sample_avg = average_array(volume_samples)
 	volume_value.text = '%sdb' % round(linear2db(sample_avg))
 	volume_bar.value = sample_avg
 	
 	while volume_samples.size() > 10:
 		volume_samples.pop_back()
 	
-	if round(linear2db(sample_avg)) > -5:
-		connect("new_bubble", self, "move_bubble_up")
-		volume_value.text = "funziona"
-	else:
-#		frequency_text.text = "spento"
-		pass
-	
 #	print("Sample average:", sample_avg)
 #	print("Sample:", sample)
 #	print("linearDb sample_avg:", linear2db(sample_avg))
-
-func move_bubble_up(bubble):
-	emit_signal("bubble_up", bubble)
 
 func average_array(arr: Array) -> float:
 	var avg = 0.0
@@ -56,3 +50,13 @@ func average_array(arr: Array) -> float:
 		avg += arr[i]
 	avg /= arr.size()
 	return avg
+
+
+func _on_MoveUpArea_body_entered(body):
+	var bubble = body
+	if round(linear2db(sample_avg)) > min_db:
+		bubble.move_bubble_up()
+		update_score()
+
+func update_score():
+	PlayerData.score += points

@@ -7,7 +7,6 @@ signal game_resumed
 
 var score: = 0 setget set_score
 var deaths: = 0 setget set_deaths
-var player_entered_portal = false
 
 
 func reset():

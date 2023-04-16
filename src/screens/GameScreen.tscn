@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/screens/GameScreen.gd" type="Script" id=2]
@@ -25,6 +25,9 @@ colors = PoolColorArray( 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=6]
 gradient = SubResource( 5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 540.25, 65.875 )
 
 [node name="GameScreen" type="Control"]
 anchor_right = 1.0
@@ -66,6 +69,7 @@ autoplay = true
 bus = "Record"
 
 [node name="volume_bar" type="TextureProgress" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -88,6 +92,7 @@ stretch_margin_right = 20
 stretch_margin_bottom = 20
 
 [node name="volume_value" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -100,4 +105,94 @@ custom_fonts/font = ExtResource( 3 )
 text = "0.0db"
 align = 1
 
+[node name="MoveUpArea1" type="Area2D" parent="."]
+position = Vector2( 540, 561 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea1"]
+position = Vector2( 0.75, -63.875 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea2" type="Area2D" parent="."]
+position = Vector2( 540, 628 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea2"]
+position = Vector2( 0.75, 3 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea3" type="Area2D" parent="."]
+position = Vector2( 540, 767 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea3"]
+position = Vector2( 0.75, 0 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea4" type="Area2D" parent="."]
+position = Vector2( 540, 907 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea4"]
+position = Vector2( 0.75, -5 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea5" type="Area2D" parent="."]
+position = Vector2( 540, 1035 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea5"]
+position = Vector2( -0.25, 0 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea6" type="Area2D" parent="."]
+position = Vector2( 539, 1170 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea6"]
+position = Vector2( 0.75, -2 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea7" type="Area2D" parent="."]
+position = Vector2( 539, 1299 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea7"]
+position = Vector2( 0.75, 3 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea8" type="Area2D" parent="."]
+position = Vector2( 540, 1432 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea8"]
+position = Vector2( 0.75, 2 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea9" type="Area2D" parent="."]
+position = Vector2( 540, 1566 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea9"]
+position = Vector2( 0.75, 0 )
+shape = SubResource( 8 )
+
+[node name="MoveUpArea10" type="Area2D" parent="."]
+position = Vector2( 540, 1695 )
+space_override = 3
+
+[node name="MoveUpCollision" type="CollisionShape2D" parent="MoveUpArea10"]
+position = Vector2( 0.75, 1 )
+shape = SubResource( 8 )
+
 [connection signal="body_entered" from="ControlPopArea/PopArea" to="ControlPopArea/PopArea" method="_on_body_entered"]
+[connection signal="body_entered" from="MoveUpArea1" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea2" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea3" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea4" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea5" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea6" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea7" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea8" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea9" to="." method="_on_MoveUpArea_body_entered"]
+[connection signal="body_entered" from="MoveUpArea10" to="." method="_on_MoveUpArea_body_entered"]

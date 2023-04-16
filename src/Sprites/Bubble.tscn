@@ -26,6 +26,7 @@ animations = [ {
 extents = Vector2( 93, 93 )
 
 [node name="Bubble" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 8 )
 
 [node name="BubbleSprite" type="AnimatedSprite" parent="."]
