@@ -35,8 +35,7 @@ func _ready():
 	update_interface()
 
 func _on_PlayerData_player_died():
-#	get_tree().change_scene_to(load('res://src/screens/MenuScreen.tscn'))
-	pass
+	get_tree().change_scene_to(load("res://src/screens/GameOverScreen.tscn"))
 
 func _on_PauseButton_pressed():
 	self.paused = not paused
