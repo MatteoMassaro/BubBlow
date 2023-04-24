@@ -29,7 +29,7 @@ margin_top = 60.0
 margin_right = 296.5
 margin_bottom = 108.0
 custom_fonts/font = ExtResource( 4 )
-text = "Rifornimento di sapone..."
+text = "Rifornimento di ossigeno..."
 align = 1
 
 [node name="Text2" type="Label" parent="."]

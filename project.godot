@@ -25,7 +25,7 @@ IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 Firebase="*res://static/Firebase.gd"
 AudioManager="*res://src/autoload/AudioManager.tscn"
-GlobalTimer="*res://src/autoload/Timer.gd"
+GlobalTimer="*res://src/autoload/BubbleSpawnTimer.gd"
 PlayerData="*res://src/autoload/PlayerData.gd"
 
 [display]
@@ -49,6 +49,10 @@ strestch=false
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 

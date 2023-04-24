@@ -3,25 +3,23 @@ extends Control
 onready var volume_bar = $volume_bar
 onready var volume_value = $volume_value
 onready var pause_menu = $CanvasLayer/UserInterface/PauseOverlay
+onready var bubble_spawn_timer = $BubbleSpawnTimer
 
 var record_bus_index: int
 var volume_samples: Array = []
 var sample_avg
 var min_db = -10
 var points = 1
+var points_text = "+1"
 
-signal bubble_up
+signal score_incremented
 
 func _ready():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game_music.mp3")
-	if AudioManager.flagMusic == 0:
+	if AudioManager.flag_music == 0:
 		AudioManager.play_music()
-	check_microphone_permission()
 	record_bus_index = AudioServer.get_bus_index('Record')
-
-func check_microphone_permission():
-	if OS.get_name() == "Android":
-		OS.request_permissions()
+	PlayerData.connect("bubbles_saved_updated", self, "update_new_bubble")
 
 func _process(delta: float) -> void:
 	var funziona = AudioServer.is_bus_effect_enabled(record_bus_index, 0)
@@ -51,12 +49,24 @@ func average_array(arr: Array) -> float:
 	avg /= arr.size()
 	return avg
 
-
 func _on_MoveUpArea_body_entered(body):
 	var bubble = body
-	if round(linear2db(sample_avg)) > min_db:
-		bubble.move_bubble_up()
-		update_score()
+	if bubble.body_entered == false:
+		if round(linear2db(sample_avg)) > min_db:
+			bubble.points.text = points_text
+			bubble.move_bubble_up()
+			bubble.points_animation()
+			update_score()
+			bubble.body_entered = true
+	
+	
 
 func update_score():
 	PlayerData.score += points
+	PlayerData.bubbles_saved += 1
+
+
+func _on_BubbleIncreaseTimer_timeout():
+	bubble_spawn_timer.wait_time = 1
+	points_text = "+3"
+	points = 3
