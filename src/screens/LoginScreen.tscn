@@ -96,7 +96,7 @@ margin_right = 428.0
 margin_bottom = 600.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "INDIETRO"
-next_scene_path = "res://src/screens/ChoiseScreen.tscn"
+next_scene_path = "res://src/screens/RegistrationScreen.tscn"
 
 [node name="NotificationPanel" type="PanelContainer" parent="."]
 visible = false
