@@ -33,7 +33,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		notification.text = "Registration successful"
 		show_label()
 		yield(get_tree().create_timer(2.0), "timeout")
-		get_tree().change_scene("res://src/screens/LoginScreen.tscn")
+		get_tree().change_scene("res://src/screens/ChoiseScreen.tscn")
 
 func show_label():
 	notification_panel.show()

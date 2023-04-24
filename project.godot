@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="BubBlow"
-run/main_scene="res://src/screens/ChoiseScreen.tscn"
+run/main_scene="res://src/screens/RegistrationScreen.tscn"
 config/icon="res://icon.png"
 
 [audio]
