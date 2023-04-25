@@ -1,5 +1,6 @@
 extends Control
 
+
 func _ready():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/menu_music.mp3")
 	if AudioManager.flag_music == 0:

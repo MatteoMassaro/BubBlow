@@ -57,32 +57,38 @@ custom_constants/separation = 15
 
 [node name="PlayButton" parent="Menu" instance=ExtResource( 2 )]
 margin_right = 400.0
-margin_bottom = 188.0
+margin_bottom = 172.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "GIOCA"
 next_scene_path = "res://src/screens/LoadingScreen.tscn"
 
 [node name="SettingsButton" parent="Menu" instance=ExtResource( 2 )]
-margin_top = 203.0
+margin_top = 187.0
 margin_right = 400.0
-margin_bottom = 392.0
+margin_bottom = 360.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "OPZIONI"
 next_scene_path = "res://src/screens/SettingsScreen.tscn"
 
 [node name="CreditsButton" parent="Menu" instance=ExtResource( 2 )]
-margin_top = 407.0
+margin_top = 375.0
 margin_right = 400.0
-margin_bottom = 596.0
+margin_bottom = 547.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "CREDITI"
 next_scene_path = "res://src/screens/CreditsScreen.tscn"
 
 [node name="QuitButton" parent="Menu" instance=ExtResource( 1 )]
-margin_top = 611.0
+margin_top = 562.0
+margin_right = 400.0
+margin_bottom = 735.0
+rect_pivot_offset = Vector2( 200, 100 )
+
+[node name="UserButton" type="Button" parent="Menu"]
+margin_top = 750.0
 margin_right = 400.0
 margin_bottom = 800.0
-rect_pivot_offset = Vector2( 200, 100 )
+text = "profilo"
 
 [node name="Logout" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5
@@ -116,3 +122,4 @@ icon_align = 1
 next_scene_path = "res://src/screens/LeaderboardScreen.tscn"
 
 [connection signal="button_down" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_button_down"]
+[connection signal="pressed" from="Menu/UserButton" to="Menu/PlayButton" method="_on_UserButton_pressed"]
