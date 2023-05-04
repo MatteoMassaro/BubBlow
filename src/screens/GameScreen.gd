@@ -15,15 +15,15 @@ var points_text = "+1"
 signal score_incremented
 
 func _ready():
+	check_music()
+	record_bus_index = AudioServer.get_bus_index('Record')
+
+func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game_music.mp3")
 	if AudioManager.flag_music == 0:
 		AudioManager.play_music()
-	record_bus_index = AudioServer.get_bus_index('Record')
-	PlayerData.connect("bubbles_saved_updated", self, "update_new_bubble")
 
 func _process(delta: float) -> void:
-	var funziona = AudioServer.is_bus_effect_enabled(record_bus_index, 0)
-	print("funziona:", funziona)
 	connect("new_bubble", self, "_on_MoveUpArea_body_entered")
 	update_samples_strength()
 
@@ -58,13 +58,10 @@ func _on_MoveUpArea_body_entered(body):
 			bubble.points_animation()
 			update_score()
 			bubble.body_entered = true
-	
-	
 
 func update_score():
 	PlayerData.score += points
 	PlayerData.bubbles_saved += 1
-
 
 func _on_BubbleIncreaseTimer_timeout():
 	bubble_spawn_timer.wait_time = 1

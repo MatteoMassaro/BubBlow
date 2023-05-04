@@ -14,7 +14,6 @@ var profile := {
 func _ready() -> void:
 	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
 
-
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
 	match response_code:
@@ -27,7 +26,6 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 				notification.text = "Information saved successfully"
 				information_sent = false
 			self.profile = result_body.fields
-
 
 func _on_ConfirmButton_pressed() -> void:
 	if tipo_utente.text.empty():
@@ -43,16 +41,12 @@ func _on_ConfirmButton_pressed() -> void:
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 
-
 func set_profile(value: Dictionary) -> void:
 	profile = value
 	tipo_utente.text = profile.tipo_utente.stringValue
-	
-
 
 func _on_Button_pressed():
 	get_tree().quit()
-
 
 func _on_BackButton_pressed():
 	get_tree().change_scene("res://src/screens/MenuScreen.tscn")

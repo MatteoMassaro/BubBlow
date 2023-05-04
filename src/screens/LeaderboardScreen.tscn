@@ -80,13 +80,13 @@ next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [node name="LeaderboardScroll" type="ScrollContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.582812
+anchor_top = 0.7
 anchor_right = 0.5
-anchor_bottom = 0.582812
+anchor_bottom = 0.7
 margin_left = -400.0
 margin_top = -500.0
 margin_right = 400.0
-margin_bottom = 500.0
+margin_bottom = 300.0
 custom_styles/bg = SubResource( 5 )
 follow_focus = true
 scroll_horizontal_enabled = false
@@ -99,7 +99,7 @@ light_mask = 2
 margin_left = 50.0
 margin_top = 30.0
 margin_right = 770.0
-margin_bottom = 980.0
+margin_bottom = 780.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
@@ -107,7 +107,7 @@ custom_constants/separation = 30
 
 [node name="LeaderboardMedalContainer2" type="VBoxContainer" parent="LeaderboardScroll/LeaderboardContainer"]
 margin_right = 84.0
-margin_bottom = 950.0
+margin_bottom = 750.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
@@ -133,13 +133,13 @@ texture = ExtResource( 8 )
 [node name="VSeparator" type="VSeparator" parent="LeaderboardScroll/LeaderboardContainer"]
 margin_left = 114.0
 margin_right = 118.0
-margin_bottom = 950.0
+margin_bottom = 750.0
 custom_styles/separator = SubResource( 6 )
 
 [node name="LeaderboardNameContainer" type="VBoxContainer" parent="LeaderboardScroll/LeaderboardContainer"]
 margin_left = 148.0
 margin_right = 486.0
-margin_bottom = 950.0
+margin_bottom = 750.0
 rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -148,13 +148,13 @@ custom_constants/separation = 30
 [node name="VSeparator2" type="VSeparator" parent="LeaderboardScroll/LeaderboardContainer"]
 margin_left = 516.0
 margin_right = 520.0
-margin_bottom = 950.0
+margin_bottom = 750.0
 custom_styles/separator = SubResource( 7 )
 
 [node name="LeaderboardScoreContainer" type="VBoxContainer" parent="LeaderboardScroll/LeaderboardContainer"]
 margin_left = 550.0
 margin_right = 720.0
-margin_bottom = 950.0
+margin_bottom = 750.0
 rect_clip_content = true
 size_flags_horizontal = 3
 custom_constants/separation = 30

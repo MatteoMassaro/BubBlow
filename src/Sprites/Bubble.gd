@@ -11,6 +11,7 @@ export var gravity: = 200.0
 var _velocity: = Vector2.ZERO	
 var body_entered
 
+
 func _ready():
 	body_entered = false
 

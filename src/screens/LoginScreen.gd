@@ -10,6 +10,9 @@ var timer = Timer.new()
 var hide_delay = 3.0
 
 func _ready():
+	set_timer()
+
+func set_timer():
 	add_child(timer)
 	timer.set_wait_time(hide_delay)
 	timer.set_one_shot(true)
@@ -21,7 +24,6 @@ func _on_LoginButton_pressed() -> void:
 		show_label()
 		return
 	Firebase.login(email.text, password.text, http)
-
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var response_body := JSON.parse(body.get_string_from_ascii())

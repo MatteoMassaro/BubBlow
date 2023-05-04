@@ -2,6 +2,9 @@ extends Control
 
 
 func _ready():
+	check_music()
+
+func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/menu_music.mp3")
 	if AudioManager.flag_music == 0:
 		if AudioManager.music_button_pressed == false:

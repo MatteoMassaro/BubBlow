@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/mail-box.png-c24b6e254f83bbe84720c14ef5f3332d.image"
+
+[deps]
+
+source_file="res://assets/user interface/items/mail-box.png"
+dest_files=[ "res://.import/mail-box.png-c24b6e254f83bbe84720c14ef5f3332d.image" ]
+
+[params]
+
