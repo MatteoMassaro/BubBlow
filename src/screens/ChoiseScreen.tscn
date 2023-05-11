@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/screens/ProfileScreen.gd" type="Script" id=1]
+[ext_resource path="res://src/screens/ChoiseScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/user interface/backgrounds/Choice.png" type="Texture" id=5]
