@@ -144,4 +144,5 @@ __meta__ = {
 [connection signal="focus_entered" from="MailField" to="MailField" method="_on_focus_entered"]
 [connection signal="focus_entered" from="PasswordField" to="PasswordField" method="_on_focus_entered"]
 [connection signal="pressed" from="Menu/RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="button_down" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_button_down"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
