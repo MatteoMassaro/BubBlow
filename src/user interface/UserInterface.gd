@@ -50,8 +50,10 @@ func update_interface():
 	score.text = "PUNTEGGIO: %s" % PlayerData.score
 
 func _on_PlayerData_player_died():
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.0), "timeout")
+	scene_tree.paused = true
 	get_tree().change_scene_to(load("res://src/screens/GameOverScreen.tscn"))
+	scene_tree.paused = false
 
 func _on_PauseButton_pressed():
 	self.paused = not paused

@@ -14,11 +14,26 @@ func _on_Timer_timeout():
 	PlayerData.reset()
 	loadingBar.value += 1
 	if loadingBar.value == 20:
-		text1.visible = true;
+		if PlayerData.game_mode == 1:
+			text1.text = "Rifornimento di ossigeno..."
+			text1.visible = true;
+		elif PlayerData.game_mode == 2:
+			text1.text = "Rifornimento di ossigeno..."
+			text1.visible = true;
 	elif loadingBar.value == 50:
-		text2.visible = true;
+		if PlayerData.game_mode == 1:
+			text2.text = "Caricamento dello sparabolle..."
+			text2.visible = true;
+		elif PlayerData.game_mode == 2:
+			text2.text = "Caricamento del Jetpack..."
+			text2.visible = true;
 	elif loadingBar.value == 70:
-		text3.visible = true;
+		if PlayerData.game_mode == 1:
+			text3.text = "Preparazione delle bolle..."
+			text3.visible = true;
+		elif PlayerData.game_mode == 2:
+			text3.text = "Preparazione dei pesci..."
+			text3.visible = true;
 	if loadingBar.value == 100:
 		if(PlayerData.game_mode == 1):
 			get_tree().change_scene("res://src/games/Game1.tscn")

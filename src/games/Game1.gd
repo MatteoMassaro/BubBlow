@@ -51,17 +51,19 @@ func average_array(arr: Array) -> float:
 
 func _on_MoveUpArea_body_entered(body):
 	var bubble = body
-	if bubble.body_entered == false:
-		if round(linear2db(sample_avg)) > min_db:
-			bubble.points.text = points_text
-			bubble.move_bubble_up()
-			bubble.points_animation()
-			update_score()
-			bubble.body_entered = true
+	if PlayerData.deaths <= 0:
+		if bubble.body_entered == false:
+			if round(linear2db(sample_avg)) > min_db:
+				bubble.points.text = points_text
+				bubble.move_bubble_up()
+				bubble.points_animation()
+				update_score()
+				bubble.body_entered = true
+	else:
+		bubble.pop_bubble()
 
 func update_score():
 	PlayerData.score += points
-	PlayerData.bubbles_saved += 1
 
 func _on_BubbleIncreaseTimer_timeout():
 	bubble_spawn_timer.wait_time = 1

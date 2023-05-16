@@ -1,7 +1,7 @@
 extends Area2D
 
 onready var life_1 = get_tree().get_root().get_node("Game1/UserInterfaceLayer/UserInterface/Life1")
-onready var life_2 = get_tree().get_root().get_node("Game1/userInterfaceLayer/UserInterface/Life2")
+onready var life_2 = get_tree().get_root().get_node("Game1/UserInterfaceLayer/UserInterface/Life2")
 onready var life_3 = get_tree().get_root().get_node("Game1/UserInterfaceLayer/UserInterface/Life3")
 
 func _ready():

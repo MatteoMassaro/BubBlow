@@ -134,7 +134,6 @@ margin_bottom = 197.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "RICOMINCIA"
 script = ExtResource( 10 )
-next_scene_path = "res://src/screens/GameScreen.tscn"
 
 [node name="MenuButton" parent="MenuContainer/Menu2" instance=ExtResource( 4 )]
 margin_top = 212.0
@@ -149,3 +148,5 @@ next_scene_path = "res://src/screens/MenuScreen.tscn"
 anims/RESET = SubResource( 3 )
 anims/show_bubbles_saved_text = SubResource( 4 )
 anims/show_score_text = SubResource( 5 )
+
+[connection signal="pressed" from="MenuContainer/Menu2/RestartButton" to="MenuContainer/Menu2/RestartButton" method="_on_RestartButton_pressed"]

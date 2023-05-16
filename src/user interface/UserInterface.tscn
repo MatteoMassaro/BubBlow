@@ -176,7 +176,6 @@ margin_bottom = 403.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "RICOMINCIA"
 script = ExtResource( 12 )
-next_scene_path = "res://src/screens/GameScreen.tscn"
 
 [node name="MenuButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
 margin_top = 418.0

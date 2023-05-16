@@ -1,7 +1,5 @@
 extends Button
 
-export(String, FILE) var next_scene_path: = ""
-
 
 func _on_button_down():
 	self.rect_scale = Vector2(0.8, 0.8)
@@ -13,7 +11,9 @@ func _on_button_up():
 	self.rect_scale = Vector2(1, 1)
 	PlayerData.resume_game()
 	PlayerData.reset()
-	get_tree().change_scene(next_scene_path)
 
-func _get_configuration_warning():
-	return "Next scene path must be set for the button to work" if next_scene_path == "" else ""
+func _on_RestartButton_pressed():
+	if PlayerData.game_mode == 1:
+		get_tree().change_scene("res://src/games/Game1.tscn")
+	elif PlayerData.game_mode == 2:
+		get_tree().change_scene("res://src/games/Game2.tscn")
