@@ -5,6 +5,8 @@ onready var leaderboard_scroll : ScrollContainer = $LeaderboardScroll
 onready var leaderboard_name_container: VBoxContainer = $LeaderboardScroll/LeaderboardContainer/LeaderboardNameContainer
 onready var leaderboard_score_container: VBoxContainer = $LeaderboardScroll/LeaderboardContainer/LeaderboardScoreContainer
 var leaderboard_text = preload("res://src/user interface/LeaderboardText.tscn")
+var leaderboard_details_button = preload("res://src/user interface/DetailsButton.tscn")
+var user_type = "medico"
 
 
 func _ready():
@@ -25,7 +27,12 @@ func populate_leaderboard_names():
 		leaderboard_name_container.add_child(leaderboard_text_instance)
 
 func populate_leaderboard_scores():
-	for i in 20:
-		var leaderboard_text_instance = leaderboard_text.instance()
-		leaderboard_text_instance.text = "1245"
-		leaderboard_score_container.add_child(leaderboard_text_instance)
+	if user_type == "medico":
+		for i in 20:
+			var leaderboard_details_button_instance = leaderboard_details_button.instance()
+			leaderboard_score_container.add_child(leaderboard_details_button_instance)
+	elif user_type == "paziente":
+		for i in 20:
+			var leaderboard_text_instance = leaderboard_text.instance()
+			leaderboard_text_instance.text = "1245"
+			leaderboard_score_container.add_child(leaderboard_text_instance)
