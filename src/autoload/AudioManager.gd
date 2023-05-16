@@ -3,8 +3,8 @@ extends Node2D
 var music_track = load("")
 var effect_track = load("")
 var steps_track = load("")
-var is_playing_music
-var is_playing_effects 
+var is_playing_music = false
+var is_playing_effects
 var flag_music = 0
 var flag_effects = 0
 var music_button_pressed = false

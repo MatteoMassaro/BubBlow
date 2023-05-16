@@ -73,7 +73,7 @@ margin_right = 400.0
 margin_bottom = 188.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "GIOCA"
-next_scene_path = "res://src/screens/LoadingScreen.tscn"
+next_scene_path = "res://src/screens/ChoiseScreen2.tscn"
 
 [node name="SettingsButton" parent="Menu" instance=ExtResource( 2 )]
 margin_top = 203.0

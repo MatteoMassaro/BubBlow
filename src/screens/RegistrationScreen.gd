@@ -18,8 +18,8 @@ func _ready():
 func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/menu_music.mp3")
 	if AudioManager.flag_music == 0:
-		AudioManager.play_music()
-		AudioManager.flag_music = 1
+		if AudioManager.is_playing_music == false:
+			AudioManager.play_music()
 
 func check_microphone_permission():
 	if OS.get_name() == "Android":
