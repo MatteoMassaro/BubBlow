@@ -28,14 +28,14 @@ margin_right = 200.0
 margin_bottom = 200.0
 custom_constants/separation = 15
 
-[node name="Userbutton" parent="Menu" instance=ExtResource( 2 )]
+[node name="PatientButton" parent="Menu" instance=ExtResource( 2 )]
 margin_right = 400.0
 margin_bottom = 192.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "PAZIENTE"
 script = null
 
-[node name="MedicButton" parent="Menu" instance=ExtResource( 2 )]
+[node name="DoctorButton" parent="Menu" instance=ExtResource( 2 )]
 margin_top = 207.0
 margin_right = 400.0
 margin_bottom = 400.0
@@ -45,6 +45,17 @@ script = null
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="Menu/Userbutton" to="." method="_on_Userbutton_pressed"]
-[connection signal="pressed" from="Menu/MedicButton" to="." method="_on_MedicButton_pressed"]
+[node name="NotificationPanel" type="PanelContainer" parent="."]
+visible = false
+margin_right = 14.0
+margin_bottom = 14.0
+
+[node name="Notification" type="Label" parent="NotificationPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 7.0
+margin_bottom = 42.0
+
+[connection signal="pressed" from="Menu/PatientButton" to="." method="_on_Userbutton_pressed"]
+[connection signal="pressed" from="Menu/DoctorButton" to="." method="_on_MedicButton_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

@@ -9,6 +9,13 @@ const FIRESTORE_URL := "https://firestore.googleapis.com/v1/projects/%s/database
 
 var user_info := {}
 
+onready var email = ""
+var new_profile := true
+var information_sent := false
+var profile := {
+	"email": {}
+}
+
 
 func _get_user_info(result: Array) -> Dictionary:
 	var result_body := JSON.parse(result[3].get_string_from_ascii()).result as Dictionary
@@ -34,6 +41,9 @@ func register(email: String, password: String, http: HTTPRequest) -> void:
 	var result := yield(http, "request_completed") as Array
 	if result[1] == 200:
 		user_info = _get_user_info(result)
+	profile.email = { "stringValue": email }
+	Firebase.save_document("users?documentId=%s" % Firebase.user_info.id, profile, http)
+	information_sent = true
 
 
 func login(email: String, password: String, http: HTTPRequest) -> void:
@@ -61,7 +71,7 @@ func get_document(path: String, http: HTTPRequest) -> void:
 
 
 func update_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
-	var document := { "fields": fields }
+	var document := { "fields": fields}
 	var body := to_json(document)
 	var url := FIRESTORE_URL + path
 	http.request(url, _get_request_headers(), false, HTTPClient.METHOD_PATCH, body)
