@@ -17,7 +17,7 @@ theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "Dettagli"
 script = ExtResource( 1 )
-next_scene_path = "res://src/screens/MenuScreen.tscn"
+next_scene_path = "res://src/screens/UserDataScreen.tscn"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

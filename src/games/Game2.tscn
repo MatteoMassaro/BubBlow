@@ -160,6 +160,7 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Foreground1-1" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -172,6 +173,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Foreground2-1" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -184,6 +186,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Foreground3-1" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -196,6 +199,7 @@ expand = true
 stretch_mode = 1
 
 [node name="Foreground1-2" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -211,6 +215,7 @@ __meta__ = {
 }
 
 [node name="Foreground2-2" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -226,6 +231,7 @@ __meta__ = {
 }
 
 [node name="Foreground3-2" type="TextureRect" parent="BackgroundLayer"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -258,7 +264,6 @@ bus = "Record"
 position = Vector2( 192, 1722 )
 
 [node name="EnemySpawnTimer" parent="." instance=ExtResource( 14 )]
-wait_time = 2.0
 script = ExtResource( 15 )
 
 [node name="GameArea" type="Area2D" parent="."]

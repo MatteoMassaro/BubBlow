@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/user interface/items/firstMode.png" type="Texture" id=6]
 [ext_resource path="res://assets/user interface/items/secondMode.png" type="Texture" id=7]
 [ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/user interface/items/pincode.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=10]
 size = 30
@@ -78,7 +79,7 @@ custom_constants/vseparation = 30
 custom_constants/line_separation = 1
 custom_constants/icon_margin = 30
 custom_fonts/font = SubResource( 10 )
-items = [ "Username:", SubResource( 6 ), false, "Email:", SubResource( 9 ), false, "Highscore modalita' classica:", ExtResource( 6 ), false, "Highscore modalita' runner:", ExtResource( 7 ), false ]
+items = [ "Username:", SubResource( 6 ), false, "Email:", SubResource( 9 ), false, "Highscore modalita' classica:", ExtResource( 6 ), false, "Highscore modalita' runner:", ExtResource( 7 ), false, "Codice medico:", ExtResource( 9 ), false ]
 auto_height = true
 same_column_width = true
 fixed_icon_size = Vector2( 50, 50 )

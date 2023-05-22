@@ -5,12 +5,17 @@ signal life_counter_updated
 signal player_died
 signal game_resumed
 
+var game_mode = 0
+var user_type = "medico"
 var score: = 0 setget set_score
 var life_counter := 0 setget set_life_counter
 var deaths: = 0 setget set_deaths
 var player_flying = false
 var invincible = false 
-var game_mode = 0
+var decibel_avg = 0
+var breathe_counter = 0
+var game_duration_seconds = 0
+var game_duration_minutes = 0
 
 
 func reset():
@@ -18,6 +23,11 @@ func reset():
 	life_counter = 0
 	deaths = 0
 	player_flying = false
+	invincible = false
+	decibel_avg = 0
+	breathe_counter = 0
+	game_duration_seconds = 0
+	game_duration_minutes = 0
 
 
 func set_score(value: int):

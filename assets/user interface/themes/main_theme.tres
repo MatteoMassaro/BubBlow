@@ -1,10 +1,16 @@
-[gd_resource type="Theme" load_steps=18 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://assets/user interface/themes/main_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/user interface/themes/buttons_normal.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_42.png" type="Texture" id=3]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_59.png" type="Texture" id=4]
 [ext_resource path="res://assets/user interface/themes/secondary_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/user interface/bubblebuttons/png/Button_07.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 316, 140 )
+modulate_color = Color( 0.67451, 0.67451, 0.67451, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=4]
 
@@ -55,6 +61,7 @@ Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_focus = Color( 1, 1, 1, 1 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/styles/disabled = SubResource( 17 )
 Button/styles/focus = SubResource( 4 )
 Button/styles/hover = ExtResource( 2 )
 Button/styles/normal = ExtResource( 2 )

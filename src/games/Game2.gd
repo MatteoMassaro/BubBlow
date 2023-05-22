@@ -22,7 +22,7 @@ func _ready():
 	player.points.text = points_text
 
 func check_music():
-	AudioManager.music_track = load ("res://assets/user interface/sounds/game_music.mp3")
+	AudioManager.music_track = load ("res://assets/user interface/sounds/game2_music.mp3")
 	if AudioManager.flag_music == 0:
 		AudioManager.play_music()
 
