@@ -83,6 +83,12 @@ auto_height = true
 same_column_width = true
 fixed_icon_size = Vector2( 50, 50 )
 
+[node name="LineEdit" type="LineEdit" parent="ItemList"]
+margin_left = 259.0
+margin_top = 146.0
+margin_right = 815.0
+margin_bottom = 219.0
+
 [node name="BackButton" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5
 anchor_top = 1.0
