@@ -25,7 +25,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 func set_profile(value: Dictionary) -> void:
 	profile = value
-	email.text = profile.email.stringValue
+	item_list.set_item_text(1, "Email: " + profile.email.stringValue)
 
 func check_user_type():
 	if PlayerData.user_type == "paziente":
