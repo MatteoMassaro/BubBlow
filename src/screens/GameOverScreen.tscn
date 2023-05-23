@@ -149,4 +149,7 @@ anims/RESET = SubResource( 3 )
 anims/show_bubbles_saved_text = SubResource( 4 )
 anims/show_score_text = SubResource( 5 )
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="MenuContainer/Menu2/RestartButton" to="MenuContainer/Menu2/RestartButton" method="_on_RestartButton_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

@@ -142,4 +142,7 @@ custom_styles/normal = SubResource( 2 )
 icon_align = 1
 next_scene_path = "res://src/screens/LeaderboardScreen.tscn"
 
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="button_down" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_button_down"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

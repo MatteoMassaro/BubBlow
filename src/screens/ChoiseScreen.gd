@@ -10,7 +10,9 @@ onready var doctor_button : Button = $Menu/DoctorButton
 var information_sent := false
 var profile := {
 	"email": {},
-	"type_user": {}
+	"type_user": {},
+	"last_score": {},
+	"games": {}
 } 
 
 func _ready():
@@ -34,6 +36,8 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 func _on_Userbutton_pressed():
 	profile.type_user = { "stringValue": "patient" }
 	profile.email = { "stringValue": email}
+	profile.last_score = { "integerValue": 0 }
+	profile.games = {"integerValue": 0 }
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 	patient_button.rect_scale = Vector2(0.8, 0.8)

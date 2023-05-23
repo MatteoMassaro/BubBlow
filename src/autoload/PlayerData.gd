@@ -5,8 +5,12 @@ signal life_counter_updated
 signal player_died
 signal game_resumed
 
+
+
 var game_mode = 0
-var user_type = "medico"
+onready var email = ""
+onready var user_type = ""
+onready var games: = 0
 var score: = 0 setget set_score
 var life_counter := 0 setget set_life_counter
 var deaths: = 0 setget set_deaths
@@ -17,6 +21,15 @@ var breathe_counter = 0
 var game_duration_seconds = 0
 var game_duration_minutes = 0
 
+
+
+#func _ready():
+	#Firebase.get_document("users/%s" % Firebase.user_info.id, http)
+
+#func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
+	#var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
+	#email = result_body.fields.email.stringValue
+	
 
 func reset():
 	score = 0
