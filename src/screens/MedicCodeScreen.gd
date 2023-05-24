@@ -40,24 +40,31 @@ func _on_SendButton_pressed():
 		notification.text = "Insert code"
 		show_label()
 		return
-	profile.name = {"stringValue": PlayerData.name_user}
-	profile.surname = {"stringValue": PlayerData.surname_user}
-	profile.type_user = { "stringValue": "medic" }
-	profile.email = { "stringValue": email}
-	profile.medic_code = {"stringValue": medic_code.text}
-	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
-	information_sent = true
-	PlayerData.user_type = "medic"
-	PlayerData.email = email
-	PlayerData.medic_code = medic_code.text
-	send_button.rect_scale = Vector2(0.8, 0.8)
-	if AudioManager.flag_effects == 0:
-		AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/drop_004.ogg")
-		AudioManager.play_effect()
-	yield(get_tree().create_timer(0.1), "timeout")
-	send_button.rect_scale = Vector2(1, 1)
-	yield(get_tree().create_timer(2.0), "timeout")
-	get_tree().change_scene("res://src/screens/MenuScreen.tscn")
+	if medic_code.text == "12345678":
+		profile.name = {"stringValue": PlayerData.name_user}
+		profile.surname = {"stringValue": PlayerData.surname_user}
+		profile.type_user = { "stringValue": "medic" }
+		profile.email = { "stringValue": email}
+		profile.medic_code = {"stringValue": medic_code.text}
+		Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+		information_sent = true
+		PlayerData.user_type = "medic"
+		PlayerData.email = email
+		PlayerData.medic_code = medic_code.text
+		send_button.rect_scale = Vector2(0.8, 0.8)
+		if AudioManager.flag_effects == 0:
+			AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/drop_004.ogg")
+			AudioManager.play_effect()
+		yield(get_tree().create_timer(0.1), "timeout")
+		send_button.rect_scale = Vector2(1, 1)
+		yield(get_tree().create_timer(2.0), "timeout")
+		get_tree().change_scene("res://src/screens/MenuScreen.tscn")
+	else:
+		notification.text = "Il codice inserito non è valido"
+		show_label()
+		yield(get_tree().create_timer(2.0), "timeout")
+		get_tree().change_scene("res://src/screens/RegistrationScreen.tscn")
+		return
 
 func show_label():
 	notification_panel.show()
