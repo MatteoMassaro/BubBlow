@@ -9,6 +9,8 @@ onready var send_button : Button = $Menu/SendButton
 var email = ""
 var information_sent := false
 var profile := {
+	"name": {},
+	"surname": {},
 	"email": {},
 	"type_user": {},
 	"medic_code": {}
@@ -20,6 +22,8 @@ func _ready():
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
 	email = result_body.fields.email.stringValue
+	PlayerData.name_user = result_body.fields.name.stringValue
+	PlayerData.surname_user = result_body.fields.surname.stringValue
 	match response_code:
 		404:
 			notification.text = "Invalid code"
@@ -36,6 +40,8 @@ func _on_SendButton_pressed():
 		notification.text = "Insert code"
 		show_label()
 		return
+	profile.name = {"stringValue": PlayerData.name_user}
+	profile.surname = {"stringValue": PlayerData.surname_user}
 	profile.type_user = { "stringValue": "medic" }
 	profile.email = { "stringValue": email}
 	profile.medic_code = {"stringValue": medic_code.text}
