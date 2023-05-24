@@ -37,77 +37,91 @@ anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
 
-[node name="UsernameField" type="LineEdit" parent="."]
+[node name="Menu1" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.564583
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -216.0
-margin_right = 300.0
-margin_bottom = -66.0
+anchor_bottom = 0.564583
+margin_left = -250.0
+margin_top = -300.0
+margin_right = 250.0
+margin_bottom = 300.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NameField" type="LineEdit" parent="Menu1"]
+margin_right = 500.0
+margin_bottom = 138.0
+size_flags_vertical = 3
 align = 1
 max_length = 10
-placeholder_text = "Username"
+placeholder_text = "NOME"
 script = ExtResource( 5 )
 
-[node name="MailField" type="LineEdit" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -59.0
-margin_right = 300.0
-margin_bottom = 91.0
+[node name="SurnameField" type="LineEdit" parent="Menu1"]
+margin_top = 153.0
+margin_right = 500.0
+margin_bottom = 292.0
+size_flags_vertical = 3
+align = 1
+max_length = 10
+placeholder_text = "COGNOME"
+script = ExtResource( 5 )
+
+[node name="MailField" type="LineEdit" parent="Menu1"]
+margin_top = 307.0
+margin_right = 500.0
+margin_bottom = 446.0
+size_flags_vertical = 3
 align = 1
 placeholder_text = "Email"
 script = ExtResource( 6 )
 
-[node name="PasswordField" type="LineEdit" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = 102.0
-margin_right = 300.0
-margin_bottom = 252.0
+[node name="PasswordField" type="LineEdit" parent="Menu1"]
+margin_top = 461.0
+margin_right = 500.0
+margin_bottom = 600.0
+size_flags_vertical = 3
 align = 1
 max_length = 10
 secret = true
 placeholder_text = "Password"
 script = ExtResource( 7 )
 
-[node name="Menu" type="VBoxContainer" parent="."]
+[node name="Menu2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.855729
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -214.0
-margin_top = 266.0
-margin_right = 214.0
-margin_bottom = 866.0
+anchor_bottom = 0.855729
+margin_left = -200.0
+margin_top = -225.0
+margin_right = 200.0
+margin_bottom = 225.0
 custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="RegisterButton" parent="Menu" instance=ExtResource( 2 )]
-margin_right = 428.0
-margin_bottom = 190.0
+[node name="RegisterButton" parent="Menu2" instance=ExtResource( 2 )]
+margin_right = 400.0
+margin_bottom = 140.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "REGISTRATI"
 
-[node name="AlreadyRegisteredButton" parent="Menu" instance=ExtResource( 2 )]
-margin_top = 205.0
-margin_right = 428.0
-margin_bottom = 395.0
+[node name="AlreadyRegisteredButton" parent="Menu2" instance=ExtResource( 2 )]
+margin_top = 155.0
+margin_right = 400.0
+margin_bottom = 295.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "HO UN ACCOUNT"
 next_scene_path = "res://src/screens/LoginScreen.tscn"
 
-[node name="QuitButton" parent="Menu" instance=ExtResource( 9 )]
-margin_top = 410.0
-margin_right = 428.0
-margin_bottom = 600.0
+[node name="QuitButton" parent="Menu2" instance=ExtResource( 9 )]
+margin_top = 310.0
+margin_right = 400.0
+margin_bottom = 450.0
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
@@ -140,9 +154,10 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[connection signal="focus_entered" from="UsernameField" to="UsernameField" method="_on_focus_entered"]
-[connection signal="focus_entered" from="MailField" to="MailField" method="_on_focus_entered"]
-[connection signal="focus_entered" from="PasswordField" to="PasswordField" method="_on_focus_entered"]
-[connection signal="pressed" from="Menu/RegisterButton" to="." method="_on_RegisterButton_pressed"]
-[connection signal="button_down" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_button_down"]
+[connection signal="focus_entered" from="Menu1/NameField" to="Menu1/NameField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/SurnameField" to="Menu1/SurnameField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/MailField" to="Menu1/MailField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/PasswordField" to="Menu1/PasswordField" method="_on_focus_entered"]
+[connection signal="pressed" from="Menu2/RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="button_down" from="Menu2/QuitButton" to="Menu2/QuitButton" method="_on_button_down"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

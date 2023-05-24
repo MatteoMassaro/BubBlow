@@ -1,14 +1,20 @@
 extends Control
 
 onready var http : HTTPRequest = $HTTPRequest
-onready var username: LineEdit = $UsernameField
-onready var email : LineEdit = $MailField
-onready var password : LineEdit = $PasswordField
+onready var name_field: LineEdit = $Menu1/NameField
+onready var surname_field: LineEdit = $Menu1/SurnameField
+onready var email_field : LineEdit = $Menu1/MailField
+onready var password_field : LineEdit = $Menu1/PasswordField
 onready var notification_panel : PanelContainer = $NotificationPanel
 onready var notification : Label = $NotificationPanel/Notification
 
 var timer = Timer.new()
 var hide_delay = 3.0
+var profile := {
+	"name": {},
+	"surname": {},
+	"email": {}
+} 
 
 func _ready():
 	check_music()
@@ -32,19 +38,30 @@ func set_timer():
 	timer.connect("timeout", self, "hide_label")
 
 func _on_RegisterButton_pressed() -> void:
-	if username.text.empty():
-		notification.text = "Insert username"
+	if name_field.text.empty():
+		notification.text = "Insert name"
 		show_label()
 		return
-	if email.text.empty():
+	if surname_field.text.empty():
+		notification.text = "Insert surname"
+		show_label()
+		return
+	if email_field.text.empty():
 		notification.text = "Insert email"
 		show_label()
 		return
-	if password.text.empty():
+	if password_field.text.empty():
 		notification.text = "Insert password"
 		show_label()
 		return
-	Firebase.register(email.text, password.text, http)
+	Firebase.register(email_field.text, password_field.text, http)
+	yield(get_tree().create_timer(2.0), "timeout")
+	profile.name = { "stringValue": name_field.text}
+	profile.surname = { "stringValue": surname_field.text }
+	profile.email = {"stringValue": email_field.text}
+	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+	yield(get_tree().create_timer(2.0), "timeout")
+	get_tree().change_scene("res://src/screens/ChoiseScreen.tscn")
 	
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
@@ -55,8 +72,6 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 	else:
 		notification.text = "Registration successful"
 		show_label()
-		yield(get_tree().create_timer(2.0), "timeout")
-		get_tree().change_scene("res://src/screens/ChoiseScreen.tscn")
 
 func show_label():
 	notification_panel.show()

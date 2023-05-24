@@ -5,12 +5,15 @@ signal life_counter_updated
 signal player_died
 signal game_resumed
 
-
-
 var game_mode = 0
-onready var email = ""
-onready var user_type = ""
-onready var games: = 0
+var name_user = ""
+var surname_user = ""
+var email = ""
+var user_type = ""
+var medic_code = ""
+var highscore_first_mode = 0
+var highscore_second_mode = 0
+var games: = 0
 var score: = 0 setget set_score
 var life_counter := 0 setget set_life_counter
 var deaths: = 0 setget set_deaths
