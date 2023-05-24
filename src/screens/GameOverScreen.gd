@@ -9,8 +9,12 @@ onready var email = ""
 onready var user_type = ""
 
 var profile := {
+	"name": {},
+	"surname": {},
 	"email": {},
 	"type_user": {},
+	"highscore_first_mode": {},
+	"highscore_second_mode": {},
 	"last_score": {},
 	"games": {}
 } 
@@ -29,8 +33,12 @@ func set_score():
 	score_text.text = "PUNTEGGIO: "
 	score_number.text = "%s" % PlayerData.score
 	text_animations.play("show_score_text")
+	profile.name = {"stringValue": PlayerData.name_user}
+	profile.surname = {"stringValue": PlayerData.surname_user}
 	profile.type_user = { "stringValue": PlayerData.user_type }
 	profile.email = { "stringValue": PlayerData.email}
+	profile.highscore_first_mode = { "integerValue": 0 }
+	profile.highscore_second_mode = { "integerValue": 0 }
 	profile.last_score = { "integerValue": PlayerData.score }
 	PlayerData.games += 1
 	profile.games = { "integerValue": PlayerData.games }
