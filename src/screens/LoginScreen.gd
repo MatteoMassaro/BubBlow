@@ -55,6 +55,8 @@ func check_type(result_body: Dictionary):
 		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
 		PlayerData.games = result_body.fields.games.integerValue
 	elif PlayerData.user_type == "medic":
+		PlayerData.name_user = result_body.fields.name.stringValue 
+		PlayerData.surname_user = result_body.fields.surname.stringValue
 		PlayerData.email = email_field.text
 		PlayerData.medic_code = result_body.fields.medic_code.stringValue
 
