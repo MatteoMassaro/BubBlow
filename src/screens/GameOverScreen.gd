@@ -13,8 +13,12 @@ onready var user_type = ""
 
 var button_flag = 0
 var profile := {
+	"name": {},
+	"surname": {},
 	"email": {},
 	"type_user": {},
+	"highscore_first_mode": {},
+	"highscore_second_mode": {},
 	"last_score": {},
 	"games": {}
 } 
@@ -39,8 +43,12 @@ func set_score():
 	yield(get_tree().create_timer(3.0),"timeout")
 	next_button.text = "AVANTI"
 	next_button.self_modulate.a = 1
+	profile.name = {"stringValue": PlayerData.name_user}
+	profile.surname = {"stringValue": PlayerData.surname_user}
 	profile.type_user = { "stringValue": PlayerData.user_type }
 	profile.email = { "stringValue": PlayerData.email}
+	profile.highscore_first_mode = { "integerValue": 0 }
+	profile.highscore_second_mode = { "integerValue": 0 }
 	profile.last_score = { "integerValue": PlayerData.score }
 	PlayerData.games += 1
 	profile.games = { "integerValue": PlayerData.games }

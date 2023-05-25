@@ -50,6 +50,8 @@ func _on_Userbutton_pressed():
 	profile.games = {"integerValue": 0 }
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
+	PlayerData.name_user = name_user
+	PlayerData.surname_user = surname_user
 	PlayerData.user_type = "patient"
 	PlayerData.email = email
 	PlayerData.highscore_first_mode = 0
