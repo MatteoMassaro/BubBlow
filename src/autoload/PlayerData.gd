@@ -23,6 +23,8 @@ var decibel_avg = 0
 var breathe_counter = 0
 var game_duration_seconds = 0
 var game_duration_minutes = 0
+var breath_duration_seconds = 0
+var breath_duration_minutes = 0
 
 
 

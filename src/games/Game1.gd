@@ -1,7 +1,5 @@
 extends Control
 
-onready var volume_bar = $volume_bar #DA RIMUOVERE
-onready var volume_value = $volume_value #DA RIMUOVERE
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
 onready var bubble_spawn_timer = $BubbleSpawnTimer
 
@@ -11,17 +9,19 @@ var sample_avg
 var min_db = -10
 var points = 1
 var points_text = "+1"
-var time_start = 0
-var time_elapsed = 0
+var game_time_start = 0
+var game_time_elapsed = 0
 var game_duration_seconds = 0
 var game_duration_minutes = 0
+var breath_duration_seconds = 0
+var breath_duration_minutes = 0
 
 signal score_incremented
 
 func _ready():
 	check_music()
 	record_bus_index = AudioServer.get_bus_index('Record')
-	time_start = OS.get_unix_time()
+	game_time_start = OS.get_unix_time()
 
 func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game1_music.mp3")
@@ -39,14 +39,10 @@ func update_samples_strength() -> void:
 	volume_samples.push_front(sample)
 
 	sample_avg = average_array(volume_samples)
-	volume_value.text = '%sdb' % round(linear2db(sample_avg))
-	volume_bar.value = sample_avg
 	
 	while volume_samples.size() > 10:
 		volume_samples.pop_back()
 	
-	print("Sample average:", sample_avg)
-	print("Sample:", sample)
 	print("linearDb sample_avg:", linear2db(sample_avg))
 
 func average_array(arr: Array) -> float:
@@ -75,10 +71,15 @@ func update_score():
 func save_breath_data():
 	PlayerData.decibel_avg += linear2db(sample_avg)
 	PlayerData.breathe_counter += 1
+	if round(linear2db(sample_avg)) > min_db:
+			breath_duration_seconds += 0.018
+			breath_duration_minutes = int(breath_duration_seconds/60)%60
+			PlayerData.breath_duration_seconds = int(breath_duration_seconds)
+			PlayerData.breath_duration_minutes = breath_duration_minutes
 
 func set_time_elapsed():
-	time_elapsed = OS.get_unix_time()
-	game_duration_seconds = time_elapsed - time_start
+	game_time_elapsed = OS.get_unix_time()
+	game_duration_seconds = game_time_elapsed - game_time_start
 	game_duration_minutes = (game_duration_seconds/60)%60
 	PlayerData.game_duration_seconds = game_duration_seconds
 	PlayerData.game_duration_minutes = game_duration_minutes 

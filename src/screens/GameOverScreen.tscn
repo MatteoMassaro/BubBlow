@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/user interface/backgrounds/GameOver.png" type="Texture" id=1]
 [ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=2]
@@ -11,6 +11,12 @@
 [sub_resource type="DynamicFont" id=2]
 size = 70
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -38,10 +44,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MenuContainer/Menu2/ExplanationText:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "show_bubbles_saved_text"
-length = 0.8
+[sub_resource type="Animation" id=7]
+resource_name = "show_explanation_text"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MenuContainer/Menu2/ExplanationText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "show_score_text"
@@ -91,8 +121,8 @@ anchor_bottom = 0.549479
 margin_left = -457.0
 margin_top = -400.0
 margin_right = 457.0
-margin_bottom = 180.0
-custom_constants/separation = 100
+margin_bottom = 800.0
+custom_constants/separation = 50
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -119,26 +149,55 @@ custom_fonts/font = SubResource( 2 )
 align = 1
 percent_visible = 0.0
 
-[node name="Menu2" type="VBoxContainer" parent="MenuContainer"]
+[node name="Menu2" type="HBoxContainer" parent="MenuContainer"]
+margin_top = 120.0
+margin_right = 914.0
+margin_bottom = 635.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ExplanationText" type="RichTextLabel" parent="MenuContainer/Menu2"]
+margin_right = 914.0
+margin_bottom = 515.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 1, 0.8, 0, 1 )
+custom_fonts/normal_font = SubResource( 8 )
+custom_styles/normal = SubResource( 6 )
+bbcode_enabled = true
+visible_characters = 0
+percent_visible = 0.0
+fit_content_height = true
+
+[node name="Menu3" type="VBoxContainer" parent="MenuContainer"]
 margin_left = 307.0
-margin_top = 170.0
+margin_top = 685.0
 margin_right = 607.0
-margin_bottom = 580.0
+margin_bottom = 1200.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 custom_constants/separation = 15
 
-[node name="RestartButton" parent="MenuContainer/Menu2" instance=ExtResource( 4 )]
+[node name="NextButton" parent="MenuContainer/Menu3" instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 300.0
-margin_bottom = 197.0
+margin_bottom = 161.0
+
+[node name="RestartButton" parent="MenuContainer/Menu3" instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 176.0
+margin_right = 300.0
+margin_bottom = 338.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "RICOMINCIA"
 script = ExtResource( 10 )
 
-[node name="MenuButton" parent="MenuContainer/Menu2" instance=ExtResource( 4 )]
-margin_top = 212.0
+[node name="MenuButton" parent="MenuContainer/Menu3" instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = 353.0
 margin_right = 300.0
-margin_bottom = 410.0
+margin_bottom = 515.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "MENU PRINCIPALE"
 script = ExtResource( 9 )
@@ -146,10 +205,11 @@ next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [node name="TextAnimations" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
-anims/show_bubbles_saved_text = SubResource( 4 )
+anims/show_explanation_text = SubResource( 7 )
 anims/show_score_text = SubResource( 5 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="MenuContainer/Menu2/RestartButton" to="MenuContainer/Menu2/RestartButton" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="MenuContainer/Menu3/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MenuContainer/Menu3/RestartButton" to="MenuContainer/Menu3/RestartButton" method="_on_RestartButton_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

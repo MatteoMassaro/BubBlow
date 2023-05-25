@@ -4,7 +4,7 @@
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/screens/NameField.gd" type="Script" id=3]
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
-[ext_resource path="res://assets/user interface/backgrounds/Choice.png" type="Texture" id=5]
+[ext_resource path="res://assets/user interface/backgrounds/Authentication.png" type="Texture" id=5]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=6]
 [ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=7]
 
@@ -73,7 +73,7 @@ script = ExtResource( 3 )
 [node name="SendButton" parent="Menu" instance=ExtResource( 2 )]
 margin_top = 207.0
 margin_right = 400.0
-margin_bottom = 399.0
+margin_bottom = 400.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "INVIA"
 script = null
