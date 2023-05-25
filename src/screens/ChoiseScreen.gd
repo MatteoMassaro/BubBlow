@@ -41,6 +41,13 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 
 
 func _on_Userbutton_pressed():
+	PlayerData.name_user = name_user
+	PlayerData.surname_user = surname_user
+	PlayerData.user_type = "patient"
+	PlayerData.email = email
+	PlayerData.highscore_first_mode = 0
+	PlayerData.highscore_second_mode = 0
+	PlayerData.games = 0
 	profile.name = { "stringValue": name_user }
 	profile.surname = { "stringValue": surname_user }
 	profile.type_user = { "stringValue": "patient" }
@@ -50,13 +57,6 @@ func _on_Userbutton_pressed():
 	profile.games = {"integerValue": 0 }
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
-	PlayerData.name_user = name_user
-	PlayerData.surname_user = surname_user
-	PlayerData.user_type = "patient"
-	PlayerData.email = email
-	PlayerData.highscore_first_mode = 0
-	PlayerData.highscore_second_mode = 0
-	PlayerData.games = 0
 	patient_button.rect_scale = Vector2(0.8, 0.8)
 	if AudioManager.flag_effects == 0:
 		AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/drop_004.ogg")

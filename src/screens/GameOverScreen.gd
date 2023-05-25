@@ -35,7 +35,7 @@ func check_music():
 func set_score():
 	yield(get_tree().create_timer(1.0),"timeout")
 	score_text.text = "PUNTEGGIO: "
-	score_number.text = "%s" % PlayerData.breath_duration_seconds
+	score_number.text = "%s" % PlayerData.score
 	explanation_text.bbcode_text = "[center]LA TECNICA RESPIRATORIA UTILIZZATA PER ESEGUIRE IL GIOCO FA PARTE DELLE TECNICHE DI DISOSTRUZIONE BRONCHIALE. QUESTI TIPI DI TECNICHE AGISCONO SULLA MOBILIZZAZIONE ED ELIMINAZIONE DELLE SECREZIONI BRONCHIALI PER LIBERARE LE VIE AEREE E PERMETTERE UNA CORRETTA RESPIRAZIONE POLMONARE.[/center]"
 	text_animations.play("show_score_text")
 	yield(get_tree().create_timer(1.0),"timeout")
@@ -52,7 +52,7 @@ func set_score():
 	profile.last_score = { "integerValue": PlayerData.score }
 	PlayerData.games += 1
 	profile.games = { "integerValue": PlayerData.games }
-	#Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):

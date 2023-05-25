@@ -41,6 +41,9 @@ func _on_SendButton_pressed():
 		show_label()
 		return
 	if medic_code.text == "12345678":
+		PlayerData.user_type = "medic"
+		PlayerData.email = email
+		PlayerData.medic_code = medic_code.text
 		profile.name = {"stringValue": PlayerData.name_user}
 		profile.surname = {"stringValue": PlayerData.surname_user}
 		profile.type_user = { "stringValue": "medic" }
@@ -48,9 +51,6 @@ func _on_SendButton_pressed():
 		profile.medic_code = {"stringValue": medic_code.text}
 		Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 		information_sent = true
-		PlayerData.user_type = "medic"
-		PlayerData.email = email
-		PlayerData.medic_code = medic_code.text
 		send_button.rect_scale = Vector2(0.8, 0.8)
 		if AudioManager.flag_effects == 0:
 			AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/drop_004.ogg")

@@ -41,10 +41,11 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		notification.text = response_body.result.error.message.capitalize()
 		show_label()
 	else:
-		notification.text = "Login successful"
-		show_label()
-		yield(get_tree().create_timer(2.0), "timeout")
-		get_tree().change_scene("res://src/screens/MenuScreen.tscn")
+		if (flag == 1):
+			notification.text = "Login successful"
+			show_label()
+			yield(get_tree().create_timer(2.0), "timeout")
+			get_tree().change_scene("res://src/screens/MenuScreen.tscn")
 
 func check_type(result_body: Dictionary):
 	if PlayerData.user_type == "patient":

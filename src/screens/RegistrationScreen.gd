@@ -55,7 +55,7 @@ func _on_RegisterButton_pressed() -> void:
 		show_label()
 		return
 	Firebase.register(email_field.text, password_field.text, http)
-	yield(get_tree().create_timer(3.0), "timeout")
+	yield(get_tree().create_timer(4.0), "timeout")
 	profile.name = { "stringValue": name_field.text}
 	profile.surname = { "stringValue": surname_field.text }
 	profile.email = {"stringValue": email_field.text}
