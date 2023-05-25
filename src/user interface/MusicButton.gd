@@ -6,10 +6,11 @@ func _on_button_up():
 		AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/drop_004.ogg")
 		AudioManager.play_effect()
 	if self.pressed == false:
-		AudioManager.stop_music()
+		if (AudioManager.settings_button == false):
+			AudioManager.stop_music()
 		AudioManager.flag_music = 1
 	elif self.pressed == true:
+		if (AudioManager.settings_button == false):
 			AudioManager.play_music()
-			AudioManager.flag_music = 0
-			AudioManager.music_button_pressed = true
+		AudioManager.flag_music = 0
 

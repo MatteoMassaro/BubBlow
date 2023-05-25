@@ -8,8 +8,8 @@ onready var life_1: KinematicBody2D = $Life1
 onready var life_2: KinematicBody2D = $Life2
 onready var life_3: KinematicBody2D = $Life3
 onready var pause_menu: VBoxContainer = $PauseOverlay/MenuContainer
-onready var check_music: CheckBox = $PauseOverlay/MenuContainer/Menu2/MusicButton
-onready var check_effects: CheckBox = $PauseOverlay/MenuContainer/Menu2/EffectsButton
+onready var music_button: CheckBox = $PauseOverlay/MenuContainer/Menu2/MusicButton
+onready var effects_button: CheckBox = $PauseOverlay/MenuContainer/Menu2/EffectsButton
 onready var health_position = Vector2(350,120)
 
 var paused: = false setget set_paused
@@ -26,16 +26,16 @@ func _ready():
 	update_interface()
 
 func check_music_button():
-	if AudioManager.is_playing_music == true:
-		check_music.pressed = true
-	elif AudioManager.is_playing_music == false:
-		check_music.pressed = false
+	if AudioManager.flag_music == 0:
+		music_button.pressed = true
+	elif AudioManager.flag_music == 1:
+		music_button.pressed = false
 
 func check_effects_button():
-	if AudioManager.is_playing_effects == true:
-		check_effects.pressed = true
-	elif AudioManager.is_playing_effects == false:
-		check_effects.pressed = false
+	if AudioManager.flag_effects == 0:
+		effects_button.pressed = true
+	elif AudioManager.flag_effects == 1:
+		effects_button.pressed = false
 
 func set_health():
 	health.set_position(health_position)

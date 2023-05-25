@@ -128,7 +128,7 @@ custom_styles/normal = SubResource( 4 )
 next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
-[connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_MedicButton_pressed"]
 [connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_FirstModeButton_pressed"]
-[connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_MedicButton_pressed"]
+[connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_MedicButton_pressed"]
 [connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_SecondModeButton_pressed"]
+[connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_MedicButton_pressed"]

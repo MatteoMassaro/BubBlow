@@ -6,16 +6,9 @@ onready var leaderboard_button = $LeaderboardButton
 
 func _ready():
 	check_user_type()
-	check_music()
-
-func check_music():
-	AudioManager.music_track = load ("res://assets/user interface/sounds/menu_music.mp3")
-	if AudioManager.flag_music == 0:
-		if AudioManager.music_button_pressed == false:
-			if AudioManager.is_playing_music == false:
-				AudioManager.play_music()
 
 func check_user_type():
+	AudioManager.settings_button = false
 	if PlayerData.user_type == "patient":
 		dynamic_button.text = "GIOCA"
 		dynamic_button.next_scene_path = "res://src/screens/ChoiseScreen2.tscn"

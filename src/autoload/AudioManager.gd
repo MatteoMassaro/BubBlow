@@ -7,7 +7,7 @@ var is_playing_music = false
 var is_playing_effects
 var flag_music = 0
 var flag_effects = 0
-var music_button_pressed = false
+var settings_button = false
 
 func _ready():
 	pass
@@ -31,31 +31,4 @@ func play_effect():
 
 func stop_effect():
 	$EffectsPlayer.stop()
-
-
-func play_object_effect():
-	$Objects.stream = effect_track
-	$Objects.play()
-
-
-func stop_object_effect():
-	$Objects.stop()
-
-
-func play_enemie_effect():
-	$Enemies.stream = effect_track
-	$Enemies.play()
-
-
-func stop_enemie_effect():
-	$Enemies.stop()
-
-
-func play_steps():
-	$Steps.stream = steps_track
-	$Steps.play()
-
-
-func stop_steps():
-	$Steps.stop()
 

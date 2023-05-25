@@ -189,6 +189,7 @@ next_scene_path = "res://src/screens/MenuScreen.tscn"
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="button_up" from="PauseOverlay/MenuContainer/Menu2/MusicButton" to="PauseOverlay/MenuContainer/Menu2/MusicButton" method="_on_button_up"]
 [connection signal="button_up" from="PauseOverlay/MenuContainer/Menu2/EffectsButton" to="PauseOverlay/MenuContainer/Menu2/EffectsButton" method="_on_button_up"]
+[connection signal="pressed" from="PauseOverlay/MenuContainer/Menu1/RestartButton" to="PauseOverlay/MenuContainer/Menu1/RestartButton" method="_on_RestartButton_pressed"]
 
 [editable path="Life1"]
 [editable path="Life2"]

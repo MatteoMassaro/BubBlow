@@ -17,15 +17,8 @@ var profile := {
 } 
 
 func _ready():
-	check_music()
 	check_microphone_permission()
 	set_timer()
-
-func check_music():
-	AudioManager.music_track = load ("res://assets/user interface/sounds/menu_music.mp3")
-	if AudioManager.flag_music == 0:
-		if AudioManager.is_playing_music == false:
-			AudioManager.play_music()
 
 func check_microphone_permission():
 	if OS.get_name() == "Android":
