@@ -10,6 +10,7 @@ onready var restart_button = $MenuContainer/Menu3/RestartButton
 onready var menu_button = $MenuContainer/Menu3/MenuButton
 onready var email = ""
 onready var user_type = ""
+onready var result_body
 
 var button_flag = 0 
 var profile := {
@@ -21,17 +22,31 @@ var profile := {
 	"highscore_second_mode": {},
 	"games_first_mode": {},
 	"games_second_mode": {},
-	"decibel_avg_first_mode": {},
-	"breath_duration_first_mode": {},
-	"game_duration_first_mode": {},
-	"decibel_avg_second_mode": {},
-	"breath_duration_second_mode": {},
-	"game_duration_second_mode": {}
+	"decibel_avg_first_mode_1": {},
+	"decibel_avg_first_mode_2": {},
+	"decibel_avg_first_mode_3": {},
+	"breath_duration_first_mode_1": {},
+	"breath_duration_first_mode_2": {},
+	"breath_duration_first_mode_3": {},
+	"game_duration_first_mode_1": {},
+	"game_duration_first_mode_2": {},
+	"game_duration_first_mode_3": {},
+	"decibel_avg_second_mode_1": {},
+	"decibel_avg_second_mode_2": {},
+	"decibel_avg_second_mode_3": {},
+	"breath_duration_second_mode_1": {},
+	"breath_duration_second_mode_2": {},
+	"breath_duration_second_mode_3": {},
+	"game_duration_second_mode_1": {},
+	"game_duration_second_mode_2": {},
+	"game_duration_second_mode_3": {}
 } 
 
 func _ready():
 	check_music()
+	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
 	set_score()
+	yield(get_tree().create_timer(1.0), "timeout")
 	save_data()
 
 func check_music():
@@ -40,7 +55,8 @@ func check_music():
 		AudioManager.play_music()
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
-	var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
+	result_body = JSON.parse(body.get_string_from_ascii()).result as Dictionary
+	get_data(result_body)
 
 func set_score():
 	yield(get_tree().create_timer(1.0),"timeout")
@@ -81,16 +97,50 @@ func save_data():
 			profile.highscore_first_mode = { "integerValue": PlayerData.score}
 		else:
 			profile.highscore_first_mode = { "integerValue": PlayerData.highscore_first_mode}
+		profile.highscore_second_mode = { "integerValue": PlayerData.highscore_second_mode}
 		profile.games_first_mode = { "integerValue": PlayerData.games_first_mode }
-		profile.decibel_avg_first_mode = {"doubleValue": PlayerData.decibel_avg_first_mode/PlayerData.breathe_counter}
-		profile.game_duration_first_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
-		profile.breath_duration_first_mode = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
-		#SECOND MODE
-		profile.highscore_second_mode = { "integerValue": PlayerData.highscore_second_mode }
 		profile.games_second_mode = { "integerValue": PlayerData.games_second_mode }
-		profile.decibel_avg_second_mode = {"doubleValue": PlayerData.decibel_avg_second_mode}
-		profile.game_duration_second_mode = {"stringValue": PlayerData.game_duration_second_mode}
-		profile.breath_duration_second_mode = {"stringValue": PlayerData.breath_duration_second_mode}
+		if (PlayerData.games_first_mode == 1):
+			profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1/PlayerData.breathe_counter}
+			profile.game_duration_first_mode_1 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_first_mode_1 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.decibel_avg_first_mode_2 = {"doubleValue": PlayerData.decibel_avg_first_mode_2}
+			profile.game_duration_first_mode_2 = {"stringValue": PlayerData.game_duration_first_mode_2}
+			profile.breath_duration_first_mode_2 = {"stringValue": PlayerData.breath_duration_first_mode_2}
+			profile.decibel_avg_first_mode_3 = {"doubleValue": PlayerData.decibel_avg_first_mode_3}
+			profile.game_duration_first_mode_3 = {"stringValue": PlayerData.game_duration_first_mode_3}
+			profile.breath_duration_first_mode_3 = {"stringValue": PlayerData.breath_duration_first_mode_3}
+		elif (PlayerData.games_first_mode == 2):
+			profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1}
+			profile.game_duration_first_mode_1 = {"stringValue": PlayerData.game_duration_first_mode_1}
+			profile.breath_duration_first_mode_1 = {"stringValue": PlayerData.breath_duration_first_mode_1}
+			profile.decibel_avg_first_mode_2 = {"doubleValue": PlayerData.decibel_avg_first_mode_2/PlayerData.breathe_counter}
+			profile.game_duration_first_mode_2 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_first_mode_2 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.decibel_avg_first_mode_3 = {"doubleValue": PlayerData.decibel_avg_first_mode_3}
+			profile.game_duration_first_mode_3 = {"stringValue": PlayerData.game_duration_first_mode_3}
+			profile.breath_duration_first_mode_3 = {"stringValue": PlayerData.breath_duration_first_mode_3}
+		elif (PlayerData.games_first_mode == 3):
+			profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1}
+			profile.game_duration_first_mode_1 = {"stringValue": PlayerData.game_duration_first_mode_1}
+			profile.breath_duration_first_mode_1 = {"stringValue": PlayerData.breath_duration_first_mode_1}
+			profile.decibel_avg_first_mode_2 = {"doubleValue": PlayerData.decibel_avg_first_mode_2}
+			profile.game_duration_first_mode_2 = {"stringValue": PlayerData.game_duration_first_mode_2}
+			profile.breath_duration_first_mode_2 = {"stringValue": PlayerData.breath_duration_first_mode_2}
+			profile.decibel_avg_first_mode_3 = {"doubleValue": PlayerData.decibel_avg_first_mode_3/PlayerData.breathe_counter}
+			profile.game_duration_first_mode_3 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_first_mode_3 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.games_first_mode = {"integerValue" : 0}
+		#SECOND MODE
+		profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1}
+		profile.game_duration_second_mode_1 = {"stringValue": PlayerData.game_duration_second_mode_1}
+		profile.breath_duration_second_mode_1 = {"stringValue": PlayerData.breath_duration_second_mode_1}
+		profile.decibel_avg_second_mode_2 = {"doubleValue": PlayerData.decibel_avg_second_mode_2}
+		profile.game_duration_second_mode_2 = {"stringValue": PlayerData.game_duration_second_mode_2}
+		profile.breath_duration_second_mode_2 = {"stringValue": PlayerData.breath_duration_second_mode_2}
+		profile.decibel_avg_second_mode_3 = {"doubleValue": PlayerData.decibel_avg_second_mode_3}
+		profile.game_duration_second_mode_3 = {"stringValue": PlayerData.game_duration_second_mode_3}
+		profile.breath_duration_second_mode_3 = {"stringValue": PlayerData.breath_duration_second_mode_3}
 		print(profile)
 		Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	elif (PlayerData.game_mode == 2):
@@ -99,19 +149,104 @@ func save_data():
 		profile.email = { "stringValue": PlayerData.email}
 		profile.type_user = { "stringValue": PlayerData.user_type }
 		PlayerData.games_second_mode += 1
-		#FIRST MODE
-		profile.highscore_first_mode = { "integerValue": PlayerData.highscore_first_mode }
-		profile.games_first_mode = { "integerValue": PlayerData.games_first_mode }
-		profile.decibel_avg_first_mode = {"doubleValue": PlayerData.decibel_avg_first_mode}
-		profile.game_duration_first_mode = {"stringValue": PlayerData.game_duration_first_mode}
-		profile.breath_duration_first_mode = {"stringValue": PlayerData.breath_duration_first_mode}
 		#SECOND MODE
 		if (PlayerData.score > PlayerData.highscore_second_mode):
 			profile.highscore_second_mode = { "integerValue": PlayerData.score}
 		else:
 			profile.highscore_second_mode = { "integerValue": PlayerData.highscore_second_mode}
-		profile.games_second_mode = { "integerValue": PlayerData.games_second_mode}
-		profile.decibel_avg_second_mode = {"doubleValue": PlayerData.decibel_avg_second_mode/PlayerData.breathe_counter}
-		profile.game_duration_second_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
-		profile.breath_duration_second_mode = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+		profile.highscore_first_mode = { "integerValue": PlayerData.highscore_first_mode}
+		profile.games_first_mode = { "integerValue": PlayerData.games_first_mode }
+		profile.games_second_mode = { "integerValue": PlayerData.games_second_mode }
+		if (PlayerData.games_second_mode == 1):
+			profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1/PlayerData.breathe_counter}
+			profile.game_duration_second_mode_1 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_second_mode_1 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.decibel_avg_second_mode_2 = {"doubleValue": PlayerData.decibel_avg_second_mode_2}
+			profile.game_duration_second_mode_2 = {"stringValue": PlayerData.game_duration_second_mode_2}
+			profile.breath_duration_second_mode_2 = {"stringValue": PlayerData.breath_duration_second_mode_2}
+			profile.decibel_avg_second_mode_3 = {"doubleValue": PlayerData.decibel_avg_second_mode_3}
+			profile.game_duration_second_mode_3 = {"stringValue": PlayerData.game_duration_second_mode_3}
+			profile.breath_duration_second_mode_3 = {"stringValue": PlayerData.breath_duration_second_mode_3}
+		elif (PlayerData.games_second_mode == 2):
+			profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1}
+			profile.game_duration_second_mode_1 = {"stringValue": PlayerData.game_duration_second_mode_1}
+			profile.breath_duration_second_mode_1 = {"stringValue": PlayerData.breath_duration_second_mode_1}
+			profile.decibel_avg_second_mode_2 = {"doubleValue": PlayerData.decibel_avg_second_mode_2/PlayerData.breathe_counter}
+			profile.game_duration_second_mode_2 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_second_mode_2 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.decibel_avg_second_mode_3 = {"doubleValue": PlayerData.decibel_avg_second_mode_3}
+			profile.game_duration_second_mode_3 = {"stringValue": PlayerData.game_duration_second_mode_3}
+			profile.breath_duration_second_mode_3 = {"stringValue": PlayerData.breath_duration_second_mode_3}
+		elif (PlayerData.games_second_mode == 3):
+			profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1}
+			profile.game_duration_second_mode_1 = {"stringValue": PlayerData.game_duration_second_mode_1}
+			profile.breath_duration_second_mode_1 = {"stringValue": PlayerData.breath_duration_second_mode_1}
+			profile.decibel_avg_second_mode_2 = {"doubleValue": PlayerData.decibel_avg_second_mode_2}
+			profile.game_duration_second_mode_2 = {"stringValue": PlayerData.game_duration_second_mode_2}
+			profile.breath_duration_second_mode_2 = {"stringValue": PlayerData.breath_duration_second_mode_2}
+			profile.decibel_avg_second_mode_3 = {"doubleValue": PlayerData.decibel_avg_second_mode_3/PlayerData.breathe_counter}
+			profile.game_duration_second_mode_3 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+			profile.breath_duration_second_mode_3 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+			profile.games_second_mode = {"integerValue" : 0}
+		#FIRST MODE
+		profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1}
+		profile.game_duration_first_mode_1 = {"stringValue": PlayerData.game_duration_first_mode_1}
+		profile.breath_duration_first_mode_1 = {"stringValue": PlayerData.breath_duration_first_mode_1}
+		profile.decibel_avg_first_mode_2 = {"doubleValue": PlayerData.decibel_avg_first_mode_2}
+		profile.game_duration_first_mode_2 = {"stringValue": PlayerData.game_duration_first_mode_2}
+		profile.breath_duration_first_mode_2 = {"stringValue": PlayerData.breath_duration_first_mode_2}
+		profile.decibel_avg_first_mode_3 = {"doubleValue": PlayerData.decibel_avg_first_mode_3}
+		profile.game_duration_first_mode_3 = {"stringValue": PlayerData.game_duration_first_mode_3}
+		profile.breath_duration_first_mode_3 = {"stringValue": PlayerData.breath_duration_first_mode_3}
+		print(profile)
 		Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+
+func get_data(result_body: Dictionary):
+	if PlayerData.user_type == "patient":
+		PlayerData.name_user = result_body.fields.name.stringValue 
+		PlayerData.surname_user = result_body.fields.surname.stringValue
+		PlayerData.email = result_body.fields.email.stringValue
+		PlayerData.highscore_first_mode = result_body.fields.highscore_first_mode.integerValue
+		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
+		if(PlayerData.games_first_mode == 0):
+			PlayerData.decibel_avg_first_mode_2 = result_body.fields.decibel_avg_first_mode_2.doubleValue
+			PlayerData.game_duration_first_mode_2 = result_body.fields.game_duration_first_mode_2.stringValue
+			PlayerData.breath_duration_first_mode_2 = result_body.fields.breath_duration_first_mode_2.stringValue
+			PlayerData.decibel_avg_first_mode_3 = result_body.fields.decibel_avg_first_mode_3.doubleValue
+			PlayerData.game_duration_first_mode_3 = result_body.fields.game_duration_first_mode_3.stringValue
+			PlayerData.breath_duration_first_mode_3 = result_body.fields.breath_duration_first_mode_3.stringValue
+		if(PlayerData.games_first_mode == 1):
+			PlayerData.decibel_avg_first_mode_1 = result_body.fields.decibel_avg_first_mode_1.doubleValue
+			PlayerData.game_duration_first_mode_1 = result_body.fields.game_duration_first_mode_1.stringValue
+			PlayerData.breath_duration_first_mode_1 = result_body.fields.breath_duration_first_mode_1.stringValue
+			PlayerData.decibel_avg_first_mode_3 = result_body.fields.decibel_avg_first_mode_3.doubleValue
+			PlayerData.game_duration_first_mode_3 = result_body.fields.game_duration_first_mode_3.stringValue
+			PlayerData.breath_duration_first_mode_3 = result_body.fields.breath_duration_first_mode_3.stringValue
+		if(PlayerData.games_first_mode == 2):
+			PlayerData.decibel_avg_first_mode_1 = result_body.fields.decibel_avg_first_mode_1.doubleValue
+			PlayerData.game_duration_first_mode_1 = result_body.fields.game_duration_first_mode_1.stringValue
+			PlayerData.breath_duration_first_mode_1 = result_body.fields.breath_duration_first_mode_1.stringValue
+			PlayerData.decibel_avg_first_mode_2 = result_body.fields.decibel_avg_first_mode_2.doubleValue
+			PlayerData.game_duration_first_mode_2 = result_body.fields.game_duration_first_mode_2.stringValue
+			PlayerData.breath_duration_first_mode_2 = result_body.fields.breath_duration_first_mode_2.stringValue
+		if(PlayerData.games_second_mode == 0):
+			PlayerData.decibel_avg_second_mode_2 = result_body.fields.decibel_avg_second_mode_2.doubleValue
+			PlayerData.game_duration_second_mode_2 = result_body.fields.game_duration_second_mode_2.stringValue
+			PlayerData.breath_duration_second_mode_2 = result_body.fields.breath_duration_second_mode_2.stringValue
+			PlayerData.decibel_avg_second_mode_3 = result_body.fields.decibel_avg_second_mode_3.doubleValue
+			PlayerData.game_duration_second_mode_3 = result_body.fields.game_duration_second_mode_3.stringValue
+			PlayerData.breath_duration_second_mode_3 = result_body.fields.breath_duration_second_mode_3.stringValue
+		if(PlayerData.games_second_mode == 1):
+			PlayerData.decibel_avg_second_mode_1 = result_body.fields.decibel_avg_second_mode_1.doubleValue
+			PlayerData.game_duration_second_mode_1 = result_body.fields.game_duration_second_mode_1.stringValue
+			PlayerData.breath_duration_second_mode_1 = result_body.fields.breath_duration_second_mode_1.stringValue
+			PlayerData.decibel_avg_second_mode_3 = result_body.fields.decibel_avg_second_mode_3.doubleValue
+			PlayerData.game_duration_second_mode_3 = result_body.fields.game_duration_second_mode_3.stringValue
+			PlayerData.breath_duration_second_mode_3 = result_body.fields.breath_duration_second_mode_3.stringValue
+		if(PlayerData.games_second_mode == 2):
+			PlayerData.decibel_avg_second_mode_1 = result_body.fields.decibel_avg_second_mode_1.doubleValue
+			PlayerData.game_duration_second_mode_1 = result_body.fields.game_duration_second_mode_1.stringValue
+			PlayerData.breath_duration_second_mode_1 = result_body.fields.breath_duration_second_mode_1.stringValue
+			PlayerData.decibel_avg_second_mode_2 = result_body.fields.decibel_avg_second_mode_2.doubleValue
+			PlayerData.game_duration_second_mode_2 = result_body.fields.game_duration_second_mode_2.stringValue
+			PlayerData.breath_duration_second_mode_2 = result_body.fields.breath_duration_second_mode_2.stringValue

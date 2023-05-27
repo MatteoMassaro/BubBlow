@@ -19,12 +19,24 @@ var profile := {
 	"highscore_second_mode": {},
 	"games_first_mode": {},
 	"games_second_mode": {},
-	"decibel_avg_first_mode": {},
-	"breath_duration_first_mode": {},
-	"game_duration_first_mode": {},
-	"decibel_avg_second_mode": {},
-	"breath_duration_second_mode": {},
-	"game_duration_second_mode": {},
+	"decibel_avg_first_mode_1": {},
+	"decibel_avg_first_mode_2": {},
+	"decibel_avg_first_mode_3": {},
+	"breath_duration_first_mode_1": {},
+	"breath_duration_first_mode_2": {},
+	"breath_duration_first_mode_3": {},
+	"game_duration_first_mode_1": {},
+	"game_duration_first_mode_2": {},
+	"game_duration_first_mode_3": {},
+	"decibel_avg_second_mode_1": {},
+	"decibel_avg_second_mode_2": {},
+	"decibel_avg_second_mode_3": {},
+	"breath_duration_second_mode_1": {},
+	"breath_duration_second_mode_2": {},
+	"breath_duration_second_mode_3": {},
+	"game_duration_second_mode_1": {},
+	"game_duration_second_mode_2": {},
+	"game_duration_second_mode_3": {}
 } 
 
 func _ready():
@@ -60,12 +72,24 @@ func _on_Userbutton_pressed():
 	profile.highscore_second_mode = { "integerValue": 0 }
 	profile.games_first_mode = {"integerValue": 0 }
 	profile.games_second_mode = {"integerValue": 0 }
-	profile.decibel_avg_first_mode = {"doubleValue": 0.0}
-	profile.decibel_avg_second_mode = {"doubleValue": 0.0}
-	profile.breath_duration_first_mode = {"stringValue": ""}
-	profile.breath_duration_second_mode = {"stringValue": ""}
-	profile.game_duration_first_mode = {"stringValue": ""}
-	profile.game_duration_second_mode = {"stringValue": ""}
+	profile.decibel_avg_first_mode_1 = {"doubleValue": 0.0}
+	profile.decibel_avg_first_mode_2 = {"doubleValue": 0.0}
+	profile.decibel_avg_first_mode_3 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_1 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_2 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_3 = {"doubleValue": 0.0}
+	profile.breath_duration_first_mode_1 = {"stringValue": ""}
+	profile.breath_duration_first_mode_2 = {"stringValue": ""}
+	profile.breath_duration_first_mode_3 = {"stringValue": ""}
+	profile.breath_duration_second_mode_1 = {"stringValue": ""}
+	profile.breath_duration_second_mode_2 = {"stringValue": ""}
+	profile.breath_duration_second_mode_3 = {"stringValue": ""}
+	profile.game_duration_first_mode_1 = {"stringValue": ""}
+	profile.game_duration_first_mode_2 = {"stringValue": ""}
+	profile.game_duration_first_mode_3 = {"stringValue": ""}
+	profile.game_duration_second_mode_1 = {"stringValue": ""}
+	profile.game_duration_second_mode_2 = {"stringValue": ""}
+	profile.game_duration_second_mode_3 = {"stringValue": ""}
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 	patient_button.rect_scale = Vector2(0.8, 0.8)
