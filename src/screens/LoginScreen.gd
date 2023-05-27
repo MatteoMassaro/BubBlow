@@ -9,7 +9,7 @@ onready var notification : Label = $NotificationPanel/Notification
 var user_type = ""
 var flag = 0
 var timer = Timer.new()
-var hide_delay = 3.0
+var hide_delay = 3.5
 
 func _ready():
 	set_timer()
@@ -27,7 +27,6 @@ func _on_LoginButton_pressed() -> void:
 		return
 	Firebase.login(email_field.text, password_field.text, http)
 	yield(get_tree().create_timer(2.0), "timeout")
-	flag = 1
 	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
@@ -46,6 +45,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 			show_label()
 			yield(get_tree().create_timer(2.0), "timeout")
 			get_tree().change_scene("res://src/screens/MenuScreen.tscn")
+		flag = 1
 
 func check_type(result_body: Dictionary):
 	if PlayerData.user_type == "patient":
@@ -54,7 +54,8 @@ func check_type(result_body: Dictionary):
 		PlayerData.email = email_field.text
 		PlayerData.highscore_first_mode = result_body.fields.highscore_first_mode.integerValue
 		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
-		PlayerData.games = result_body.fields.games.integerValue
+		PlayerData.games_first_mode = result_body.fields.games_first_mode.integerValue
+		PlayerData.games_second_mode = result_body.fields.games_second_mode.integerValue
 	elif PlayerData.user_type == "medic":
 		PlayerData.name_user = result_body.fields.name.stringValue 
 		PlayerData.surname_user = result_body.fields.surname.stringValue

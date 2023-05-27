@@ -42,8 +42,6 @@ func update_samples_strength() -> void:
 	
 	while volume_samples.size() > 10:
 		volume_samples.pop_back()
-	
-	print("linearDb sample_avg:", linear2db(sample_avg))
 
 func average_array(arr: Array) -> float:
 	var avg = 0.0

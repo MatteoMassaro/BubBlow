@@ -11,7 +11,7 @@ onready var menu_button = $MenuContainer/Menu3/MenuButton
 onready var email = ""
 onready var user_type = ""
 
-var button_flag = 0
+var button_flag = 0 
 var profile := {
 	"name": {},
 	"surname": {},
@@ -19,13 +19,20 @@ var profile := {
 	"type_user": {},
 	"highscore_first_mode": {},
 	"highscore_second_mode": {},
-	"last_score": {},
-	"games": {}
+	"games_first_mode": {},
+	"games_second_mode": {},
+	"decibel_avg_first_mode": {},
+	"breath_duration_first_mode": {},
+	"game_duration_first_mode": {},
+	"decibel_avg_second_mode": {},
+	"breath_duration_second_mode": {},
+	"game_duration_second_mode": {}
 } 
 
 func _ready():
 	check_music()
 	set_score()
+	save_data()
 
 func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game_over.wav")
@@ -43,21 +50,6 @@ func set_score():
 	yield(get_tree().create_timer(3.0),"timeout")
 	next_button.text = "AVANTI"
 	next_button.self_modulate.a = 1
-	profile.name = {"stringValue": PlayerData.name_user}
-	profile.surname = {"stringValue": PlayerData.surname_user}
-	profile.type_user = { "stringValue": PlayerData.user_type }
-	profile.email = { "stringValue": PlayerData.email}
-	profile.highscore_first_mode = { "integerValue": 0 }
-	profile.highscore_second_mode = { "integerValue": 0 }
-	profile.last_score = { "integerValue": PlayerData.score }
-	PlayerData.games += 1
-	profile.games = { "integerValue": PlayerData.games }
-	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
-
-
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-		var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
-
 
 func _on_NextButton_pressed():
 	if (button_flag == 0):
@@ -73,3 +65,33 @@ func _on_NextButton_pressed():
 	yield(get_tree().create_timer(3.0),"timeout")
 	restart_button.self_modulate.a = 1
 	menu_button.self_modulate.a = 1
+
+func save_data():
+	profile.name = {"stringValue": PlayerData.name_user}
+	profile.surname = {"stringValue": PlayerData.surname_user}
+	profile.email = { "stringValue": PlayerData.email}
+	profile.type_user = { "stringValue": PlayerData.user_type }
+	profile.highscore_first_mode = { "integerValue": 0 }
+	PlayerData.games_first_mode += 1
+	profile.games_first_mode = { "integerValue": 0 }
+	profile.games_first_mode.decibel_avg_first_mode = {"doubleValue": PlayerData.decibel_avg/PlayerData.breathe_counter}
+	profile.games_first_mode.breath_duration_first_mode = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+	profile.games_first_mode.game_duration_first_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+	profile.highscore_second_mode = { "integerValue": 0 }
+	profile.games_second_mode = { "integerValue": 0 }
+	profile.games_second_mode.decibel_avg_second_mode = {"doubleValue": PlayerData.decibel_avg/PlayerData.breathe_counter}
+	profile.games_second_mode.breath_duration_second_mode = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+	profile.games_second_mode.game_duration_second_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+#	elif (PlayerData.game_mode == 2):
+#		profile.name = {"stringValue": PlayerData.name_user}
+#		profile.surname = {"stringValue": PlayerData.surname_user}
+#		profile.email = { "stringValue": PlayerData.email}
+#		profile.type_user = { "stringValue": PlayerData.user_type }
+#		profile.highscore_second_mode = { "integerValue": 0 }
+#		PlayerData.games_second_mode += 1
+#		profile.games_second_mode = { "integerValue": PlayerData.games_second_mode }
+#		profile.games_second_mode.decibel_avg_second_mode = {"doubleValue": PlayerData.decibel_avg/PlayerData.breathe_counter}
+#		profile.games_second_mode.breath_duration_second_mode = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+#		profile.games_second_mode.game_duration_second_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+#		Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)

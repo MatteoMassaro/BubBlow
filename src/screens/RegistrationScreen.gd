@@ -8,8 +8,9 @@ onready var password_field : LineEdit = $Menu1/PasswordField
 onready var notification_panel : PanelContainer = $NotificationPanel
 onready var notification : Label = $NotificationPanel/Notification
 
+var flag = 0
 var timer = Timer.new()
-var hide_delay = 3.0
+var hide_delay = 3.5
 var profile := {
 	"name": {},
 	"surname": {},
@@ -48,23 +49,23 @@ func _on_RegisterButton_pressed() -> void:
 		show_label()
 		return
 	Firebase.register(email_field.text, password_field.text, http)
-	yield(get_tree().create_timer(4.0), "timeout")
+	yield(get_tree().create_timer(3.5), "timeout")
 	profile.name = { "stringValue": name_field.text}
 	profile.surname = { "stringValue": surname_field.text }
 	profile.email = {"stringValue": email_field.text}
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	yield(get_tree().create_timer(2.0), "timeout")
 	get_tree().change_scene("res://src/screens/ChoiseScreen.tscn")
-	
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var response_body := JSON.parse(body.get_string_from_ascii())
-	if response_code != 200:
+	if response_code != 200 && flag == 0:
 		notification.text = response_body.result.error.message.capitalize()
 		show_label()
-	else:
+	elif flag == 0:
 		notification.text = "Registration successful"
 		show_label()
+		flag = 1
 
 func show_label():
 	notification_panel.show()

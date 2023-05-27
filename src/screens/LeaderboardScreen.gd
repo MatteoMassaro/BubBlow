@@ -1,6 +1,6 @@
 extends Control
 
-
+onready var http : HTTPRequest = $HTTPRequest
 onready var leaderboard_scroll1 : ScrollContainer = $LeaderboardScroll1
 onready var leaderboard_scroll2 : ScrollContainer = $LeaderboardScroll2
 onready var leaderboard_scroll3 : ScrollContainer = $LeaderboardScroll3
