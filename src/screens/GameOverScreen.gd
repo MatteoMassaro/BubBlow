@@ -77,7 +77,10 @@ func save_data():
 		profile.type_user = { "stringValue": PlayerData.user_type }
 		PlayerData.games_first_mode += 1
 		#FIRST MODE
-		profile.highscore_first_mode = { "integerValue": PlayerData.highscore_first_mode }
+		if (PlayerData.score > PlayerData.highscore_first_mode):
+			profile.highscore_first_mode = { "integerValue": PlayerData.score}
+		else:
+			profile.highscore_first_mode = { "integerValue": PlayerData.highscore_first_mode}
 		profile.games_first_mode = { "integerValue": PlayerData.games_first_mode }
 		profile.decibel_avg_first_mode = {"doubleValue": PlayerData.decibel_avg_first_mode/PlayerData.breathe_counter}
 		profile.game_duration_first_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
@@ -103,7 +106,10 @@ func save_data():
 		profile.game_duration_first_mode = {"stringValue": PlayerData.game_duration_first_mode}
 		profile.breath_duration_first_mode = {"stringValue": PlayerData.breath_duration_first_mode}
 		#SECOND MODE
-		profile.highscore_second_mode = { "integerValue": PlayerData.highscore_second_mode }
+		if (PlayerData.score > PlayerData.highscore_second_mode):
+			profile.highscore_second_mode = { "integerValue": PlayerData.score}
+		else:
+			profile.highscore_second_mode = { "integerValue": PlayerData.highscore_second_mode}
 		profile.games_second_mode = { "integerValue": PlayerData.games_second_mode}
 		profile.decibel_avg_second_mode = {"doubleValue": PlayerData.decibel_avg_second_mode/PlayerData.breathe_counter}
 		profile.game_duration_second_mode = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
