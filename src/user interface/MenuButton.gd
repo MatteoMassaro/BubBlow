@@ -17,3 +17,7 @@ func _on_button_up():
 
 func _get_configuration_warning():
 	return "Next scene path must be set for the button to work" if next_scene_path == "" else ""
+
+
+func _on_MenuButton_pressed():
+	PlayerData.reset()

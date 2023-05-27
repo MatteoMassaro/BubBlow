@@ -212,4 +212,5 @@ anims/show_score_text = SubResource( 5 )
 
 [connection signal="pressed" from="MenuContainer/Menu3/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="MenuContainer/Menu3/RestartButton" to="MenuContainer/Menu3/RestartButton" method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="MenuContainer/Menu3/MenuButton" to="MenuContainer/Menu3/MenuButton" method="_on_MenuButton_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

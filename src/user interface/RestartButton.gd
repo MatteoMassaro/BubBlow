@@ -17,3 +17,4 @@ func _on_RestartButton_pressed():
 		get_tree().change_scene("res://src/games/Game1.tscn")
 	elif PlayerData.game_mode == 2:
 		get_tree().change_scene("res://src/games/Game2.tscn")
+	PlayerData.reset()

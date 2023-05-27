@@ -11,7 +11,6 @@ var load_time = 3
 
 
 func _on_Timer_timeout():
-	PlayerData.reset()
 	loadingBar.value += 1
 	if loadingBar.value == 20:
 		if PlayerData.game_mode == 1:

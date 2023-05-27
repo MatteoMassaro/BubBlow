@@ -84,7 +84,7 @@ func set_player_error():
 	player_error = true
 
 func save_breath_data():
-	PlayerData.decibel_avg += linear2db(sample_avg)
+	PlayerData.decibel_avg_second_mode += linear2db(sample_avg)
 	PlayerData.breathe_counter += 1
 	if round(linear2db(sample_avg)) > min_db:
 			breath_duration_seconds += 0.018

@@ -56,6 +56,12 @@ func check_type(result_body: Dictionary):
 		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
 		PlayerData.games_first_mode = result_body.fields.games_first_mode.integerValue
 		PlayerData.games_second_mode = result_body.fields.games_second_mode.integerValue
+		PlayerData.decibel_avg_first_mode = result_body.fields.decibel_avg_first_mode.doubleValue
+		PlayerData.decibel_avg_second_mode = result_body.fields.decibel_avg_second_mode.doubleValue
+		PlayerData.game_duration_first_mode = result_body.fields.game_duration_first_mode.stringValue
+		PlayerData.game_duration_second_mode = result_body.fields.game_duration_second_mode.stringValue
+		PlayerData.breath_duration_first_mode = result_body.fields.breath_duration_first_mode.stringValue
+		PlayerData.breath_duration_second_mode = result_body.fields.breath_duration_second_mode.stringValue
 	elif PlayerData.user_type == "medic":
 		PlayerData.name_user = result_body.fields.name.stringValue 
 		PlayerData.surname_user = result_body.fields.surname.stringValue
