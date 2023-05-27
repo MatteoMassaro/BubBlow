@@ -31,6 +31,7 @@ var game_duration_first_mode := ""
 var game_duration_second_mode := ""
 var breath_duration_first_mode := ""
 var breath_duration_second_mode := ""
+var user_id_1 := "KkSjKL2XpcS57BkA6yC8F52Vu4E3"
 
 
 func reset():

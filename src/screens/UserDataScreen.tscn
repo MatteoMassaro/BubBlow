@@ -333,7 +333,7 @@ margin_right = 687.0
 margin_bottom = 750.0
 custom_styles/separator = SubResource( 7 )
 
-[node name="UserDataDurationContainer" type="VBoxContainer" parent="UserDataScroll2/UserDataContainer"]
+[node name="UserDataGameDurationContainer" type="VBoxContainer" parent="UserDataScroll2/UserDataContainer"]
 margin_left = 717.0
 margin_right = 820.0
 margin_bottom = 750.0
@@ -461,7 +461,7 @@ margin_right = 696.0
 margin_bottom = 750.0
 custom_styles/separator = SubResource( 7 )
 
-[node name="UserDataDurationContainer" type="VBoxContainer" parent="UserDataScroll3/UserDataContainer"]
+[node name="UserDataGameDurationContainer" type="VBoxContainer" parent="UserDataScroll3/UserDataContainer"]
 margin_left = 726.0
 margin_right = 820.0
 margin_bottom = 750.0
