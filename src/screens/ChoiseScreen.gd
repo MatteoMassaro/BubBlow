@@ -19,6 +19,12 @@ var profile := {
 	"highscore_second_mode": {},
 	"games_first_mode": {},
 	"games_second_mode": {},
+	"last_score_first_mode_1": {},
+	"last_score_first_mode_2": {},
+	"last_score_first_mode_3": {},
+	"last_score_second_mode_1": {},
+	"last_score_second_mode_2": {},
+	"last_score_second_mode_3": {},
 	"decibel_avg_first_mode_1": {},
 	"decibel_avg_first_mode_2": {},
 	"decibel_avg_first_mode_3": {},
@@ -72,6 +78,12 @@ func _on_Userbutton_pressed():
 	profile.highscore_second_mode = { "integerValue": 0 }
 	profile.games_first_mode = {"integerValue": 0 }
 	profile.games_second_mode = {"integerValue": 0 }
+	profile.last_score_first_mode_1 = {"integerValue": 0}
+	profile.last_score_first_mode_2 = {"integerValue": 0}
+	profile.last_score_first_mode_3 = {"integerValue": 0}
+	profile.last_score_second_mode_1 = {"integerValue": 0}
+	profile.last_score_second_mode_2 = {"integerValue": 0}
+	profile.last_score_second_mode_3 = {"integerValue": 0}
 	profile.decibel_avg_first_mode_1 = {"doubleValue": 0.0}
 	profile.decibel_avg_first_mode_2 = {"doubleValue": 0.0}
 	profile.decibel_avg_first_mode_3 = {"doubleValue": 0.0}

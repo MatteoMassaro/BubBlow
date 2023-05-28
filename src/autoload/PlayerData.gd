@@ -25,6 +25,12 @@ var breath_duration_seconds := 0
 var breath_duration_minutes := 0
 var game_duration_seconds := 0
 var game_duration_minutes := 0
+var last_score_first_mode_1 := 0
+var last_score_first_mode_2 := 0
+var last_score_first_mode_3 := 0
+var last_score_second_mode_1 := 0
+var last_score_second_mode_2 := 0
+var last_score_second_mode_3 := 0
 var decibel_avg_first_mode_1 := 0.0
 var decibel_avg_second_mode_1 := 0.0
 var game_duration_first_mode_1 := ""
@@ -43,7 +49,10 @@ var game_duration_first_mode_3 := ""
 var game_duration_second_mode_3 := ""
 var breath_duration_first_mode_3 := ""
 var breath_duration_second_mode_3 := ""
-var user_id_1 := "KkSjKL2XpcS57BkA6yC8F52Vu4E3"
+var user_id_1 := "X0ylulNfK2ak26vyMmgqgxMEKTu2"
+var user_id_2 := "g5YSHWOQ1zfcfr4BrTQR4BYG8yu1"
+var user_id_3 := ""
+var user_flag := 0
 
 
 func reset():

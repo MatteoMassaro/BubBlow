@@ -10,7 +10,7 @@ onready var notification : Label = $NotificationPanel/Notification
 
 var flag = 0
 var timer = Timer.new()
-var hide_delay = 3.5
+var hide_delay = 4
 var profile := {
 	"name": {},
 	"surname": {},

@@ -56,6 +56,12 @@ func check_type(result_body: Dictionary):
 		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
 		PlayerData.games_first_mode = result_body.fields.games_first_mode.integerValue
 		PlayerData.games_second_mode = result_body.fields.games_second_mode.integerValue
+		PlayerData.last_score_first_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
+		PlayerData.last_score_first_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
+		PlayerData.last_score_first_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
+		PlayerData.last_score_second_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
+		PlayerData.last_score_second_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
+		PlayerData.last_score_second_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
 		PlayerData.decibel_avg_first_mode_1 = result_body.fields.decibel_avg_first_mode_1.doubleValue
 		PlayerData.decibel_avg_second_mode_1 = result_body.fields.decibel_avg_second_mode_1.doubleValue
 		PlayerData.game_duration_first_mode_1 = result_body.fields.game_duration_first_mode_1.stringValue
