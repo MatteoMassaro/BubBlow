@@ -13,6 +13,7 @@ margin_right = 140.0
 margin_bottom = 50.0
 rect_pivot_offset = Vector2( 70, 25 )
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "Dettagli"

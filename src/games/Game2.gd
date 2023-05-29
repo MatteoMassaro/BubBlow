@@ -6,11 +6,14 @@ onready var player = $Player
 onready var tile_map = $TileMap
 onready var enemy_spawn_timer = $EnemySpawnTimer
 onready var seabed_instance = preload("res://src/user interface/Seabed.tscn")
+onready var countdown_1 = $Countdown1
+onready var countdown_2 = $Countdown2
+onready var countdown_3 = $Countdown3
 
 var record_bus_index: int
 var volume_samples: Array = []
 var sample_avg
-var min_db = -10
+var min_db = -20
 var points = 1
 var points_text = "+1"
 var player_error = false
@@ -25,11 +28,23 @@ signal score_incremented
 
 func _ready():
 	check_music()
+	set_countdown()
 	record_bus_index = AudioServer.get_bus_index('Record')
 	player.points.text = points_text
 	game_time_start = OS.get_unix_time()
 	create_first_seabed()
 	create_multi_seabed()
+
+func set_countdown():
+	countdown_3.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_3.visible = false
+	countdown_2.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_2.visible = false
+	countdown_1.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_1.visible = false
 
 func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game2_music.mp3")

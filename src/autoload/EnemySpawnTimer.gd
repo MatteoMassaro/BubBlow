@@ -7,6 +7,7 @@ var enemy_sprite3 = preload("res://src/sprites/Enemy3.tscn")
 signal new_enemy
 
 func _on_Timer_timeout():
+	self.wait_time -= 0.1
 	randomize()
 	var enemy1 = enemy_sprite1.instance()
 	var enemy2 = enemy_sprite2.instance()
@@ -16,7 +17,7 @@ func _on_Timer_timeout():
 	enemy3.position = Vector2(rand_range(2000,2000), 1780)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var enemy_type = rng.randi_range(0, 3)
+	var enemy_type = rng.randi_range(1, 3)
 	if(enemy_type == 1):
 		add_child(enemy1)
 		emit_signal("new_enemy", enemy1)

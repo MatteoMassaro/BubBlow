@@ -2,6 +2,9 @@ extends Control
 
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
 onready var bubble_spawn_timer = $BubbleSpawnTimer
+onready var countdown_1 = $Countdown1
+onready var countdown_2 = $Countdown2
+onready var countdown_3 = $Countdown3
 
 var record_bus_index: int
 var volume_samples: Array = []
@@ -20,6 +23,7 @@ signal score_incremented
 
 func _ready():
 	check_music()
+	set_countdown()
 	record_bus_index = AudioServer.get_bus_index('Record')
 	game_time_start = OS.get_unix_time()
 
@@ -27,6 +31,17 @@ func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game1_music.mp3")
 	if AudioManager.flag_music == 0:
 		AudioManager.play_music()
+
+func set_countdown():
+	countdown_3.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_3.visible = false
+	countdown_2.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_2.visible = false
+	countdown_1.visible = true
+	yield(get_tree().create_timer(1.0), "timeout")
+	countdown_1.visible = false
 
 func _process(delta: float) -> void:
 	connect("new_bubble", self, "_on_MoveUpArea_body_entered")
@@ -89,6 +104,4 @@ func set_time_elapsed():
 	
 
 func _on_BubbleIncreaseTimer_timeout():
-	bubble_spawn_timer.wait_time = 1
-	points_text = "+3"
-	points = 3
+	bubble_spawn_timer.wait_time -= 0.1

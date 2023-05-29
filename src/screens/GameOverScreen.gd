@@ -52,7 +52,7 @@ func _ready():
 	check_music()
 	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
 	set_score()
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(3.0), "timeout")
 	save_data()
 
 func check_music():
@@ -132,7 +132,7 @@ func save_data():
 			profile.decibel_avg_first_mode_3 = {"doubleValue": PlayerData.decibel_avg_first_mode_3}
 			profile.game_duration_first_mode_3 = {"stringValue": PlayerData.game_duration_first_mode_3}
 			profile.breath_duration_first_mode_3 = {"stringValue": PlayerData.breath_duration_first_mode_3}
-		elif (PlayerData.games_first_mode == 3):
+		elif (PlayerData.games_first_mode >= 3):
 			profile.last_score_first_mode_1 = {"integerValue": PlayerData.last_score_first_mode_1}
 			profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1}
 			profile.game_duration_first_mode_1 = {"stringValue": PlayerData.game_duration_first_mode_1}
@@ -146,6 +146,7 @@ func save_data():
 			profile.game_duration_first_mode_3 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
 			profile.breath_duration_first_mode_3 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
 			profile.games_first_mode = {"integerValue" : 0}
+			PlayerData.games_first_mode = 0
 		#SECOND MODE
 		profile.last_score_second_mode_1 = {"integerValue": PlayerData.last_score_second_mode_1}
 		profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1}
@@ -201,7 +202,7 @@ func save_data():
 			profile.decibel_avg_second_mode_3 = {"doubleValue": PlayerData.decibel_avg_second_mode_3}
 			profile.game_duration_second_mode_3 = {"stringValue": PlayerData.game_duration_second_mode_3}
 			profile.breath_duration_second_mode_3 = {"stringValue": PlayerData.breath_duration_second_mode_3}
-		elif (PlayerData.games_second_mode == 3):
+		elif (PlayerData.games_second_mode >= 3):
 			profile.last_score_second_mode_1 = {"integerValue": PlayerData.last_score_second_mode_1}
 			profile.decibel_avg_second_mode_1 = {"doubleValue": PlayerData.decibel_avg_second_mode_1}
 			profile.game_duration_second_mode_1 = {"stringValue": PlayerData.game_duration_second_mode_1}
@@ -215,6 +216,7 @@ func save_data():
 			profile.game_duration_second_mode_3 = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
 			profile.breath_duration_second_mode_3 = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
 			profile.games_second_mode = {"integerValue" : 0}
+			PlayerData.games_second_mode = 0
 		#FIRST MODE
 		profile.last_score_first_mode_1 = {"integerValue": PlayerData.last_score_first_mode_1}
 		profile.decibel_avg_first_mode_1 = {"doubleValue": PlayerData.decibel_avg_first_mode_1}

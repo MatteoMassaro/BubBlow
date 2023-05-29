@@ -131,6 +131,7 @@ autoplay = true
 bus = "Record"
 
 [node name="EnemySpawnTimer" parent="." instance=ExtResource( 14 )]
+wait_time = 5.0
 script = ExtResource( 15 )
 
 [node name="GameArea" type="Area2D" parent="."]

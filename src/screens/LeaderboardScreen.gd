@@ -23,10 +23,14 @@ var name_user_1 = ""
 var surname_user_1 = ""
 var name_user_2 = ""
 var surname_user_2 = ""
+var name_user_3 = ""
+var surname_user_3 = ""
 var highscore_first_mode_1 = 0
 var highscore_second_mode_1 = 0
 var highscore_first_mode_2 = 0
 var highscore_second_mode_2 = 0
+var highscore_first_mode_3 = 0
+var highscore_second_mode_3 = 0
 
 
 func _ready():
@@ -34,6 +38,8 @@ func _ready():
 	Firebase.get_document("users/%s" % PlayerData.user_id_1, http)
 	yield(get_tree().create_timer(1.0), "timeout")
 	Firebase.get_document("users/%s" % PlayerData.user_id_2, http)
+	yield(get_tree().create_timer(1.0), "timeout")
+	Firebase.get_document("users/%s" % PlayerData.user_id_3, http)
 	yield(get_tree().create_timer(1.0), "timeout")
 	populate_leaderboard_positions()
 	populate_leaderboard_names()
@@ -57,6 +63,12 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		highscore_first_mode_2 = result_body.fields.highscore_first_mode.integerValue
 		highscore_second_mode_2 = result_body.fields.highscore_second_mode.integerValue
 		data_flag = 2
+	elif(data_flag == 2):
+		name_user_3 = result_body.fields.name.stringValue
+		surname_user_3 = result_body.fields.surname.stringValue
+		highscore_first_mode_3 = result_body.fields.highscore_first_mode.integerValue
+		highscore_second_mode_3 = result_body.fields.highscore_second_mode.integerValue
+		data_flag = 3
 
 func remove_leaderboard_scrollbar():
 	leaderboard_scroll1.get_h_scrollbar().modulate = Color(0,0,0,0)
@@ -95,26 +107,40 @@ func populate_leaderboard_names():
 		leaderboard_name_container1.add_child(leaderboard_text_instance)
 		leaderboard_text_instance = leaderboard_text.instance()
 		leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
+		leaderboard_text_instance.text = name_user_3 + " " + surname_user_3
+		leaderboard_name_container1.add_child(leaderboard_text_instance)
+		leaderboard_text_instance = leaderboard_text.instance()
+		leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
 		leaderboard_text_instance.text = name_user_1 + " " + surname_user_1
 		leaderboard_name_container2.add_child(leaderboard_text_instance)
 		leaderboard_text_instance = leaderboard_text.instance()
 		leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
 		leaderboard_text_instance.text = name_user_2 + " " + surname_user_2
 		leaderboard_name_container2.add_child(leaderboard_text_instance)
+		leaderboard_text_instance = leaderboard_text.instance()
+		leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
+		leaderboard_text_instance.text = name_user_3 + " " + surname_user_3
+		leaderboard_name_container2.add_child(leaderboard_text_instance)
 
 func populate_leaderboard_scores():
 	leaderboard_score_text.text = "HIGHSCORE"
 	var leaderboard_text_instance = leaderboard_text.instance()
-	leaderboard_text_instance.text = highscore_first_mode_1
+	leaderboard_text_instance.text = str(highscore_first_mode_1)
 	leaderboard_score_container1.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
-	leaderboard_text_instance.text = highscore_first_mode_2
+	leaderboard_text_instance.text = str(highscore_first_mode_2)
 	leaderboard_score_container1.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
-	leaderboard_text_instance.text = highscore_second_mode_1
+	leaderboard_text_instance.text = str(highscore_first_mode_3)
+	leaderboard_score_container1.add_child(leaderboard_text_instance)
+	leaderboard_text_instance = leaderboard_text.instance()
+	leaderboard_text_instance.text = str(highscore_second_mode_1)
 	leaderboard_score_container2.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
-	leaderboard_text_instance.text = highscore_second_mode_2
+	leaderboard_text_instance.text = str(highscore_second_mode_2)
+	leaderboard_score_container2.add_child(leaderboard_text_instance)
+	leaderboard_text_instance = leaderboard_text.instance()
+	leaderboard_text_instance.text = str(highscore_second_mode_3)
 	leaderboard_score_container2.add_child(leaderboard_text_instance)
 
 func populate_leaderboard_buttons():
@@ -126,11 +152,19 @@ func populate_leaderboard_buttons():
 	var leaderboard_details_button_instance_3 = leaderboard_details_button_3.instance()
 	leaderboard_score_container1.add_child(leaderboard_details_button_instance_3)
 	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
+	leaderboard_details_button_instance_1.modulate.a = 0
+	leaderboard_details_button_instance_1.size_flags_stretch_ratio = 1
+	leaderboard_score_container1.add_child(leaderboard_details_button_instance_1)
+	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
 	leaderboard_score_container2.add_child(leaderboard_details_button_instance_1)
 	leaderboard_details_button_instance_2 = leaderboard_details_button_2.instance()
 	leaderboard_score_container2.add_child(leaderboard_details_button_instance_2)
 	leaderboard_details_button_instance_2 = leaderboard_details_button_2.instance()
 	leaderboard_score_container2.add_child(leaderboard_details_button_instance_2)
+	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
+	leaderboard_details_button_instance_1.modulate.a = 0
+	leaderboard_details_button_instance_1.size_flags_stretch_ratio = 1
+	leaderboard_score_container2.add_child(leaderboard_details_button_instance_1)
 
 
 func _on_GameModeButton_pressed():

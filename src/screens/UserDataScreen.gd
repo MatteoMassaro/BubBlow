@@ -121,27 +121,27 @@ func populate_user_data_games():
 func populate_user_data_decibels():
 	var leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_1
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_1 + "db"
 	user_data_decibel_container1.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_2
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_2 + "db"
 	user_data_decibel_container1.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_3
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_first_mode_3 + "db"
 	user_data_decibel_container1.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_1
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_1 + "db"
 	user_data_decibel_container2.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_2
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_2 + "db"
 	user_data_decibel_container2.add_child(leaderboard_text_instance)
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.add_color_override("font_color", Color(255,255,255,255))
-	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_3
+	leaderboard_text_instance.text = "%.3f" % decibel_avg_second_mode_3 + "db"
 	user_data_decibel_container2.add_child(leaderboard_text_instance)
 
 func populate_user_data_scores():
