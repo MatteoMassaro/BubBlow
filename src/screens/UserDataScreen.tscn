@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://addons/github-integration/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/screens/UserDataScreen.gd" type="Script" id=3]
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
@@ -131,7 +131,7 @@ custom_constants/separation = 10
 
 [node name="GameText" type="Label" parent="UserDataScroll1/UserDataContainer/UserDataGameTextContainer"]
 margin_right = 88.0
-margin_bottom = 35.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.188235, 0.713726, 0.698039, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "NUM."
@@ -148,7 +148,7 @@ custom_styles/separator = SubResource( 6 )
 
 [node name="UserDataDecibelTextContainer" type="VBoxContainer" parent="UserDataScroll1/UserDataContainer"]
 margin_left = 113.0
-margin_right = 311.0
+margin_right = 313.0
 margin_bottom = 50.0
 rect_clip_content = true
 size_flags_horizontal = 3
@@ -156,8 +156,8 @@ size_flags_stretch_ratio = 1.5
 custom_constants/separation = 27
 
 [node name="DecibelText" type="Label" parent="UserDataScroll1/UserDataContainer/UserDataDecibelTextContainer"]
-margin_right = 198.0
-margin_bottom = 35.0
+margin_right = 200.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.188235, 0.713726, 0.698039, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "DECIBEL"
@@ -167,15 +167,15 @@ __meta__ = {
 }
 
 [node name="VSeparator2" type="VSeparator" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 316.0
-margin_right = 331.0
+margin_left = 318.0
+margin_right = 333.0
 margin_bottom = 50.0
 custom_constants/separation = 15
 custom_styles/separator = SubResource( 6 )
 
 [node name="UserDataBreathDurationTextContainer" type="VBoxContainer" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 336.0
-margin_right = 555.0
+margin_left = 338.0
+margin_right = 553.0
 margin_bottom = 50.0
 rect_clip_content = true
 size_flags_horizontal = 3
@@ -183,8 +183,8 @@ size_flags_stretch_ratio = 1.5
 custom_constants/separation = 27
 
 [node name="BreathDurationText" type="Label" parent="UserDataScroll1/UserDataContainer/UserDataBreathDurationTextContainer"]
-margin_right = 219.0
-margin_bottom = 35.0
+margin_right = 215.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.188235, 0.713726, 0.698039, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "ESPIRAZIONE"
@@ -194,15 +194,15 @@ __meta__ = {
 }
 
 [node name="VSeparator3" type="VSeparator" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 560.0
-margin_right = 575.0
+margin_left = 558.0
+margin_right = 573.0
 margin_bottom = 50.0
 custom_constants/separation = 15
 custom_styles/separator = SubResource( 6 )
 
 [node name="UserDataScoreTextContainer" type="VBoxContainer" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 580.0
-margin_right = 712.0
+margin_left = 578.0
+margin_right = 711.0
 margin_bottom = 50.0
 rect_clip_content = true
 size_flags_horizontal = 3
@@ -210,8 +210,8 @@ size_flags_vertical = 3
 custom_constants/separation = 27
 
 [node name="ScoreText" type="Label" parent="UserDataScroll1/UserDataContainer/UserDataScoreTextContainer"]
-margin_right = 132.0
-margin_bottom = 35.0
+margin_right = 133.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.188235, 0.713726, 0.698039, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "PUNT."
@@ -221,14 +221,14 @@ __meta__ = {
 }
 
 [node name="VSeparator4" type="VSeparator" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 717.0
-margin_right = 732.0
+margin_left = 716.0
+margin_right = 731.0
 margin_bottom = 50.0
 custom_constants/separation = 15
 custom_styles/separator = SubResource( 6 )
 
 [node name="UserDataDurationTextContainer" type="VBoxContainer" parent="UserDataScroll1/UserDataContainer"]
-margin_left = 737.0
+margin_left = 736.0
 margin_right = 870.0
 margin_bottom = 50.0
 rect_clip_content = true
@@ -237,8 +237,8 @@ size_flags_vertical = 3
 custom_constants/separation = 27
 
 [node name="DurationText" type="Label" parent="UserDataScroll1/UserDataContainer/UserDataDurationTextContainer"]
-margin_right = 133.0
-margin_bottom = 35.0
+margin_right = 134.0
+margin_bottom = 42.0
 custom_colors/font_color = Color( 0.188235, 0.713726, 0.698039, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "TEMPO"

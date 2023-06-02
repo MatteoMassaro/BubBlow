@@ -33,19 +33,19 @@ func set_timer():
 
 func _on_RegisterButton_pressed() -> void:
 	if name_field.text.empty():
-		notification.text = "Insert name"
+		notification.text = "Inserisci nome"
 		show_label()
 		return
 	if surname_field.text.empty():
-		notification.text = "Insert surname"
+		notification.text = "Inserisci cognome"
 		show_label()
 		return
 	if email_field.text.empty():
-		notification.text = "Insert email"
+		notification.text = "Inserisci email"
 		show_label()
 		return
 	if password_field.text.empty():
-		notification.text = "Insert password"
+		notification.text = "Inserisci password"
 		show_label()
 		return
 	Firebase.register(email_field.text, password_field.text, http)
@@ -55,7 +55,7 @@ func _on_RegisterButton_pressed() -> void:
 	profile.email = {"stringValue": email_field.text}
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	yield(get_tree().create_timer(2.0), "timeout")
-	get_tree().change_scene("res://src/screens/ChoiseScreen.tscn")
+	get_tree().change_scene("res://src/screens/MenuScreen.tscn")
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var response_body := JSON.parse(body.get_string_from_ascii())
@@ -63,7 +63,7 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		notification.text = response_body.result.error.message.capitalize()
 		show_label()
 	elif flag == 0:
-		notification.text = "Registration successful"
+		notification.text = "REGISTRAZIONE COMPLETATA"
 		show_label()
 		flag = 1
 

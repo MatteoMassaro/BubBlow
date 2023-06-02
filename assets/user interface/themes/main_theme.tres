@@ -1,10 +1,9 @@
-[gd_resource type="Theme" load_steps=20 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://assets/user interface/themes/main_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/user interface/themes/buttons_normal.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_42.png" type="Texture" id=3]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_59.png" type="Texture" id=4]
-[ext_resource path="res://assets/user interface/themes/secondary_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_07.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxTexture" id=17]
@@ -81,7 +80,6 @@ ItemList/constants/hseparation = 4
 ItemList/constants/icon_margin = 4
 ItemList/constants/line_separation = 2
 ItemList/constants/vseparation = 2
-ItemList/fonts/font = ExtResource( 1 )
 ItemList/styles/VScrollBar = SubResource( 15 )
 ItemList/styles/_v_scroll = SubResource( 16 )
 ItemList/styles/bg = SubResource( 5 )
@@ -97,7 +95,6 @@ LineEdit/colors/font_color = Color( 1, 1, 1, 1 )
 LineEdit/colors/font_color_selected = Color( 0, 1, 0.964706, 1 )
 LineEdit/colors/font_color_uneditable = Color( 1, 1, 1, 0.501961 )
 LineEdit/colors/selection_color = Color( 1, 1, 1, 1 )
-LineEdit/fonts/font = ExtResource( 5 )
 LineEdit/styles/focus = SubResource( 2 )
 LineEdit/styles/normal = ExtResource( 2 )
 LineEdit/styles/read_only = SubResource( 3 )

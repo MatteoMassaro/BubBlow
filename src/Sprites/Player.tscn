@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/sprites/jetpack_man/sprites_run/__jet_pack_man_no_weapon_white_helmet_standing_run_01.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/jetpack_man/sprites_fly/__jet_pack_man_flying_01.png" type="Texture" id=7]
 [ext_resource path="res://src/sprites/Player.gd" type="Script" id=8]
-[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/sprites/jetpack_man/sprites_fly/__jet_pack_man_flying_03.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/jetpack_man/sprites_run/__jet_pack_man_no_weapon_white_helmet_standing_run_09.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/jetpack_man/sprites_run/__jet_pack_man_no_weapon_white_helmet_standing_run_07.png" type="Texture" id=12]
@@ -29,15 +29,15 @@
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 1 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 21 ) ],
-"loop": true,
-"name": "run",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ) ],
 "loop": false,
 "name": "die",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 1 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "run",
+"speed": 25.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 7 ), ExtResource( 13 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null, ExtResource( 13 ), ExtResource( 10 ), ExtResource( 13 ), null, null, null, ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null ],
 "loop": true,
@@ -148,7 +148,7 @@ script = ExtResource( 8 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 9 )
 animation = "run"
-frame = 2
+frame = 12
 playing = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]

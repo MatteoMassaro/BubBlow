@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/user interface/backgrounds/Registration.png" type="Texture" id=1]
+[ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/screens/RegistrationScreen.gd" type="Script" id=3]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
+[ext_resource path="res://src/screens/NameField.gd" type="Script" id=5]
+[ext_resource path="res://src/screens/MailField.gd" type="Script" id=6]
+[ext_resource path="res://src/screens/PasswordField.gd" type="Script" id=7]
+[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://src/user interface/QuitButton.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StyleBoxFlat" id=2]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_color = Color( 1, 0.8, 0, 1 )
+font_data = ExtResource( 8 )
+
+[node name="RegistrationScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Menu1" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.555729
+anchor_right = 0.5
+anchor_bottom = 0.555729
+margin_left = -250.0
+margin_top = -300.0
+margin_right = 250.0
+margin_bottom = 300.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="NameField" type="LineEdit" parent="Menu1"]
+margin_right = 500.0
+margin_bottom = 138.0
+size_flags_vertical = 3
+align = 1
+max_length = 10
+placeholder_text = "NOME"
+script = ExtResource( 5 )
+
+[node name="SurnameField" type="LineEdit" parent="Menu1"]
+margin_top = 153.0
+margin_right = 500.0
+margin_bottom = 292.0
+size_flags_vertical = 3
+align = 1
+max_length = 10
+placeholder_text = "COGNOME"
+script = ExtResource( 5 )
+
+[node name="MailField" type="LineEdit" parent="Menu1"]
+margin_top = 307.0
+margin_right = 500.0
+margin_bottom = 446.0
+size_flags_vertical = 3
+align = 1
+placeholder_text = "Email"
+script = ExtResource( 6 )
+
+[node name="PasswordField" type="LineEdit" parent="Menu1"]
+margin_top = 461.0
+margin_right = 500.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+align = 1
+max_length = 10
+secret = true
+placeholder_text = "Password"
+script = ExtResource( 7 )
+
+[node name="Menu2" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.828646
+anchor_right = 0.5
+anchor_bottom = 0.828646
+margin_left = -200.0
+margin_top = -225.0
+margin_right = 200.0
+margin_bottom = 325.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RegisterButton" parent="Menu2" instance=ExtResource( 2 )]
+margin_right = 400.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "REGISTRATI"
+
+[node name="AlreadyRegisteredButton" parent="Menu2" instance=ExtResource( 2 )]
+margin_top = 188.0
+margin_right = 400.0
+margin_bottom = 361.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "HO UN ACCOUNT"
+next_scene_path = "res://src/screens/LoginScreen.tscn"
+
+[node name="QuitButton" parent="Menu2" instance=ExtResource( 9 )]
+margin_top = 376.0
+margin_right = 400.0
+margin_bottom = 550.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="NotificationPanel" type="PanelContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.784314 )
+anchor_left = 0.5
+anchor_top = 0.91875
+anchor_right = 0.5
+anchor_bottom = 0.91875
+margin_left = -250.0
+margin_top = -27.0
+margin_right = 250.0
+margin_bottom = 27.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Notification" type="Label" parent="NotificationPanel"]
+margin_top = 7.0
+margin_right = 500.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 0.8, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="focus_entered" from="Menu1/NameField" to="Menu1/NameField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/SurnameField" to="Menu1/SurnameField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/MailField" to="Menu1/MailField" method="_on_focus_entered"]
+[connection signal="focus_entered" from="Menu1/PasswordField" to="Menu1/PasswordField" method="_on_focus_entered"]
+[connection signal="pressed" from="Menu2/RegisterButton" to="." method="_on_RegisterButton_pressed"]
+[connection signal="button_down" from="Menu2/QuitButton" to="Menu2/QuitButton" method="_on_button_down"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

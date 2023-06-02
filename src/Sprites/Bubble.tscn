@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/sprites/bubbles/bubble_pop_one/bubble_pop_frame_04.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/bubbles/bubble_pop_one/bubble_pop_frame_06.png" type="Texture" id=7]
 [ext_resource path="res://src/sprites/Bubble.gd" type="Script" id=8]
-[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

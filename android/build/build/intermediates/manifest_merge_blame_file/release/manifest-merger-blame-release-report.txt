@@ -1,0 +1,116 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="org.godotengine.BubBlow"
+4    android:installLocation="auto"
+5    android:versionCode="1"
+6    android:versionName="1.0" > <!-- glEsVersion is modified by the exporter, changing this value here has no effect. -->
+7    <uses-sdk
+8        android:minSdkVersion="19"
+9        android:targetSdkVersion="30" />
+10
+11    <supports-screens
+11-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:12:5-16:40
+12        android:largeScreens="true"
+12-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:15:9-36
+13        android:normalScreens="true"
+13-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:14:9-37
+14        android:smallScreens="true"
+14-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:13:9-36
+15        android:xlargeScreens="true" />
+15-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:16:9-37
+16
+17    <uses-feature
+17-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:10:5-78
+18        android:glEsVersion="0x00030000"
+18-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:10:19-51
+19        android:required="true" />
+19-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:10:52-75
+20
+21    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+21-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:11:5-79
+21-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:11:22-76
+22    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+22-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:12:5-71
+22-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:12:22-68
+23
+24    <instrumentation
+24-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:13:5-18:59
+25        android:name=".GodotInstrumentation"
+25-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:15:9-45
+26        android:icon="@mipmap/icon"
+26-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:16:9-36
+27        android:label="@string/godot_project_name_string"
+27-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:17:9-58
+28        android:targetPackage="org.godotengine.BubBlow" />
+28-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\src\release\AndroidManifest.xml:18:9-56
+29
+30    <application
+30-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:5-94:19
+31        android:allowBackup="false"
+31-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:68-95
+32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+32-->[androidx.core:core:1.2.0] C:\Users\user\.gradle\caches\transforms-3\f468396e8f36529b92fb98842a149f3b\transformed\core-1.2.0\AndroidManifest.xml:24:18-86
+33        android:hasFragileUserData="false"
+33-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:118-152
+34        android:icon="@mipmap/icon"
+34-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:238-265
+35        android:isGame="true"
+35-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:96-117
+36        android:label="@string/godot_project_name_string"
+36-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:18-67
+37        android:requestLegacyExternalStorage="false" >
+37-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:31:153-197
+38        <activity
+38-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:66:9-88:20
+39            android:name="com.godot.game.GodotApp"
+39-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:67:13-37
+40            android:configChanges="orientation|keyboardHidden|screenSize|smallestScreenSize|density|keyboard|navigation|screenLayout|uiMode"
+40-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:73:13-141
+41            android:excludeFromRecents="false"
+41-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:71:13-47
+42            android:label="@string/godot_project_name_string"
+42-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:68:13-62
+43            android:launchMode="singleTask"
+43-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:70:13-44
+44            android:resizeableActivity="true"
+44-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:74:13-47
+45            android:screenOrientation="portrait"
+45-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:72:13-50
+46            android:theme="@style/GodotAppSplashTheme" >
+46-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:69:13-55
+47            <intent-filter>
+47-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:80:13-87:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:81:17-69
+48-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:81:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:82:17-77
+50-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:82:27-74
+51
+52                <!--
+53                Enable access to OpenXR on Oculus mobile devices, no-op on other Android
+54                platforms.
+55                -->
+56                <category android:name="com.oculus.intent.category.VR" />
+56-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:86:17-74
+56-->C:\Users\user\OneDrive\Documenti\Tesi di laurea\BubBlow\android\build\AndroidManifest.xml:86:27-71
+57            </intent-filter>
+58        </activity>
+59        <!-- Records the version of the Godot editor used for building -->
+60        <meta-data
+61            android:name="org.godotengine.editor.version"
+62            android:value="3.5.beta5" /> <!-- Records the version of the Godot library -->
+63        <meta-data
+63-->[godot-lib.release.aar] C:\Users\user\.gradle\caches\transforms-3\fec084d4d7cac546b3b2d03429533b03\transformed\jetified-godot-lib.release\AndroidManifest.xml:19:9-21:42
+64            android:name="org.godotengine.library.version"
+64-->[godot-lib.release.aar] C:\Users\user\.gradle\caches\transforms-3\fec084d4d7cac546b3b2d03429533b03\transformed\jetified-godot-lib.release\AndroidManifest.xml:20:13-59
+65            android:value="3.5.0.beta" />
+65-->[godot-lib.release.aar] C:\Users\user\.gradle\caches\transforms-3\fec084d4d7cac546b3b2d03429533b03\transformed\jetified-godot-lib.release\AndroidManifest.xml:21:13-39
+66
+67        <service android:name="org.godotengine.godot.GodotDownloaderService" />
+67-->[godot-lib.release.aar] C:\Users\user\.gradle\caches\transforms-3\fec084d4d7cac546b3b2d03429533b03\transformed\jetified-godot-lib.release\AndroidManifest.xml:23:9-80
+67-->[godot-lib.release.aar] C:\Users\user\.gradle\caches\transforms-3\fec084d4d7cac546b3b2d03429533b03\transformed\jetified-godot-lib.release\AndroidManifest.xml:23:18-77
+68    </application>
+69
+70</manifest>

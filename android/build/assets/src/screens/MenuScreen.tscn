@@ -1,0 +1,148 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://src/user interface/QuitButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/screens/MenuScreen.gd" type="Script" id=3]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/user interface/backgrounds/Menu.png" type="Texture" id=5]
+[ext_resource path="res://assets/user interface/bubblebuttons/png/Button_68.png" type="Texture" id=6]
+[ext_resource path="res://assets/user interface/bubblebuttons/png/Button_80.png" type="Texture" id=7]
+[ext_resource path="res://assets/user interface/bubblebuttons/png/Button_40.png" type="Texture" id=8]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 172, 173 )
+
+[node name="MenuScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 600.0
+custom_constants/separation = 15
+
+[node name="DynamicButton" parent="Menu" instance=ExtResource( 2 )]
+margin_right = 400.0
+margin_bottom = 188.0
+rect_pivot_offset = Vector2( 200, 100 )
+
+[node name="SettingsButton" parent="Menu" instance=ExtResource( 2 )]
+margin_top = 203.0
+margin_right = 400.0
+margin_bottom = 392.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "OPZIONI"
+next_scene_path = "res://src/screens/SettingsScreen.tscn"
+
+[node name="CreditsButton" parent="Menu" instance=ExtResource( 2 )]
+margin_top = 407.0
+margin_right = 400.0
+margin_bottom = 596.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "CREDITI"
+next_scene_path = "res://src/screens/CreditsScreen.tscn"
+
+[node name="QuitButton" parent="Menu" instance=ExtResource( 1 )]
+margin_top = 611.0
+margin_right = 400.0
+margin_bottom = 800.0
+rect_pivot_offset = Vector2( 200, 100 )
+
+[node name="LogoutButton" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -457.0
+margin_top = -210.0
+margin_right = -307.0
+margin_bottom = -60.0
+rect_pivot_offset = Vector2( 75, 75 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/normal = SubResource( 1 )
+next_scene_path = "res://src/screens/LoginScreen.tscn"
+
+[node name="ProfileButton" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -292.0
+margin_top = -210.0
+margin_right = -142.0
+margin_bottom = -60.0
+rect_pivot_offset = Vector2( 75, 75 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+icon_align = 1
+next_scene_path = "res://src/screens/ProfileScreen.tscn"
+
+[node name="LeaderboardButton" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -210.0
+margin_right = 22.0
+margin_bottom = -60.0
+rect_pivot_offset = Vector2( 75, 75 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 2 )
+icon_align = 1
+next_scene_path = "res://src/screens/LeaderboardScreen.tscn"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="button_down" from="Menu/QuitButton" to="Menu/QuitButton" method="_on_button_down"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]

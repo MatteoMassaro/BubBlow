@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/user interface/QuitButton.gd" type="Script" id=1]
+
+[node name="QuitButton" type="Button"]
+margin_top = 52.0
+margin_right = 140.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 300, 50 )
+size_flags_vertical = 3
+text = "ESCI"
+script = ExtResource( 1 )
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

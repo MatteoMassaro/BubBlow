@@ -14,9 +14,6 @@ onready var leaderboard_score_text : Label = $LeaderboardScroll1/LeaderboardCont
 onready var game_mode_button : Button = $GameModeButton
 
 var leaderboard_text = preload("res://src/user interface/LeaderboardText.tscn")
-var leaderboard_details_button_1 = preload("res://src/user interface/DetailsButton1.tscn")
-var leaderboard_details_button_2 = preload("res://src/user interface/DetailsButton2.tscn")
-var leaderboard_details_button_3 = preload("res://src/user interface/DetailsButton3.tscn")
 var button_flag = 0
 var data_flag = 0
 var name_user_1 = ""
@@ -46,8 +43,6 @@ func _ready():
 	PlayerData.game_mode = 1
 	if PlayerData.user_type == "patient":
 		populate_leaderboard_scores()
-	elif PlayerData.user_type == "medic":
-		populate_leaderboard_buttons()
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var result_body := JSON.parse(body.get_string_from_ascii()).result as Dictionary
@@ -123,7 +118,6 @@ func populate_leaderboard_names():
 		leaderboard_name_container2.add_child(leaderboard_text_instance)
 
 func populate_leaderboard_scores():
-	leaderboard_score_text.text = "HIGHSCORE"
 	var leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.text = str(highscore_first_mode_1)
 	leaderboard_score_container1.add_child(leaderboard_text_instance)
@@ -142,29 +136,6 @@ func populate_leaderboard_scores():
 	leaderboard_text_instance = leaderboard_text.instance()
 	leaderboard_text_instance.text = str(highscore_second_mode_3)
 	leaderboard_score_container2.add_child(leaderboard_text_instance)
-
-func populate_leaderboard_buttons():
-	leaderboard_score_text.text = "DATI"
-	var leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
-	leaderboard_score_container1.add_child(leaderboard_details_button_instance_1)
-	var leaderboard_details_button_instance_2 = leaderboard_details_button_2.instance()
-	leaderboard_score_container1.add_child(leaderboard_details_button_instance_2)
-	var leaderboard_details_button_instance_3 = leaderboard_details_button_3.instance()
-	leaderboard_score_container1.add_child(leaderboard_details_button_instance_3)
-	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
-	leaderboard_details_button_instance_1.modulate.a = 0
-	leaderboard_details_button_instance_1.size_flags_stretch_ratio = 1
-	leaderboard_score_container1.add_child(leaderboard_details_button_instance_1)
-	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
-	leaderboard_score_container2.add_child(leaderboard_details_button_instance_1)
-	leaderboard_details_button_instance_2 = leaderboard_details_button_2.instance()
-	leaderboard_score_container2.add_child(leaderboard_details_button_instance_2)
-	leaderboard_details_button_instance_2 = leaderboard_details_button_2.instance()
-	leaderboard_score_container2.add_child(leaderboard_details_button_instance_2)
-	leaderboard_details_button_instance_1 = leaderboard_details_button_1.instance()
-	leaderboard_details_button_instance_1.modulate.a = 0
-	leaderboard_details_button_instance_1.size_flags_stretch_ratio = 1
-	leaderboard_score_container2.add_child(leaderboard_details_button_instance_1)
 
 
 func _on_GameModeButton_pressed():

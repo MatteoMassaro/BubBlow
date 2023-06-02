@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/user interface/themes/Kanit-Regular.ttf" type="DynamicFontData" id=1]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -10,6 +10,6 @@ font_data = ExtResource( 1 )
 margin_right = 245.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
-custom_colors/font_color = Color( 1, 0.8, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 align = 1

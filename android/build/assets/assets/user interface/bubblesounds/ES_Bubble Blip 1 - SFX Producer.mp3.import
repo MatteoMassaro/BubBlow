@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Bubble Blip 1 - SFX Producer.mp3-87d7546b5d245a3cfe86f4e3ac574616.mp3str"
+
+[deps]
+
+source_file="res://assets/user interface/bubblesounds/ES_Bubble Blip 1 - SFX Producer.mp3"
+dest_files=[ "res://.import/ES_Bubble Blip 1 - SFX Producer.mp3-87d7546b5d245a3cfe86f4e3ac574616.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/screens/MedicCodeScreen.gd" type="Script" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/user interface/backgrounds/Authentication.png" type="Texture" id=5]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=6]
-[ext_resource path="res://assets/user interface/themes/AlloyInk-lgdWw.otf" type="DynamicFontData" id=7]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 6 )
@@ -29,11 +28,6 @@ expand_margin_left = 10.0
 expand_margin_right = 10.0
 expand_margin_top = 10.0
 expand_margin_bottom = 10.0
-
-[sub_resource type="DynamicFont" id=5]
-size = 40
-outline_color = Color( 1, 0.8, 0, 1 )
-font_data = ExtResource( 7 )
 
 [node name="MedicCodeScreen" type="Control"]
 anchor_right = 1.0
@@ -117,7 +111,6 @@ margin_right = 500.0
 margin_bottom = 47.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 1, 0.8, 0, 1 )
-custom_fonts/font = SubResource( 5 )
 align = 1
 autowrap = true
 __meta__ = {

@@ -39,7 +39,7 @@ func check_effects_button():
 
 func set_health():
 	health.set_position(health_position)
-	health.text = "VITE:"
+	health.text = "VITE"
 
 func set_life_gravity():
 	life_1.gravity = 0
@@ -47,7 +47,7 @@ func set_life_gravity():
 	life_3.gravity = 0
 
 func update_interface():
-	score.text = "PUNTEGGIO: %s" % PlayerData.score
+	score.text = "PUNTEGGIO %s" % PlayerData.score
 
 func _on_PlayerData_player_died():
 	yield(get_tree().create_timer(1.0), "timeout")

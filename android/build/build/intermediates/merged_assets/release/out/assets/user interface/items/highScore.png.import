@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/highScore.png-5510323da513278abf79c97507e44055.image"
+
+[deps]
+
+source_file="res://assets/user interface/items/highScore.png"
+dest_files=[ "res://.import/highScore.png-5510323da513278abf79c97507e44055.image" ]
+
+[params]
+
