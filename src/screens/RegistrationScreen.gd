@@ -8,13 +8,43 @@ onready var password_field : LineEdit = $Menu1/PasswordField
 onready var notification_panel : PanelContainer = $NotificationPanel
 onready var notification : Label = $NotificationPanel/Notification
 
+var information_sent := false
 var flag = 0
 var timer = Timer.new()
 var hide_delay = 4
 var profile := {
 	"name": {},
 	"surname": {},
-	"email": {}
+	"email": {},
+	"type_user": {},
+	"highscore_first_mode": {},
+	"highscore_second_mode": {},
+	"games_first_mode": {},
+	"games_second_mode": {},
+	"last_score_first_mode_1": {},
+	"last_score_first_mode_2": {},
+	"last_score_first_mode_3": {},
+	"last_score_second_mode_1": {},
+	"last_score_second_mode_2": {},
+	"last_score_second_mode_3": {},
+	"decibel_avg_first_mode_1": {},
+	"decibel_avg_first_mode_2": {},
+	"decibel_avg_first_mode_3": {},
+	"breath_duration_first_mode_1": {},
+	"breath_duration_first_mode_2": {},
+	"breath_duration_first_mode_3": {},
+	"game_duration_first_mode_1": {},
+	"game_duration_first_mode_2": {},
+	"game_duration_first_mode_3": {},
+	"decibel_avg_second_mode_1": {},
+	"decibel_avg_second_mode_2": {},
+	"decibel_avg_second_mode_3": {},
+	"breath_duration_second_mode_1": {},
+	"breath_duration_second_mode_2": {},
+	"breath_duration_second_mode_3": {},
+	"game_duration_second_mode_1": {},
+	"game_duration_second_mode_2": {},
+	"game_duration_second_mode_3": {}
 } 
 
 func _ready():
@@ -49,13 +79,8 @@ func _on_RegisterButton_pressed() -> void:
 		show_label()
 		return
 	Firebase.register(email_field.text, password_field.text, http)
-	yield(get_tree().create_timer(3.5), "timeout")
-	profile.name = { "stringValue": name_field.text}
-	profile.surname = { "stringValue": surname_field.text }
-	profile.email = {"stringValue": email_field.text}
-	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
-	yield(get_tree().create_timer(2.0), "timeout")
-	get_tree().change_scene("res://src/screens/MenuScreen.tscn")
+	yield(get_tree().create_timer(3.0), "timeout")
+	create_profile()
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var response_body := JSON.parse(body.get_string_from_ascii())
@@ -66,6 +91,48 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		notification.text = "REGISTRAZIONE COMPLETATA"
 		show_label()
 		flag = 1
+
+func create_profile():
+	PlayerData.name_user = name_field.text
+	PlayerData.surname_user = surname_field.text
+	PlayerData.user_type = "patient"
+	PlayerData.email = email_field.text
+	profile.name = { "stringValue": name_field.text }
+	profile.surname = { "stringValue":  surname_field.text}
+	profile.type_user = { "stringValue": "patient" }
+	profile.email = { "stringValue": email_field.text}
+	profile.highscore_first_mode = { "integerValue": 0 }
+	profile.highscore_second_mode = { "integerValue": 0 }
+	profile.games_first_mode = {"integerValue": 0 }
+	profile.games_second_mode = {"integerValue": 0 }
+	profile.last_score_first_mode_1 = {"integerValue": 0}
+	profile.last_score_first_mode_2 = {"integerValue": 0}
+	profile.last_score_first_mode_3 = {"integerValue": 0}
+	profile.last_score_second_mode_1 = {"integerValue": 0}
+	profile.last_score_second_mode_2 = {"integerValue": 0}
+	profile.last_score_second_mode_3 = {"integerValue": 0}
+	profile.decibel_avg_first_mode_1 = {"doubleValue": 0.0}
+	profile.decibel_avg_first_mode_2 = {"doubleValue": 0.0}
+	profile.decibel_avg_first_mode_3 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_1 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_2 = {"doubleValue": 0.0}
+	profile.decibel_avg_second_mode_3 = {"doubleValue": 0.0}
+	profile.breath_duration_first_mode_1 = {"stringValue": ""}
+	profile.breath_duration_first_mode_2 = {"stringValue": ""}
+	profile.breath_duration_first_mode_3 = {"stringValue": ""}
+	profile.breath_duration_second_mode_1 = {"stringValue": ""}
+	profile.breath_duration_second_mode_2 = {"stringValue": ""}
+	profile.breath_duration_second_mode_3 = {"stringValue": ""}
+	profile.game_duration_first_mode_1 = {"stringValue": ""}
+	profile.game_duration_first_mode_2 = {"stringValue": ""}
+	profile.game_duration_first_mode_3 = {"stringValue": ""}
+	profile.game_duration_second_mode_1 = {"stringValue": ""}
+	profile.game_duration_second_mode_2 = {"stringValue": ""}
+	profile.game_duration_second_mode_3 = {"stringValue": ""}
+	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+	information_sent = true
+	yield(get_tree().create_timer(3.0), "timeout")
+	get_tree().change_scene("res://src/screens/MenuScreen.tscn")
 
 func show_label():
 	notification_panel.show()

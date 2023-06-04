@@ -49,9 +49,9 @@ var game_duration_first_mode_3 := ""
 var game_duration_second_mode_3 := ""
 var breath_duration_first_mode_3 := ""
 var breath_duration_second_mode_3 := ""
-var user_id_1 := "X0ylulNfK2ak26vyMmgqgxMEKTu2"
-var user_id_2 := "w1cqX7nJDoUvhWgje6aUvU6Pd9z2"
-var user_id_3 := "M3h6igfKBCZhZYHSAhGPTQ7uqyi1"
+var user_id_1 := "RVU596nghIh5cS0M6SZzcvmlFGl1"
+var user_id_2 := "M3h6igfKBCZhZYHSAhGPTQ7uqyi1"
+var user_id_3 := ""
 var user_flag := 0
 
 

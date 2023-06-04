@@ -48,43 +48,37 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 		flag = 1
 
 func check_type(result_body: Dictionary):
-	if PlayerData.user_type == "patient":
-		PlayerData.name_user = result_body.fields.name.stringValue 
-		PlayerData.surname_user = result_body.fields.surname.stringValue
-		PlayerData.email = email_field.text
-		PlayerData.highscore_first_mode = result_body.fields.highscore_first_mode.integerValue
-		PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
-		PlayerData.games_first_mode = result_body.fields.games_first_mode.integerValue
-		PlayerData.games_second_mode = result_body.fields.games_second_mode.integerValue
-		PlayerData.last_score_first_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
-		PlayerData.last_score_first_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
-		PlayerData.last_score_first_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
-		PlayerData.last_score_second_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
-		PlayerData.last_score_second_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
-		PlayerData.last_score_second_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
-		PlayerData.decibel_avg_first_mode_1 = result_body.fields.decibel_avg_first_mode_1.doubleValue
-		PlayerData.decibel_avg_second_mode_1 = result_body.fields.decibel_avg_second_mode_1.doubleValue
-		PlayerData.game_duration_first_mode_1 = result_body.fields.game_duration_first_mode_1.stringValue
-		PlayerData.game_duration_second_mode_1 = result_body.fields.game_duration_second_mode_1.stringValue
-		PlayerData.breath_duration_first_mode_1 = result_body.fields.breath_duration_first_mode_1.stringValue
-		PlayerData.breath_duration_second_mode_1 = result_body.fields.breath_duration_second_mode_1.stringValue
-		PlayerData.decibel_avg_first_mode_2 = result_body.fields.decibel_avg_first_mode_2.doubleValue
-		PlayerData.decibel_avg_second_mode_2 = result_body.fields.decibel_avg_second_mode_2.doubleValue
-		PlayerData.game_duration_first_mode_2 = result_body.fields.game_duration_first_mode_2.stringValue
-		PlayerData.game_duration_second_mode_2 = result_body.fields.game_duration_second_mode_2.stringValue
-		PlayerData.breath_duration_first_mode_2 = result_body.fields.breath_duration_first_mode_2.stringValue
-		PlayerData.breath_duration_second_mode_2 = result_body.fields.breath_duration_second_mode_2.stringValue
-		PlayerData.decibel_avg_first_mode_3 = result_body.fields.decibel_avg_first_mode_3.doubleValue
-		PlayerData.decibel_avg_second_mode_3 = result_body.fields.decibel_avg_second_mode_3.doubleValue
-		PlayerData.game_duration_first_mode_3 = result_body.fields.game_duration_first_mode_3.stringValue
-		PlayerData.game_duration_second_mode_3 = result_body.fields.game_duration_second_mode_3.stringValue
-		PlayerData.breath_duration_first_mode_3 = result_body.fields.breath_duration_first_mode_3.stringValue
-		PlayerData.breath_duration_second_mode_3 = result_body.fields.breath_duration_second_mode_3.stringValue
-	elif PlayerData.user_type == "medic":
-		PlayerData.name_user = result_body.fields.name.stringValue 
-		PlayerData.surname_user = result_body.fields.surname.stringValue
-		PlayerData.email = email_field.text
-		PlayerData.medic_code = result_body.fields.medic_code.stringValue
+	PlayerData.name_user = result_body.fields.name.stringValue 
+	PlayerData.surname_user = result_body.fields.surname.stringValue
+	PlayerData.email = email_field.text
+	PlayerData.highscore_first_mode = result_body.fields.highscore_first_mode.integerValue
+	PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
+	PlayerData.games_first_mode = result_body.fields.games_first_mode.integerValue
+	PlayerData.games_second_mode = result_body.fields.games_second_mode.integerValue
+	PlayerData.last_score_first_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
+	PlayerData.last_score_first_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
+	PlayerData.last_score_first_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
+	PlayerData.last_score_second_mode_1 = result_body.fields.last_score_first_mode_1.integerValue
+	PlayerData.last_score_second_mode_2 = result_body.fields.last_score_first_mode_2.integerValue
+	PlayerData.last_score_second_mode_3 = result_body.fields.last_score_first_mode_3.integerValue
+	PlayerData.decibel_avg_first_mode_1 = result_body.fields.decibel_avg_first_mode_1.doubleValue
+	PlayerData.decibel_avg_second_mode_1 = result_body.fields.decibel_avg_second_mode_1.doubleValue
+	PlayerData.game_duration_first_mode_1 = result_body.fields.game_duration_first_mode_1.stringValue
+	PlayerData.game_duration_second_mode_1 = result_body.fields.game_duration_second_mode_1.stringValue
+	PlayerData.breath_duration_first_mode_1 = result_body.fields.breath_duration_first_mode_1.stringValue
+	PlayerData.breath_duration_second_mode_1 = result_body.fields.breath_duration_second_mode_1.stringValue
+	PlayerData.decibel_avg_first_mode_2 = result_body.fields.decibel_avg_first_mode_2.doubleValue
+	PlayerData.decibel_avg_second_mode_2 = result_body.fields.decibel_avg_second_mode_2.doubleValue
+	PlayerData.game_duration_first_mode_2 = result_body.fields.game_duration_first_mode_2.stringValue
+	PlayerData.game_duration_second_mode_2 = result_body.fields.game_duration_second_mode_2.stringValue
+	PlayerData.breath_duration_first_mode_2 = result_body.fields.breath_duration_first_mode_2.stringValue
+	PlayerData.breath_duration_second_mode_2 = result_body.fields.breath_duration_second_mode_2.stringValue
+	PlayerData.decibel_avg_first_mode_3 = result_body.fields.decibel_avg_first_mode_3.doubleValue
+	PlayerData.decibel_avg_second_mode_3 = result_body.fields.decibel_avg_second_mode_3.doubleValue
+	PlayerData.game_duration_first_mode_3 = result_body.fields.game_duration_first_mode_3.stringValue
+	PlayerData.game_duration_second_mode_3 = result_body.fields.game_duration_second_mode_3.stringValue
+	PlayerData.breath_duration_first_mode_3 = result_body.fields.breath_duration_first_mode_3.stringValue
+	PlayerData.breath_duration_second_mode_3 = result_body.fields.breath_duration_second_mode_3.stringValue
 
 func show_label():
 	notification_panel.show()
