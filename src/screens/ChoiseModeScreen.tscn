@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/user interface/backgrounds/Background.png" type="Texture" id=5]
 [ext_resource path="res://assets/user interface/items/secondMode.png" type="Texture" id=6]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=7]
-[ext_resource path="res://src/screens/ChoiseScreen2.gd" type="Script" id=8]
+[ext_resource path="res://src/screens/ChoiseModeScreen.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=7]
 size = 200
@@ -49,7 +49,7 @@ region_rect = Rect2( 0, 0, 172, 173 )
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 172, 173 )
 
-[node name="ChoiseScreen" type="Control"]
+[node name="ChoiseModeScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
@@ -139,7 +139,7 @@ margin_right = 388.0
 margin_bottom = 800.0
 rect_pivot_offset = Vector2( 128, 82 )
 text = "BOLLE"
-next_scene_path = "res://src/screens/LoadingScreen.tscn"
+next_scene_path = "res://src/screens/ExplanationScreen.tscn"
 
 [node name="SecondModeMenu" type="VBoxContainer" parent="ModeContainer"]
 margin_left = 468.0
@@ -170,7 +170,7 @@ margin_right = 388.0
 margin_bottom = 800.0
 rect_pivot_offset = Vector2( 128, 82 )
 text = "RUNNER"
-next_scene_path = "res://src/screens/LoadingScreen.tscn"
+next_scene_path = "res://src/screens/ExplanationScreen.tscn"
 
 [node name="BackButton" parent="." instance=ExtResource( 2 )]
 anchor_left = 0.5
@@ -188,7 +188,7 @@ custom_styles/normal = SubResource( 4 )
 next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
-[connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_FirstModeButton_pressed"]
 [connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_MedicButton_pressed"]
-[connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_SecondModeButton_pressed"]
+[connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_FirstModeButton_pressed"]
 [connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_MedicButton_pressed"]
+[connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_SecondModeButton_pressed"]

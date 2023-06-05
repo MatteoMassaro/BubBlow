@@ -1,0 +1,171 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/user interface/backgrounds/Background.png" type="Texture" id=1]
+[ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/screens/ExplanationScreen.gd" type="Script" id=3]
+[ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/user interface/themes/Kanit-Regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=9]
+size = 200
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 55
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0313726, 0.85098, 0.823529, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0, 0.666667, 0.643137, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MenuContainer/Menu/ExplanationText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "show_explanation_text"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MenuContainer/Menu/ExplanationText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="ExplanationScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 3 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="AppTitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.206771
+anchor_right = 0.5
+anchor_bottom = 0.206771
+margin_left = -394.0
+margin_top = -145.0
+margin_right = 394.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 9 )
+text = "BubBlow"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScreenTitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.30026
+anchor_right = 0.5
+anchor_bottom = 0.30026
+margin_left = -321.0
+margin_top = -72.5
+margin_right = 321.0
+margin_bottom = 72.5
+custom_fonts/font = SubResource( 10 )
+text = "Spiegazione"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.611979
+anchor_right = 0.5
+anchor_bottom = 0.659375
+margin_left = -457.0
+margin_top = -402.0
+margin_right = 457.0
+margin_bottom = 402.0
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Menu" type="HBoxContainer" parent="MenuContainer"]
+margin_right = 914.0
+margin_bottom = 507.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+alignment = 1
+
+[node name="ExplanationText" type="RichTextLabel" parent="MenuContainer/Menu"]
+margin_right = 914.0
+margin_bottom = 507.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 8 )
+custom_styles/normal = SubResource( 6 )
+bbcode_enabled = true
+visible_characters = 0
+percent_visible = 0.0
+fit_content_height = true
+
+[node name="Menu3" type="VBoxContainer" parent="MenuContainer"]
+margin_left = 333.0
+margin_top = 557.0
+margin_right = 581.0
+margin_bottom = 895.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+custom_constants/separation = 15
+
+[node name="NextButton" parent="MenuContainer/Menu3" instance=ExtResource( 4 )]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 248.0
+margin_bottom = 161.0
+text = "AVANTI"
+
+[node name="BackButton" parent="MenuContainer/Menu3" instance=ExtResource( 4 )]
+margin_top = 176.0
+margin_right = 248.0
+margin_bottom = 338.0
+rect_pivot_offset = Vector2( 200, 100 )
+text = "   INDIETRO   "
+
+[node name="TextAnimations" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/show_explanation_text = SubResource( 7 )
+
+[connection signal="pressed" from="MenuContainer/Menu3/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MenuContainer/Menu3/BackButton" to="." method="_on_BackButton_pressed"]

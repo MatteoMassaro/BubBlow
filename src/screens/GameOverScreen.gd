@@ -12,6 +12,7 @@ onready var email = ""
 onready var user_type = ""
 onready var result_body
 
+var text_number = 0
 var button_flag = 0 
 var profile := {
 	"name": {},
@@ -46,11 +47,18 @@ var profile := {
 	"game_duration_second_mode_1": {},
 	"game_duration_second_mode_2": {},
 	"game_duration_second_mode_3": {}
-} 
+}
+
+var text_1 = "[center]Continua a giocare per migliorare le tue funzioni respiratorie: raggiungere un picco nel flusso espiratorio durante la partita può favorire lo spostamento delle secrezioni.[/center]"
+var text_2 = "[center]Per raggiungere il picco nel flusso espiratorio, inspira profondamente per riempire al massimo i polmoni e poi butta tutta l'aria fuori.[center]" 
+var text_3 = "[center]Continua a giocare per migliorare le tue funzioni respiratorie: la postura corretta contribuisce nella terapia perciò cerca di mantenerla durante la partita.[/center]"
+var text_4 = "[center]Per avere una postura corretta assicurati di mantenere sempre la schiena dritta e di non piegare la testa in avanti.[/center]"
+
 
 func _ready():
 	check_music()
 	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
+	set_text()
 	set_score()
 	yield(get_tree().create_timer(3.0), "timeout")
 	save_data()
@@ -64,11 +72,19 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 	result_body = JSON.parse(body.get_string_from_ascii()).result as Dictionary
 	get_data(result_body)
 
+func set_text():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	text_number = rng.randi_range(1, 2)
+
 func set_score():
 	yield(get_tree().create_timer(1.0),"timeout")
 	score_text.text = "PUNTEGGIO: "
 	score_number.text = "%s" % PlayerData.score
-	explanation_text.bbcode_text = "[center]LA TECNICA RESPIRATORIA UTILIZZATA PER ESEGUIRE IL GIOCO FA PARTE DELLE TECNICHE DI DISOSTRUZIONE BRONCHIALE. QUESTI TIPI DI TECNICHE AGISCONO SULLA MOBILIZZAZIONE ED ELIMINAZIONE DELLE SECREZIONI BRONCHIALI PER LIBERARE LE VIE AEREE E PERMETTERE UNA CORRETTA RESPIRAZIONE POLMONARE.[/center]"
+	if (text_number == 1):
+		explanation_text.bbcode_text = text_1
+	elif (text_number == 2):
+		explanation_text.bbcode_text = text_3
 	text_animations.play("show_score_text")
 	yield(get_tree().create_timer(1.0),"timeout")
 	text_animations.play("show_explanation_text")
@@ -80,12 +96,18 @@ func _on_NextButton_pressed():
 	if (button_flag == 0):
 		next_button.text = "INDIETRO"
 		button_flag = 1
-		explanation_text.bbcode_text = "[center]CONTINUA A GIOCARE PER MIGLIORARE LE TUE FUNZIONI RESPIRATORIE: UN SUGGERIMENTO PUO' ESSERE QUELLO DI RAGGIUNGERE UN PICCO NEL FLUSSO ESPIRATORIO (SOFFIARE AL MASSIMO DELLE TUE CAPACITA') PER FAVORIRE LO SPOSTAMENTO DELLE SECREZIONI. LA POSTURA CORRETTA DURANTE IL GIOCO CONTRIBUISCE NELLA TERAPIA PERCIO' CERCA DI MANTENERLA DURANTE LA PARTITA. [/center]"
+		if (text_number == 1):
+			explanation_text.bbcode_text = text_2
+		elif (text_number == 2):
+			explanation_text.bbcode_text = text_4
 		text_animations.play("show_explanation_text")
 	else:
 		next_button.text = "AVANTI"
 		button_flag = 0
-		explanation_text.bbcode_text = "[center]LA TECNICA RESPIRATORIA UTILIZZATA PER ESEGUIRE IL GIOCO FA PARTE DELLE TECNICHE DI DISOSTRUZIONE BRONCHIALE. QUESTI TIPI DI TECNICHE AGISCONO SULLA MOBILIZZAZIONE ED ELIMINAZIONE DELLE SECREZIONI BRONCHIALI PER LIBERARE LE VIE AEREE E PERMETTERE UNA CORRETTA RESPIRAZIONE POLMONARE.[/center]"
+		if (text_number == 1):
+			explanation_text.bbcode_text = text_1
+		elif (text_number == 2):
+			explanation_text.bbcode_text = text_3
 		text_animations.play("show_explanation_text")
 	yield(get_tree().create_timer(3.0),"timeout")
 	restart_button.self_modulate.a = 1
