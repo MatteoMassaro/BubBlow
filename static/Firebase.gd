@@ -41,9 +41,11 @@ func register(email: String, password: String, http: HTTPRequest) -> void:
 	var result := yield(http, "request_completed") as Array
 	if result[1] == 200:
 		user_info = _get_user_info(result)
-	profile.email = { "stringValue": email }
-	Firebase.save_document("users?documentId=%s" % Firebase.user_info.id, profile, http)
-	information_sent = true
+		profile.email = { "stringValue": email }
+		Firebase.save_document("patients?documentId=%s" % Firebase.user_info.id, profile, http)
+		information_sent = true
+	else:
+		information_sent = false
 
 
 func login(email: String, password: String, http: HTTPRequest) -> void:
@@ -56,6 +58,9 @@ func login(email: String, password: String, http: HTTPRequest) -> void:
 	var result := yield(http, "request_completed") as Array
 	if result[1] == 200:
 		user_info = _get_user_info(result)
+		information_sent = true
+	else:
+		information_sent = false
 
 
 func save_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:

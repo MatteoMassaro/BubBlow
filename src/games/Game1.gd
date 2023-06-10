@@ -82,12 +82,7 @@ func update_score():
 	PlayerData.score += points
 
 func save_breath_data():
-	if (PlayerData.games_first_mode == 0):
-		PlayerData.decibel_avg_first_mode_1 += linear2db(sample_avg)
-	elif (PlayerData.games_first_mode == 1):
-		PlayerData.decibel_avg_first_mode_2 += linear2db(sample_avg)
-	elif (PlayerData.games_first_mode == 2):
-		PlayerData.decibel_avg_first_mode_3 += linear2db(sample_avg)
+	PlayerData.decibel_avg += linear2db(sample_avg)
 	PlayerData.breathe_counter += 1
 	if round(linear2db(sample_avg)) > min_db:
 			breath_duration_seconds += 0.018
