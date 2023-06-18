@@ -19,12 +19,18 @@ func _on_Timer_timeout():
 		elif PlayerData.game_mode == 2:
 			text1.text = "Rifornimento di ossigeno..."
 			text1.visible = true;
+		elif PlayerData.game_mode == 3:
+			text1.text = "Rifornimento di ossigeno..."
+			text1.visible = true;
 	elif loadingBar.value == 50:
 		if PlayerData.game_mode == 1:
 			text2.text = "Caricamento dello sparabolle..."
 			text2.visible = true;
 		elif PlayerData.game_mode == 2:
 			text2.text = "Caricamento del Jetpack..."
+			text2.visible = true;
+		elif PlayerData.game_mode == 3:
+			text2.text = "Caricamento della pistola a bolle..."
 			text2.visible = true;
 	elif loadingBar.value == 70:
 		if PlayerData.game_mode == 1:
@@ -33,8 +39,13 @@ func _on_Timer_timeout():
 		elif PlayerData.game_mode == 2:
 			text3.text = "Preparazione dei pesci..."
 			text3.visible = true;
+		elif PlayerData.game_mode == 3:
+			text3.text = "Preparazione delle papere..."
+			text3.visible = true;
 	if loadingBar.value == 100:
 		if(PlayerData.game_mode == 1):
 			get_tree().change_scene("res://src/games/Game1.tscn")
 		elif(PlayerData.game_mode == 2):
 			get_tree().change_scene("res://src/games/Game2.tscn")
+		elif(PlayerData.game_mode == 3):
+			get_tree().change_scene("res://src/games/Game3.tscn")

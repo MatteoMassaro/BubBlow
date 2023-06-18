@@ -1,7 +1,6 @@
 extends Control
 
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
-onready var bubble_spawn_timer = $BubbleSpawnTimer
 onready var countdown_1 = $Countdown1
 onready var countdown_2 = $Countdown2
 onready var countdown_3 = $Countdown3
@@ -50,10 +49,10 @@ func _process(delta: float) -> void:
 	set_time_elapsed()
 
 func update_samples_strength() -> void:
-	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0))
+	var sample = AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0)
 	volume_samples.push_front(sample)
-
 	sample_avg = average_array(volume_samples)
+	print(sample_avg)
 	
 	while volume_samples.size() > 10:
 		volume_samples.pop_back()
@@ -96,7 +95,3 @@ func set_time_elapsed():
 	game_duration_minutes = (game_duration_seconds/60)%60
 	PlayerData.game_duration_seconds = game_duration_seconds
 	PlayerData.game_duration_minutes = game_duration_minutes 
-	
-
-func _on_BubbleIncreaseTimer_timeout():
-	bubble_spawn_timer.wait_time -= 0.1

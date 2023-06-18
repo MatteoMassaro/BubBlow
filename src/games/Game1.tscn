@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/games/Game1.gd" type="Script" id=2]
-[ext_resource path="res://assets/user interface/kenney_fish-pack/PNG/Retina/fishTile_110.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/kenney_fish-pack/PNG/Retina/fishTile_110.png" type="Texture" id=3]
 [ext_resource path="res://src/screens/PopArea.gd" type="Script" id=4]
-[ext_resource path="res://src/autoload/BubbleSpawnTimer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/autoload/SpawnTimer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/user interface/UserInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/user interface/backgrounds/Foreground.png" type="Texture" id=7]
 [ext_resource path="res://assets/user interface/backgrounds/sea_background.png" type="Texture" id=8]
 [ext_resource path="res://assets/user interface/backgrounds/MidBackground.png" type="Texture" id=9]
 [ext_resource path="res://assets/user interface/backgrounds/Farground.png" type="Texture" id=10]
-[ext_resource path="res://assets/user interface/kenney_fish-pack/PNG/Retina/fishTile_111.png" type="Texture" id=11]
-[ext_resource path="res://assets/user interface/kenney_fish-pack/PNG/Retina/fishTile_109.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/kenney_fish-pack/PNG/Retina/fishTile_111.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/kenney_fish-pack/PNG/Retina/fishTile_109.png" type="Texture" id=12]
+[ext_resource path="res://src/autoload/BubbleSpawnTimer.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 540, 9.375 )
@@ -91,10 +92,7 @@ position = Vector2( 0, 86.375 )
 shape = SubResource( 1 )
 
 [node name="BubbleSpawnTimer" parent="." instance=ExtResource( 5 )]
-
-[node name="BubbleIncreaseTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+script = ExtResource( 13 )
 
 [node name="MicrophoneInput" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 7 )
@@ -218,7 +216,6 @@ margin_bottom = 64.0
 texture = ExtResource( 11 )
 
 [connection signal="body_entered" from="ControlPopArea/PopArea" to="ControlPopArea/PopArea" method="_on_body_entered"]
-[connection signal="timeout" from="BubbleIncreaseTimer" to="." method="_on_BubbleIncreaseTimer_timeout"]
 [connection signal="body_entered" from="MoveUpArea1" to="." method="_on_MoveUpArea_body_entered"]
 [connection signal="body_entered" from="MoveUpArea2" to="." method="_on_MoveUpArea_body_entered"]
 [connection signal="body_entered" from="MoveUpArea3" to="." method="_on_MoveUpArea_body_entered"]

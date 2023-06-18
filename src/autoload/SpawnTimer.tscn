@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="SpawnTimer" type="Timer"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="." to="." method="_on_Timer_timeout"]

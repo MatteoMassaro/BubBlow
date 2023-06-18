@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/user interface/items/secondMode.png" type="Texture" id=6]
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=7]
 [ext_resource path="res://src/screens/ChoiseModeScreen.gd" type="Script" id=8]
+[ext_resource path="res://assets/user interface/items/thirdMode.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=7]
 size = 200
@@ -98,35 +99,39 @@ __meta__ = {
 
 [node name="ModeContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.603385
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -428.0
-margin_top = -153.0
-margin_right = 428.0
-margin_bottom = 647.0
+anchor_bottom = 0.603385
+margin_left = -500.0
+margin_top = -473.5
+margin_right = 500.0
+margin_bottom = 526.5
 size_flags_stretch_ratio = 2.0
 custom_constants/separation = 80
 alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="FirstModeMenu" type="VBoxContainer" parent="ModeContainer"]
-margin_right = 388.0
-margin_bottom = 800.0
+margin_right = 280.0
+margin_bottom = 1000.0
 size_flags_horizontal = 3
 custom_constants/separation = 50
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="ModeContainer/FirstModeMenu"]
-margin_right = 388.0
+[node name="FirstModeImage" type="TextureRect" parent="ModeContainer/FirstModeMenu"]
+margin_right = 280.0
 margin_bottom = 256.0
 texture = ExtResource( 3 )
 stretch_mode = 4
 
 [node name="FirstModeDescription" type="Label" parent="ModeContainer/FirstModeMenu"]
 margin_top = 306.0
-margin_right = 388.0
-margin_bottom = 617.0
-size_flags_stretch_ratio = 1.5
+margin_right = 280.0
+margin_bottom = 769.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
 custom_fonts/font = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 text = "Soffia le bolle per non farle scoppiare sul fondale marino!"
@@ -134,30 +139,32 @@ align = 1
 autowrap = true
 
 [node name="FirstModeButton" parent="ModeContainer/FirstModeMenu" instance=ExtResource( 2 )]
-margin_top = 667.0
-margin_right = 388.0
-margin_bottom = 800.0
+margin_top = 819.0
+margin_right = 280.0
+margin_bottom = 1000.0
 rect_pivot_offset = Vector2( 128, 82 )
 text = "BOLLE"
 next_scene_path = "res://src/screens/ExplanationScreen.tscn"
 
 [node name="SecondModeMenu" type="VBoxContainer" parent="ModeContainer"]
-margin_left = 468.0
-margin_right = 856.0
-margin_bottom = 800.0
+margin_left = 360.0
+margin_right = 640.0
+margin_bottom = 1000.0
 size_flags_horizontal = 3
 custom_constants/separation = 50
 
-[node name="TextureRect" type="TextureRect" parent="ModeContainer/SecondModeMenu"]
-margin_right = 388.0
+[node name="SecondModeImage" type="TextureRect" parent="ModeContainer/SecondModeMenu"]
+margin_right = 280.0
 margin_bottom = 256.0
 texture = ExtResource( 6 )
 stretch_mode = 4
 
 [node name="SecondModeDescription" type="Label" parent="ModeContainer/SecondModeMenu"]
 margin_top = 306.0
-margin_right = 388.0
-margin_bottom = 617.0
+margin_right = 280.0
+margin_bottom = 771.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.6
 custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 6 )
 text = "Soffia per attivare il jetpack ed evitare i nemici!"
@@ -165,11 +172,44 @@ align = 1
 autowrap = true
 
 [node name="SecondModeButton" parent="ModeContainer/SecondModeMenu" instance=ExtResource( 2 )]
-margin_top = 667.0
-margin_right = 388.0
-margin_bottom = 800.0
+margin_top = 821.0
+margin_right = 280.0
+margin_bottom = 1000.0
 rect_pivot_offset = Vector2( 128, 82 )
 text = "RUNNER"
+next_scene_path = "res://src/screens/ExplanationScreen.tscn"
+
+[node name="ThirdModeMenu" type="VBoxContainer" parent="ModeContainer"]
+margin_left = 720.0
+margin_right = 1000.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+
+[node name="ThirdModeImage" type="TextureRect" parent="ModeContainer/ThirdModeMenu"]
+margin_right = 280.0
+margin_bottom = 256.0
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="ThirdModeDescription" type="Label" parent="ModeContainer/ThirdModeMenu"]
+margin_top = 306.0
+margin_right = 280.0
+margin_bottom = 771.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.6
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 6 )
+text = "Soffia per sparare le bolle e colpire i bersagli!"
+align = 1
+autowrap = true
+
+[node name="ThirdModeButton" parent="ModeContainer/ThirdModeMenu" instance=ExtResource( 2 )]
+margin_top = 821.0
+margin_right = 280.0
+margin_bottom = 1000.0
+rect_pivot_offset = Vector2( 128, 82 )
+text = "BERSAGLI"
 next_scene_path = "res://src/screens/ExplanationScreen.tscn"
 
 [node name="BackButton" parent="." instance=ExtResource( 2 )]
@@ -188,7 +228,6 @@ custom_styles/normal = SubResource( 4 )
 next_scene_path = "res://src/screens/MenuScreen.tscn"
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
-[connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_MedicButton_pressed"]
 [connection signal="pressed" from="ModeContainer/FirstModeMenu/FirstModeButton" to="." method="_on_FirstModeButton_pressed"]
-[connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_MedicButton_pressed"]
 [connection signal="pressed" from="ModeContainer/SecondModeMenu/SecondModeButton" to="." method="_on_SecondModeButton_pressed"]
+[connection signal="pressed" from="ModeContainer/ThirdModeMenu/ThirdModeButton" to="." method="_on_ThirdModeButton_pressed"]

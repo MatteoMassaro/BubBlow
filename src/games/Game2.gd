@@ -4,7 +4,6 @@ extends Node2D
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
 onready var player = $Player
 onready var tile_map = $TileMap
-onready var enemy_spawn_timer = $EnemySpawnTimer
 onready var seabed_instance = preload("res://src/user interface/Seabed.tscn")
 onready var countdown_1 = $Countdown1
 onready var countdown_2 = $Countdown2
@@ -52,7 +51,7 @@ func check_music():
 		AudioManager.play_music()
 
 func _process(delta: float) -> void:
-	connect("new_enemy", self, "_on_GameArea_body_entered")
+	connect("new_fish", self, "_on_GameArea_body_entered")
 	PlayerData.connect("life_counter_updated", self, "set_player_error")
 	update_samples_strength()
 	check_breathe()
