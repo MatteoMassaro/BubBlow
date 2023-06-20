@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 		set_time_elapsed()
 
 func update_samples_strength() -> void:
-	var sample = AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0)
+	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0))
 	volume_samples.push_front(sample)
 	sample_avg = average_array(volume_samples)
 	

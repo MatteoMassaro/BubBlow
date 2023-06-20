@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/user interface/backgrounds/craftpix-beach-2d-game-backgrounds/PNG/game_background_1/layers/cloud.png" type="Texture" id=1]
 [ext_resource path="res://assets/user interface/backgrounds/craftpix-beach-2d-game-backgrounds/PNG/game_background_1/layers/sky.png" type="Texture" id=2]
@@ -23,6 +23,9 @@
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 139.125, 147.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 72.5, 69 )
 
 [sub_resource type="Animation" id=9]
 length = 0.001
@@ -853,10 +856,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 500.0
-margin_top = 1600.0
-margin_right = 650.0
-margin_bottom = 1750.0
+margin_left = -40.0
+margin_top = 640.0
+margin_right = 110.0
+margin_bottom = 790.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -867,10 +870,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 490.0
-margin_top = 1510.0
-margin_right = 610.0
-margin_bottom = 1630.0
+margin_left = -50.0
+margin_top = 550.0
+margin_right = 70.0
+margin_bottom = 670.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -884,10 +887,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 460.0
-margin_top = 1400.0
-margin_right = 620.0
-margin_bottom = 1560.0
+margin_left = -80.0
+margin_top = 440.0
+margin_right = 80.0
+margin_bottom = 600.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -935,15 +938,22 @@ bus = "Record"
 wait_time = 5.0
 script = ExtResource( 7 )
 
-[node name="GameArea" type="Area2D" parent="."]
+[node name="GameOverArea" type="Area2D" parent="."]
 position = Vector2( 545, 691 )
 collision_layer = 0
 collision_mask = 2
 space_override = 3
 
-[node name="GameCollision" type="CollisionShape2D" parent="GameArea"]
+[node name="GameOverCollision" type="CollisionShape2D" parent="GameOverArea"]
 position = Vector2( 4, -1 )
 shape = SubResource( 8 )
+
+[node name="DuckArea" type="Area2D" parent="."]
+position = Vector2( 537, 933 )
+
+[node name="DuckCollision" type="CollisionShape2D" parent="DuckArea"]
+position = Vector2( 1.5, 0 )
+shape = SubResource( 12 )
 
 [node name="Countdown1" type="TextureRect" parent="."]
 visible = false
@@ -996,4 +1006,5 @@ anims/RESET = SubResource( 9 )
 anims/move_boats = SubResource( 10 )
 anims/set_smoke = SubResource( 11 )
 
-[connection signal="body_entered" from="GameArea" to="." method="_on_GameArea_body_entered"]
+[connection signal="body_entered" from="GameOverArea" to="." method="_on_GameArea_body_entered"]
+[connection signal="body_entered" from="DuckArea" to="." method="_on_DuckArea_body_entered"]

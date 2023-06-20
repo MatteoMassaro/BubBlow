@@ -26,8 +26,6 @@ RestHandler="*res://addons/github-integration/scripts/RestHandler.gd"
 Firebase="*res://static/Firebase.gd"
 AudioManager="*res://src/autoload/AudioManager.tscn"
 PlayerData="*res://src/autoload/PlayerData.gd"
-SpawnTimer="*res://src/autoload/SpawnTimer.tscn"
-BubbleSpawnTimer="*res://src/autoload/BubbleSpawnTimer.gd"
 
 [display]
 

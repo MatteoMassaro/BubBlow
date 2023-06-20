@@ -24,8 +24,6 @@ var breath_duration_seconds = 0
 var breath_duration_minutes = 0
 var game_started = false
 
-signal score_incremented
-
 func _ready():
 	check_music()
 	set_countdown()
@@ -64,7 +62,6 @@ func _process(delta: float) -> void:
 func update_samples_strength() -> void:
 	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0))
 	volume_samples.push_front(sample)
-
 	sample_avg = average_array(volume_samples)
 	
 	while volume_samples.size() > 10:

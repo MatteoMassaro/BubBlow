@@ -33,8 +33,6 @@ var bubble
 var duck
 var game_started = false
 
-signal score_incremented
-
 func _ready():
 	check_music()
 	set_countdown()
@@ -104,7 +102,7 @@ func _on_GameArea_body_entered(body):
 	elif PlayerData.life_counter == 2 && PlayerData.invincible == false:
 		life_3.pop_bubble()
 		PlayerData.life_counter += 1
-		PlayerData.deaths += 1
+#		PlayerData.deaths += 1
 
 func update_score():
 	PlayerData.score += points
@@ -144,3 +142,7 @@ func set_smoke():
 	smoke_1.visible = true
 	smoke_2.visible = true
 	smoke_3.visible = true
+
+func _on_DuckArea_body_entered(body):
+	if(duck != null):
+		duck._on_DuckDetector_body_entered(body)
