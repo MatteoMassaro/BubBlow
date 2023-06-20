@@ -138,13 +138,12 @@ anims/points_up = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 anims/points_fade = SubResource( 8 )
 
-[node name="BubbleDetector" type="Area2D" parent="."]
-position = Vector2( 0, 124 )
+[node name="DuckDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="BubbleCollision" type="CollisionShape2D" parent="BubbleDetector"]
-position = Vector2( 0.5, -124 )
+[node name="DuckCollision" type="CollisionShape2D" parent="DuckDetector"]
+position = Vector2( 0.5, 0 )
 shape = SubResource( 10 )
 
-[connection signal="body_entered" from="BubbleDetector" to="." method="_on_EnemyDetector_body_entered"]
+[connection signal="body_entered" from="DuckDetector" to="." method="_on_DuckDetector_body_entered"]

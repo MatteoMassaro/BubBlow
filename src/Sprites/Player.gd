@@ -13,10 +13,6 @@ const FLOOR_NORMAL: = Vector2.UP
 export var gravity: = 200.0
 var _velocity: = Vector2.ZERO
 
-
-func _process(delta):
-	connect("player_up", self, "move_player_up")
-
 func _physics_process(delta):
 	_velocity.y += gravity * get_physics_process_delta_time()
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)

@@ -30,7 +30,6 @@ func _ready():
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 	var result_body = JSON.parse(body.get_string_from_ascii()).result
-	print(result_body)
 	documents = result_body["documents"]
 	for doc in documents:
 		var documentData = doc["fields"]

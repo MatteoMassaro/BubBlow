@@ -17,6 +17,7 @@ var game_duration_seconds = 0
 var game_duration_minutes = 0
 var breath_duration_seconds = 0
 var breath_duration_minutes = 0
+var game_started = false
 
 signal score_incremented
 
@@ -41,18 +42,19 @@ func set_countdown():
 	countdown_1.visible = true
 	yield(get_tree().create_timer(1.0), "timeout")
 	countdown_1.visible = false
+	game_started = true
 
 func _process(delta: float) -> void:
 	connect("new_bubble", self, "_on_MoveUpArea_body_entered")
 	update_samples_strength()
-	save_breath_data()
-	set_time_elapsed()
+	if game_started:
+		save_breath_data()
+		set_time_elapsed()
 
 func update_samples_strength() -> void:
 	var sample = AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0)
 	volume_samples.push_front(sample)
 	sample_avg = average_array(volume_samples)
-	print(sample_avg)
 	
 	while volume_samples.size() > 10:
 		volume_samples.pop_back()

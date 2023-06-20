@@ -22,6 +22,7 @@ var game_duration_seconds = 0
 var game_duration_minutes = 0
 var breath_duration_seconds = 0
 var breath_duration_minutes = 0
+var game_started = false
 
 signal score_incremented
 
@@ -44,6 +45,7 @@ func set_countdown():
 	countdown_1.visible = true
 	yield(get_tree().create_timer(1.0), "timeout")
 	countdown_1.visible = false
+	game_started = true
 
 func check_music():
 	AudioManager.music_track = load ("res://assets/user interface/sounds/game2_music.mp3")
@@ -54,9 +56,10 @@ func _process(delta: float) -> void:
 	connect("new_fish", self, "_on_GameArea_body_entered")
 	PlayerData.connect("life_counter_updated", self, "set_player_error")
 	update_samples_strength()
-	check_breathe()
-	save_breath_data()
-	set_time_elapsed()
+	if game_started:
+		check_breathe()
+		save_breath_data()
+		set_time_elapsed()
 
 func update_samples_strength() -> void:
 	var sample = db2linear(AudioServer.get_bus_peak_volume_left_db(record_bus_index, 0))

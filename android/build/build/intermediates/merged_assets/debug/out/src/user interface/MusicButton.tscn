@@ -1,8 +1,0 @@
-[gd_scene format=2]
-
-[node name="MusicButton" type="CheckBox"]
-margin_right = 400.0
-margin_bottom = 190.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "MUSICA"

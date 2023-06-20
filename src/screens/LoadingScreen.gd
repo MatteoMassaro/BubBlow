@@ -30,7 +30,7 @@ func _on_Timer_timeout():
 			text2.text = "Caricamento del Jetpack..."
 			text2.visible = true;
 		elif PlayerData.game_mode == 3:
-			text2.text = "Caricamento della pistola a bolle..."
+			text2.text = "Caricamento del cannone..."
 			text2.visible = true;
 	elif loadingBar.value == 70:
 		if PlayerData.game_mode == 1:

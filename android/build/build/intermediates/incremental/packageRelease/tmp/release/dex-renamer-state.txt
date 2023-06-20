@@ -1,4 +1,0 @@
-#Mon May 29 20:58:58 CEST 2023
-base.0=C\:\\Users\\user\\OneDrive\\Documenti\\Tesi di laurea\\BubBlow\\android\\build\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
