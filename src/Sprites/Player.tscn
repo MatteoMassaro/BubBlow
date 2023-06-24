@@ -39,11 +39,6 @@ animations = [ {
 "name": "run",
 "speed": 25.0
 }, {
-"frames": [ ExtResource( 18 ), ExtResource( 7 ), ExtResource( 13 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null, ExtResource( 13 ), ExtResource( 10 ), ExtResource( 13 ), null, null, null, ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null ],
-"loop": true,
-"name": "fly_blink",
-"speed": 25.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 19 ), ExtResource( 1 ), ExtResource( 14 ), null, null, null, ExtResource( 20 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 17 ), null, null, null, ExtResource( 11 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 2 ), null, null, null, ExtResource( 15 ), ExtResource( 16 ), ExtResource( 21 ), null, null, null ],
 "loop": true,
 "name": "run_blink",
@@ -53,6 +48,11 @@ animations = [ {
 "loop": true,
 "name": "fly",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 7 ), ExtResource( 13 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null, ExtResource( 13 ), ExtResource( 10 ), ExtResource( 13 ), null, null, null, ExtResource( 7 ), ExtResource( 13 ), ExtResource( 10 ), null, null, null, ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ), null, null, null ],
+"loop": true,
+"name": "fly_blink",
+"speed": 25.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -148,7 +148,6 @@ script = ExtResource( 8 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 9 )
 animation = "run"
-frame = 12
 playing = true
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
@@ -162,12 +161,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -20.0
-margin_top = -129.0
-margin_right = 42.0
-margin_bottom = -59.0
+margin_top = -7.0
+margin_right = 60.0
+margin_bottom = 96.0
 custom_colors/font_color = Color( 1, 0.8, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0.8, 0, 1 )
 custom_fonts/font = SubResource( 3 )
+text = "+1"
 align = 1
 
 [node name="PointsUpAnimation" type="AnimationPlayer" parent="."]

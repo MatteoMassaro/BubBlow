@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/user interface/backgrounds/sea_background.png" type="Texture" id=1]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/sprites/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/user interface/UserInterface.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/games/Game2.gd" type="Script" id=12]
@@ -15,11 +17,18 @@
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 34.75, 388.5 )
 
-[node name="Game2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 188.5, 379.5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="Game2" type="Control"]
+margin_right = 1080.0
+margin_bottom = 1920.0
+theme = ExtResource( 2 )
 script = ExtResource( 12 )
-__meta__ = {
-"_edit_vertical_guides_": [ -1.0 ]
-}
 
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 layer = 99
@@ -53,6 +62,15 @@ space_override = 3
 [node name="GameCollision" type="CollisionShape2D" parent="GameArea"]
 position = Vector2( -504.75, -384.5 )
 shape = SubResource( 8 )
+
+[node name="AlertArea" type="Area2D" parent="."]
+position = Vector2( 774, 1593 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="AlertCollision" type="CollisionShape2D" parent="AlertArea"]
+position = Vector2( -219.5, -64.5 )
+shape = SubResource( 10 )
 
 [node name="Countdown1" type="TextureRect" parent="."]
 visible = false
@@ -102,4 +120,42 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 192, 1722 )
 
+[node name="BreatheAlert" type="Label" parent="."]
+visible = false
+anchor_left = 0.152778
+anchor_top = 0.142969
+anchor_right = 0.152778
+anchor_bottom = 0.142969
+margin_left = -102.5
+margin_top = -36.5
+margin_right = 102.5
+margin_bottom = 36.5
+custom_colors/font_color = Color( 0.913725, 0.0352941, 0.0352941, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "SOFFIA!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OkAlert" type="Label" parent="."]
+visible = false
+anchor_left = 0.152778
+anchor_top = 0.142969
+anchor_right = 0.152778
+anchor_bottom = 0.142969
+margin_left = -116.0
+margin_top = -36.5
+margin_right = 116.0
+margin_bottom = 36.5
+custom_colors/font_color = Color( 0.145098, 0.564706, 0.0117647, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "OTTIMO!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [connection signal="body_entered" from="GameArea" to="." method="_on_GameArea_body_entered"]
+[connection signal="body_entered" from="AlertArea" to="." method="_on_AlertArea_body_entered"]
+[connection signal="body_exited" from="AlertArea" to="." method="_on_AlertArea_body_exited"]

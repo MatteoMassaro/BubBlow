@@ -4,13 +4,14 @@ onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
 onready var countdown_1 = $Countdown1
 onready var countdown_2 = $Countdown2
 onready var countdown_3 = $Countdown3
+onready var breathe_alert = $BreatheAlert
+onready var ok_alert = $OkAlert
 
 var record_bus_index: int
 var volume_samples: Array = []
 var sample_avg
 var min_db = -10
 var points = 1
-var points_text = "+1"
 var game_time_start = 0
 var game_time_elapsed = 0
 var game_duration_seconds = 0
@@ -70,12 +71,18 @@ func _on_MoveUpArea_body_entered(body):
 	var bubble = body
 	if PlayerData.deaths <= 0:
 		if bubble.body_entered == false:
+			breathe_alert.visible = true
+			ok_alert.visible = false
 			if round(linear2db(sample_avg)) > min_db:
-				bubble.points.text = points_text
+				breathe_alert.visible = false
+				ok_alert.visible = true
 				bubble.move_bubble_up()
 				bubble.points_animation()
 				update_score()
 				bubble.body_entered = true
+				yield(get_tree().create_timer(1.0), "timeout")
+				breathe_alert.visible = false
+				ok_alert.visible = false
 	else:
 		bubble.pop_bubble()
 

@@ -55,7 +55,10 @@ func move_player_down():
 		_player_sprite.play("die")
 
 func run():
-	_player_sprite.play("run")
+	if PlayerData.invincible == false:
+		_player_sprite.play("run")
+	else:
+		_player_sprite.play("run_blink")
 	PlayerData.player_flying = false
 
 func points_animation():

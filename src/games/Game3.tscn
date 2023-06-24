@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://assets/user interface/backgrounds/craftpix-beach-2d-game-backgrounds/PNG/game_background_1/layers/cloud.png" type="Texture" id=1]
 [ext_resource path="res://assets/user interface/backgrounds/craftpix-beach-2d-game-backgrounds/PNG/game_background_1/layers/sky.png" type="Texture" id=2]
@@ -16,16 +16,24 @@
 [ext_resource path="res://src/autoload/SpawnTimer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/sprites/cannon/cannon2.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/cannon/tank_explosion9.png" type="Texture" id=16]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=17]
+[ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://assets/sprites/kenney_fish-pack/PNG/Retina/fishTile_109.png" type="Texture" id=20]
 [ext_resource path="res://assets/sprites/kenney_fish-pack/PNG/Retina/fishTile_110.png" type="Texture" id=21]
 
 [sub_resource type="AudioStreamMicrophone" id=7]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 139.125, 147.5 )
+extents = Vector2( 129.063, 147.5 )
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 72.5, 69 )
+extents = Vector2( 40.5, 98 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 40, 101 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 41, 80 )
 
 [sub_resource type="Animation" id=9]
 length = 0.001
@@ -231,12 +239,15 @@ tracks/5/keys = {
 "values": [ Vector2( 460, 1920 ), Vector2( 460, 1100 ) ]
 }
 
-[node name="Game3" type="Node2D"]
+[sub_resource type="DynamicFont" id=15]
+size = 50
+font_data = ExtResource( 18 )
+
+[node name="Game3" type="Control"]
+margin_right = 1080.0
+margin_bottom = 1920.0
+theme = ExtResource( 17 )
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 1465.0 ],
-"_edit_vertical_guides_": [ -1.0 ]
-}
 
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
 layer = 99
@@ -826,9 +837,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -125.0
+margin_top = -128.0
 margin_right = 100.0
-margin_bottom = 75.0
+margin_bottom = 72.0
 texture = ExtResource( 10 )
 expand = true
 __meta__ = {
@@ -856,10 +867,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = 640.0
-margin_right = 110.0
-margin_bottom = 790.0
+margin_left = 500.0
+margin_top = 1600.0
+margin_right = 650.0
+margin_bottom = 1750.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -870,10 +881,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = 550.0
-margin_right = 70.0
-margin_bottom = 670.0
+margin_left = 490.0
+margin_top = 1510.0
+margin_right = 610.0
+margin_bottom = 1630.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -887,10 +898,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.0
-margin_top = 440.0
-margin_right = 80.0
-margin_bottom = 600.0
+margin_left = 460.0
+margin_top = 1400.0
+margin_right = 620.0
+margin_bottom = 1560.0
 rect_rotation = -90.0
 texture = ExtResource( 16 )
 expand = true
@@ -939,21 +950,37 @@ wait_time = 5.0
 script = ExtResource( 7 )
 
 [node name="GameOverArea" type="Area2D" parent="."]
-position = Vector2( 545, 691 )
+position = Vector2( 545, 805 )
 collision_layer = 0
 collision_mask = 2
 space_override = 3
 
 [node name="GameOverCollision" type="CollisionShape2D" parent="GameOverArea"]
-position = Vector2( 4, -1 )
+position = Vector2( -6.0625, -1 )
 shape = SubResource( 8 )
 
+[node name="BubbleArea" type="Area2D" parent="."]
+position = Vector2( 537, 1138 )
+collision_mask = 2
+
+[node name="BubbleAreaCollision" type="CollisionShape2D" parent="BubbleArea"]
+position = Vector2( 2.5, -2 )
+shape = SubResource( 12 )
+
 [node name="DuckArea" type="Area2D" parent="."]
-position = Vector2( 537, 933 )
+position = Vector2( 537, 1140 )
+collision_layer = 2
 
 [node name="DuckCollision" type="CollisionShape2D" parent="DuckArea"]
-position = Vector2( 1.5, 0 )
-shape = SubResource( 12 )
+position = Vector2( 2, -3 )
+shape = SubResource( 13 )
+
+[node name="AlertArea" type="Area2D" parent="."]
+position = Vector2( 288, 1140 )
+
+[node name="AlertCollision" type="CollisionShape2D" parent="AlertArea"]
+position = Vector2( 75, -24 )
+shape = SubResource( 14 )
 
 [node name="Countdown1" type="TextureRect" parent="."]
 visible = false
@@ -1006,5 +1033,46 @@ anims/RESET = SubResource( 9 )
 anims/move_boats = SubResource( 10 )
 anims/set_smoke = SubResource( 11 )
 
-[connection signal="body_entered" from="GameOverArea" to="." method="_on_GameArea_body_entered"]
+[node name="BreatheAlert" type="Label" parent="."]
+visible = false
+anchor_left = 0.152778
+anchor_top = 0.142969
+anchor_right = 0.152778
+anchor_bottom = 0.142969
+margin_left = -102.5
+margin_top = -36.5
+margin_right = 102.5
+margin_bottom = 36.5
+custom_colors/font_color = Color( 0.913725, 0.0352941, 0.0352941, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "SOFFIA!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OkAlert" type="Label" parent="."]
+visible = false
+anchor_left = 0.152778
+anchor_top = 0.142969
+anchor_right = 0.152778
+anchor_bottom = 0.142969
+margin_left = -116.0
+margin_top = -36.5
+margin_right = 116.0
+margin_bottom = 36.5
+custom_colors/font_color = Color( 0.145098, 0.564706, 0.0117647, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "OTTIMO!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="body_entered" from="GameOverArea" to="." method="_on_GameOverArea_body_entered"]
+[connection signal="body_entered" from="BubbleArea" to="." method="_on_BubbleArea_body_entered"]
+[connection signal="body_exited" from="BubbleArea" to="." method="_on_BubbleArea_body_exited"]
 [connection signal="body_entered" from="DuckArea" to="." method="_on_DuckArea_body_entered"]
+[connection signal="body_exited" from="DuckArea" to="." method="_on_DuckArea_body_exited"]
+[connection signal="body_entered" from="AlertArea" to="." method="_on_AlertArea_body_entered"]
+[connection signal="body_exited" from="AlertArea" to="." method="_on_AlertArea_body_exited"]

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
@@ -11,6 +11,8 @@ onready var animation_player = $AnimationPlayer
 onready var smoke_1 = $BackgroundLayer2/Smoke1
 onready var smoke_2 = $BackgroundLayer2/Smoke2
 onready var smoke_3 = $BackgroundLayer2/Smoke3
+onready var breathe_alert = $BreatheAlert
+onready var ok_alert = $OkAlert
 onready var life_1 = get_tree().get_root().get_node("Game3/UserInterfaceLayer/UserInterface/Life1")
 onready var life_2 = get_tree().get_root().get_node("Game3/UserInterfaceLayer/UserInterface/Life2")
 onready var life_3 = get_tree().get_root().get_node("Game3/UserInterfaceLayer/UserInterface/Life3")
@@ -18,9 +20,8 @@ onready var life_3 = get_tree().get_root().get_node("Game3/UserInterfaceLayer/Us
 var record_bus_index: int
 var volume_samples: Array = []
 var sample_avg
-var min_db = -20
+var min_db = -10
 var points = 1
-var points_text = "+1"
 var player_error = false
 var game_time_start = 0
 var game_time_elapsed = 0
@@ -31,6 +32,8 @@ var breath_duration_minutes = 0
 var bubble_sprite = preload("res://src/sprites/Bubble.tscn")
 var bubble
 var duck
+var bubble_entered = false
+var duck_entered = false
 var game_started = false
 
 func _ready():
@@ -58,12 +61,27 @@ func check_music():
 		AudioManager.play_music()
 
 func _process(delta: float) -> void:
-	connect("new_duck", self, "set_duck")
 	PlayerData.connect("life_counter_updated", self, "set_player_error")
+	connect("new_duck", self, "_on_DuckArea_body_entered")
 	update_samples_strength()
 	if game_started:
 		if(bubble != null):
 			check_breathe(bubble)
+			bubble.connect("new_bubble", self, "_on_BubbleArea_body_entered")
+			if(duck != null):
+				if(bubble_entered && duck_entered):
+					ok_alert.visible = false
+					bubble_entered = false
+					duck_entered = false
+					duck.get_node("DuckSprite").play("die")
+					duck._velocity = Vector2(0,0)
+					bubble.pop_bubble()
+					duck.points_animation()
+					update_score()
+					yield(get_tree().create_timer(1.0), "timeout")
+					bubble.free()
+					duck.free()
+					set_bubble()
 		save_breath_data()
 		set_time_elapsed()
 
@@ -85,12 +103,14 @@ func average_array(arr: Array) -> float:
 
 func check_breathe(bubble):
 	if (round(linear2db(sample_avg)) > min_db):
-		set_smoke()
-		bubble.throw_bubble()
-	else:
-		pass
+		breathe_alert.visible = false
+		ok_alert.visible = true
+		if(bubble.position == Vector2(540, 1920)):
+			set_smoke()
+			bubble.throw_bubble()
 
-func _on_GameArea_body_entered(body):
+func _on_GameOverArea_body_entered(body):
+	ok_alert.visible = false
 	bubble.pop_bubble()
 	set_bubble()
 	if PlayerData.life_counter == 0:
@@ -102,7 +122,28 @@ func _on_GameArea_body_entered(body):
 	elif PlayerData.life_counter == 2 && PlayerData.invincible == false:
 		life_3.pop_bubble()
 		PlayerData.life_counter += 1
-#		PlayerData.deaths += 1
+		PlayerData.deaths += 1
+
+func _on_BubbleArea_body_entered(body):
+	bubble_entered = true
+	bubble = body
+
+func _on_DuckArea_body_entered(body):
+	duck_entered = true
+	duck = body
+
+func _on_BubbleArea_body_exited(body):
+	bubble_entered = false
+
+func _on_DuckArea_body_exited(body):
+	duck_entered = false
+
+func _on_AlertArea_body_entered(body):
+	breathe_alert.visible = true
+	ok_alert.visible = false
+	
+func _on_AlertArea_body_exited(body):
+	breathe_alert.visible = false
 
 func update_score():
 	PlayerData.score += points
@@ -142,7 +183,3 @@ func set_smoke():
 	smoke_1.visible = true
 	smoke_2.visible = true
 	smoke_3.visible = true
-
-func _on_DuckArea_body_entered(body):
-	if(duck != null):
-		duck._on_DuckDetector_body_entered(body)

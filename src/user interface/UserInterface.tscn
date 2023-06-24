@@ -91,22 +91,16 @@ __meta__ = {
 }
 
 [node name="Life1" parent="." instance=ExtResource( 14 )]
-position = Vector2( 550, 279 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="BubbleCollision" parent="Life1" index="1"]
 disabled = true
 
 [node name="Life2" parent="." instance=ExtResource( 14 )]
-position = Vector2( 450, 279 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="BubbleCollision" parent="Life2" index="1"]
 disabled = true
 
 [node name="Life3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 350, 279 )
-scale = Vector2( 0.5, 0.5 )
 
 [node name="BubbleCollision" parent="Life3" index="1"]
 disabled = true

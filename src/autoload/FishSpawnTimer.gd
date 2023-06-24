@@ -7,7 +7,8 @@ var fish_sprite3 = preload("res://src/sprites/Fish3.tscn")
 signal new_fish
 
 func _on_Timer_timeout():
-	self.wait_time -= 0.1
+	if(wait_time > 2):
+		self.wait_time -= 0.1
 	randomize()
 	var fish1 = fish_sprite1.instance()
 	var fish2 = fish_sprite2.instance()

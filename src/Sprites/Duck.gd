@@ -7,7 +7,7 @@ onready var points = $Points
 
 const FLOOR_NORMAL: = Vector2.UP
 
-var _velocity: = Vector2(100.0,0)	
+var _velocity: = Vector2(100.0,0)
 var body_entered
 
 
@@ -28,7 +28,3 @@ func points_animation():
 	if AudioManager.flag_effects == 0:
 		AudioManager.effect_track = load("res://assets/user interface/sounds/kenney_interfacesounds/Audio/confirmation_003.ogg")
 		AudioManager.play_effect()
-
-
-func _on_DuckDetector_body_entered(body):
-	_duck_sprite.play("die")

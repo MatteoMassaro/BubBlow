@@ -7,7 +7,8 @@ var duck_sprite1 = preload("res://src/sprites/Duck1.tscn")
 signal new_duck
 
 func _on_Timer_timeout():
-	self.wait_time -= 0.1
+	if(wait_time > 2):
+		self.wait_time -= 0.1
 	randomize()
 	var duck1 = duck_sprite1.instance()
 #	var duck2 = duck_sprite2.instance()

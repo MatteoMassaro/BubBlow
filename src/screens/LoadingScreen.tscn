@@ -62,41 +62,50 @@ __meta__ = {
 [node name="Text1" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.522135
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -296.5
-margin_top = 60.0
-margin_right = 296.5
-margin_bottom = 108.0
+anchor_bottom = 0.522135
+margin_left = -271.0
+margin_top = -29.5
+margin_right = 271.0
+margin_bottom = 29.5
 custom_fonts/font = ExtResource( 4 )
 align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Text2" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.54974
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -266.0
-margin_top = 117.0
-margin_right = 266.0
-margin_bottom = 165.0
+anchor_bottom = 0.54974
+margin_left = -305.0
+margin_top = -29.5
+margin_right = 305.0
+margin_bottom = 29.5
 custom_fonts/font = ExtResource( 4 )
 align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Text3" type="Label" parent="."]
 visible = false
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.576823
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -224.5
-margin_top = 179.0
-margin_right = 224.5
-margin_bottom = 227.0
+anchor_bottom = 0.576823
+margin_left = -278.5
+margin_top = -29.5
+margin_right = 278.5
+margin_bottom = 29.5
 custom_fonts/font = ExtResource( 4 )
 align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="LoadingBar" type="ProgressBar" parent="."]
 anchor_left = 0.5

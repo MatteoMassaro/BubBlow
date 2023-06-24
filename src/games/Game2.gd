@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 onready var pause_menu = $UserInterfaceLayer/UserInterface/PauseOverlay
@@ -8,13 +8,14 @@ onready var seabed_instance = preload("res://src/user interface/Seabed.tscn")
 onready var countdown_1 = $Countdown1
 onready var countdown_2 = $Countdown2
 onready var countdown_3 = $Countdown3
+onready var breathe_alert = $BreatheAlert
+onready var ok_alert = $OkAlert
 
 var record_bus_index: int
 var volume_samples: Array = []
 var sample_avg
-var min_db = -20
+var min_db = -15
 var points = 1
-var points_text = "+1"
 var player_error = false
 var game_time_start = 0
 var game_time_elapsed = 0
@@ -23,12 +24,12 @@ var game_duration_minutes = 0
 var breath_duration_seconds = 0
 var breath_duration_minutes = 0
 var game_started = false
+var enemy
 
 func _ready():
 	check_music()
 	set_countdown()
 	record_bus_index = AudioServer.get_bus_index('Record')
-	player.points.text = points_text
 	game_time_start = OS.get_unix_time()
 	create_first_seabed()
 	create_multi_seabed()
@@ -77,19 +78,30 @@ func average_array(arr: Array) -> float:
 func check_breathe():
 	if (round(linear2db(sample_avg)) > min_db && player.position.y > 1400):
 		player.move_player_up()
+		breathe_alert.visible = false
+		ok_alert.visible = true
 	else:
 		if(PlayerData.player_flying == true):
 			player.move_player_down()
 			if(player.position.y > 1698):
+				breathe_alert.visible = false
+				ok_alert.visible = false
 				player.run()
 
 func _on_GameArea_body_entered(body):
-	var enemy = body
+	enemy = body
 	if (enemy.position.x < player.position.x && player_error == false):
 		player.points_animation()
 		update_score()
 	else:
 		player_error = false
+
+func _on_AlertArea_body_entered(body):
+	breathe_alert.visible = true
+	ok_alert.visible = false
+	
+func _on_AlertArea_body_exited(body):
+	breathe_alert.visible = false
 
 func update_score():
 	PlayerData.score += points
