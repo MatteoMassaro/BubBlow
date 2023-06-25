@@ -7,7 +7,7 @@ onready var countdown_1 = $Countdown1
 onready var countdown_2 = $Countdown2
 onready var countdown_3 = $Countdown3
 onready var background_layer_2 = $BackgroundLayer2
-onready var animation_player = $AnimationPlayer
+onready var animation_smoke = $AnimationSmoke
 onready var smoke_1 = $BackgroundLayer2/Smoke1
 onready var smoke_2 = $BackgroundLayer2/Smoke2
 onready var smoke_3 = $BackgroundLayer2/Smoke3
@@ -106,8 +106,9 @@ func check_breathe(bubble):
 		breathe_alert.visible = false
 		ok_alert.visible = true
 		if(bubble.position == Vector2(540, 1920)):
-			set_smoke()
 			bubble.throw_bubble()
+			yield(get_tree().create_timer(0.5), "timeout")
+			set_smoke()
 
 func _on_GameOverArea_body_entered(body):
 	ok_alert.visible = false
@@ -179,7 +180,7 @@ func set_duck(body):
 	duck = body
 
 func set_smoke():
-	animation_player.play("set_smoke")
+	animation_smoke.play("set_smoke")
 	smoke_1.visible = true
 	smoke_2.visible = true
 	smoke_3.visible = true

@@ -37,9 +37,10 @@ func throw_bubble():
 	gravity = -400
 	_velocity.y += gravity * get_physics_process_delta_time()
 	_velocity = move_and_slide(_velocity, FLOOR_NORMAL)
+	yield(get_tree().create_timer(0.5), "timeout")
+	throw_bubble_animation.play("scale_down_bubble")
 	yield(get_tree().create_timer(0.4), "timeout")
 	self.visible = true
-	throw_bubble_animation.play("scale_down_bubble")
 	
 func points_animation():
 	points_up_animation.play("RESET")
