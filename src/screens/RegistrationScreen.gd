@@ -18,8 +18,10 @@ var profile := {
 	"email": {},
 	"games_first_mode_count": {},
 	"games_second_mode_count": {},
+	"games_third_mode_count": {},
 	"highscore_first_mode": {},
-	"highscore_second_mode": {}
+	"highscore_second_mode": {},
+	"highscore_third_mode": {}
 } 
 
 func _ready():
@@ -74,13 +76,16 @@ func create_profile():
 	PlayerData.email = email_field.text
 	PlayerData.highscore_first_mode = 0
 	PlayerData.highscore_second_mode = 0
+	PlayerData.highscore_third_mode = 0
 	profile.name = {"stringValue": name_field.text}
 	profile.surname = {"stringValue":  surname_field.text}
 	profile.email = {"stringValue": email_field.text}
 	profile.games_first_mode_count = {"integerValue": 0}
 	profile.games_second_mode_count = {"integerValue": 0}
+	profile.games_third_mode_count = {"integerValue": 0}
 	profile.highscore_first_mode = {"integerValue": 0}
 	profile.highscore_second_mode = {"integerValue": 0}
+	profile.highscore_third_mode = {"integerValue": 0}
 	Firebase.update_document("patients/%s" % Firebase.user_info.id, profile, http)
 	yield(get_tree().create_timer(2.0), "timeout")
 	get_tree().change_scene("res://src/screens/MenuScreen.tscn")

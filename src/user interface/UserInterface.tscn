@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/user interface/backgrounds/Pause.png" type="Texture" id=3]
+[ext_resource path="res://assets/user interface/themes/main_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/user interface/ResumeButton.gd" type="Script" id=4]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/user interface/EffectsButton.tscn" type="PackedScene" id=6]
@@ -35,11 +34,22 @@ font_data = ExtResource( 15 )
 size = 70
 font_data = ExtResource( 15 )
 
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.427451, 0.407843, 0.407843, 0.392157 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 150
+font_data = ExtResource( 15 )
+
 [node name="UserInterface" type="Control"]
 pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 2 )
+margin_right = 1080.0
+margin_bottom = 1920.0
+theme = ExtResource( 1 )
 script = ExtResource( 10 )
 
 [node name="PauseButton" parent="." instance=ExtResource( 5 )]
@@ -60,14 +70,14 @@ __meta__ = {
 }
 
 [node name="Health" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -190.0
-margin_top = -840.0
-margin_right = 10.0
-margin_bottom = -770.0
+anchor_left = 0.416667
+anchor_top = 0.0893229
+anchor_right = 0.416667
+anchor_bottom = 0.0893229
+margin_left = -100.0
+margin_top = -51.5
+margin_right = 100.0
+margin_bottom = 51.5
 custom_fonts/font = SubResource( 4 )
 align = 1
 __meta__ = {
@@ -107,13 +117,33 @@ disabled = true
 
 [node name="PauseOverlay" type="TextureRect" parent="."]
 visible = false
-self_modulate = Color( 1, 1, 1, 0.784314 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -3.0
-margin_bottom = -3.0
-texture = ExtResource( 3 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -540.0
+margin_top = -960.0
+margin_right = 540.0
+margin_bottom = 1440.0
+texture = SubResource( 8 )
 expand = true
+
+[node name="ScreenTitle" type="Label" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.238542
+anchor_right = 0.5
+anchor_bottom = 0.268958
+margin_left = -321.0
+margin_top = -72.5
+margin_right = 321.0
+margin_bottom = 72.5
+custom_fonts/font = SubResource( 6 )
+text = "Pausa"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="MenuContainer" type="VBoxContainer" parent="PauseOverlay"]
 anchor_left = 0.5
@@ -148,16 +178,16 @@ pressed = true
 script = ExtResource( 8 )
 
 [node name="Menu1" type="VBoxContainer" parent="PauseOverlay/MenuContainer"]
-margin_left = 175.0
+margin_left = 204.0
 margin_top = 188.0
-margin_right = 567.0
+margin_right = 537.0
 margin_bottom = 800.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="ResumeButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
-margin_right = 392.0
+margin_right = 333.0
 margin_bottom = 194.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "RIPRENDI"
@@ -165,7 +195,7 @@ script = ExtResource( 4 )
 
 [node name="RestartButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
 margin_top = 209.0
-margin_right = 392.0
+margin_right = 333.0
 margin_bottom = 403.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "RICOMINCIA"
@@ -173,7 +203,7 @@ script = ExtResource( 12 )
 
 [node name="MenuButton" parent="PauseOverlay/MenuContainer/Menu1" instance=ExtResource( 5 )]
 margin_top = 418.0
-margin_right = 392.0
+margin_right = 333.0
 margin_bottom = 612.0
 rect_pivot_offset = Vector2( 200, 100 )
 text = "MENU PRINCIPALE"

@@ -26,7 +26,7 @@ func _on_LoginButton_pressed() -> void:
 		show_label()
 		return
 	Firebase.login(email_field.text, password_field.text, http)
-	yield(get_tree().create_timer(2.0), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	if Firebase.information_sent == true:
 		Firebase.get_document("patients/%s" % Firebase.user_info.id, http)
 
@@ -52,8 +52,10 @@ func get_data(result_body: Dictionary):
 	PlayerData.email = email_field.text
 	PlayerData.games_first_mode_count = result_body.fields.games_first_mode_count.integerValue
 	PlayerData.games_second_mode_count = result_body.fields.games_second_mode_count.integerValue
+	PlayerData.games_third_mode_count = result_body.fields.games_third_mode_count.integerValue
 	PlayerData.highscore_first_mode = result_body.fields.highscore_first_mode.integerValue
 	PlayerData.highscore_second_mode = result_body.fields.highscore_second_mode.integerValue
+	PlayerData.highscore_third_mode = result_body.fields.highscore_third_mode.integerValue
 
 func show_label():
 	notification_panel.show()

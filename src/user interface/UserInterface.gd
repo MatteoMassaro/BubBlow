@@ -22,7 +22,7 @@ func _ready():
 	PlayerData.connect("score_updated", self, "update_interface")
 	PlayerData.connect("player_died", self, "_on_PlayerData_player_died")
 	PlayerData.connect("game_resumed", self, "on_game_resumed")
-	set_life_gravity()
+	set_lives()
 	update_interface()
 
 func check_music_button():
@@ -41,7 +41,13 @@ func set_health():
 	health.set_position(health_position)
 	health.text = "VITE"
 
-func set_life_gravity():
+func set_lives():
+	life_1.position = Vector2(550, 279)
+	life_2.position = Vector2(450, 279)
+	life_3.position = Vector2(350, 279)
+	life_1.scale = Vector2(0.5, 0.5)
+	life_2.scale = Vector2(0.5, 0.5)
+	life_3.scale = Vector2(0.5, 0.5)
 	life_1.gravity = 0
 	life_2.gravity = 0
 	life_3.gravity = 0

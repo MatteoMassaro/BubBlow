@@ -8,7 +8,7 @@ onready var points = $Points
 const FLOOR_NORMAL: = Vector2.UP
 
 export var gravity: = 1000.0
-var _velocity: = Vector2(-400, 0)	
+var _velocity: = Vector2(-400, 0)
 
 func _process(delta):
 	pass

@@ -20,8 +20,10 @@ var profile := {
 	"email": {},
 	"games_first_mode_count": {},
 	"games_second_mode_count": {},
+	"games_third_mode_count": {},
 	"highscore_first_mode": {},
-	"highscore_second_mode": {}
+	"highscore_second_mode": {},
+	"highscore_third_mode": {}
 } 
 var game := {
 	"score": {},
@@ -112,11 +114,23 @@ func save_data():
 		game.game_duration = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
 		Firebase.save_document("patients/%s/games_second_mode" % Firebase.user_info.id, game, http)
 		yield(get_tree().create_timer(2.0), "timeout")
+	if(PlayerData.game_mode == 3):
+		PlayerData.games_third_mode_count += 1
+		if(PlayerData.score > PlayerData. highscore_third_mode):
+			PlayerData.highscore_third_mode = PlayerData.score
+		game.score = {"integerValue": PlayerData.score}
+		game.decibel_avg = {"doubleValue": PlayerData.decibel_avg/PlayerData.breathe_counter}
+		game.breath_duration = {"stringValue": str(PlayerData.breath_duration_minutes) + "m " + str(PlayerData.breath_duration_seconds) + "s"}
+		game.game_duration = {"stringValue": str(PlayerData.game_duration_minutes) + "m " + str(PlayerData.game_duration_seconds) + "s"}
+		Firebase.save_document("patients/%s/games_third_mode" % Firebase.user_info.id, game, http)
+		yield(get_tree().create_timer(2.0), "timeout")
 	profile.name = {"stringValue": PlayerData.name_user}
 	profile.surname = {"stringValue":  PlayerData.surname_user}
 	profile.email = {"stringValue": PlayerData.email}
 	profile.games_first_mode_count = {"integerValue": PlayerData.games_first_mode_count}
 	profile.games_second_mode_count = {"integerValue": PlayerData.games_second_mode_count}
+	profile.games_third_mode_count = {"integerValue": PlayerData.games_third_mode_count}
 	profile.highscore_first_mode = {"integerValue": PlayerData.highscore_first_mode}
 	profile.highscore_second_mode = {"integerValue": PlayerData.highscore_second_mode}
+	profile.highscore_third_mode = {"integerValue": PlayerData.highscore_third_mode}
 	Firebase.update_document("patients/%s" % Firebase.user_info.id, profile, http)

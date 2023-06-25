@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/user interface/bubblebuttons/png/Button_32.png" type="Texture" id=1]
 [ext_resource path="res://src/user interface/ChangeSceneButton.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/user interface/items/secondMode.png" type="Texture" id=7]
 [ext_resource path="res://assets/user interface/themes/CherryBombOne-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/user interface/themes/Kanit-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/user interface/items/thirdMode.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=17]
 size = 200
@@ -133,7 +134,7 @@ custom_constants/vseparation = 30
 custom_constants/line_separation = 1
 custom_constants/icon_margin = 30
 custom_fonts/font = SubResource( 16 )
-items = [ "", SubResource( 6 ), false, "", SubResource( 13 ), false, "", SubResource( 15 ), false, "", ExtResource( 6 ), false, "", ExtResource( 7 ), false ]
+items = [ "", SubResource( 6 ), false, "", SubResource( 13 ), false, "", SubResource( 15 ), false, "", ExtResource( 6 ), false, "", ExtResource( 7 ), false, "", ExtResource( 10 ), false ]
 auto_height = true
 same_column_width = true
 fixed_icon_size = Vector2( 50, 50 )

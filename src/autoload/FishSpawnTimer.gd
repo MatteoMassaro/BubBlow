@@ -4,18 +4,24 @@ var fish_sprite1 = preload("res://src/sprites/Fish1.tscn")
 var fish_sprite2 = preload("res://src/sprites/Fish2.tscn")
 var fish_sprite3 = preload("res://src/sprites/Fish3.tscn")
 
+var velocity = 0
+
 signal new_fish
 
 func _on_Timer_timeout():
 	if(wait_time > 2):
 		self.wait_time -= 0.1
+		velocity += -10
 	randomize()
 	var fish1 = fish_sprite1.instance()
 	var fish2 = fish_sprite2.instance()
 	var fish3 = fish_sprite3.instance()
 	fish1.position = Vector2(2000, 1780)
+	fish1._velocity.x += velocity
 	fish2.position = Vector2(2000, 1780)
+	fish2._velocity.x += velocity
 	fish3.position = Vector2(2000, 1780)
+	fish3._velocity.x += velocity
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var fish_type = rng.randi_range(1, 3)
