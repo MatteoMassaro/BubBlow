@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/user interface/items/medalFirst.png" type="Texture" id=1]
 [ext_resource path="res://assets/user interface/backgrounds/Background.png" type="Texture" id=2]
@@ -29,6 +29,10 @@ region_rect = Rect2( 0, 0, 172, 173 )
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 172, 173 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 30
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 content_margin_left = 50.0
@@ -141,7 +145,8 @@ margin_left = -191.0
 margin_top = -37.0
 margin_right = 159.0
 margin_bottom = 113.0
-text = "MODALITA' 1"
+custom_fonts/font = SubResource( 15 )
+text = "LIVELLO BOLLE"
 __meta__ = {
 "_edit_use_anchors_": true
 }

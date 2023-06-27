@@ -104,17 +104,17 @@ func populate_leaderboard_scores():
 
 func _on_GameModeButton_pressed():
 	if button_flag == 0:
-		game_mode_button.text = "MODALITA' 2"
+		game_mode_button.text = "LIVELLO RUNNER"
 		button_flag += 1
 		leaderboard_scroll2.visible = false
 		leaderboard_scroll3.visible = true
 	elif button_flag == 1:
-		game_mode_button.text = "MODALITA' 3"
+		game_mode_button.text = "LIVELLO BERSAGLI"
 		button_flag += 1
 		leaderboard_scroll3.visible = false
 		leaderboard_scroll4.visible = true
 	elif button_flag == 2:
-		game_mode_button.text = "MODALITA' 1"
+		game_mode_button.text = "LIVELLO BOLLE"
 		button_flag = 0
 		leaderboard_scroll4.visible = false
 		leaderboard_scroll2.visible = true

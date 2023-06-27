@@ -156,10 +156,15 @@ func save_breath_data():
 	PlayerData.decibel_avg += linear2db(sample_avg)
 	PlayerData.breathe_counter += 1
 	if round(linear2db(sample_avg)) > min_db:
-			breath_duration_seconds += 0.018
-			breath_duration_minutes = int(breath_duration_seconds/60)%60
+		breath_duration_seconds += 0.018
+		breath_duration_minutes = int(breath_duration_seconds/60)%60
+	else:
+		if(breath_duration_seconds > PlayerData.breath_duration_seconds):
 			PlayerData.breath_duration_seconds = int(breath_duration_seconds)
+			breath_duration_seconds = 0
+		if(breath_duration_minutes > PlayerData.breath_duration_minutes):
 			PlayerData.breath_duration_minutes = breath_duration_minutes
+			breath_duration_minutes = 0
 
 func set_time_elapsed():
 	game_time_elapsed = OS.get_unix_time()
