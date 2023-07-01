@@ -86,7 +86,8 @@ size_flags_stretch_ratio = 1.5
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "Realizzato da:
-Matteo Massaro"
+Matteo Massaro
+Nicolas Visci"
 align = 1
 valign = 1
 autowrap = true
